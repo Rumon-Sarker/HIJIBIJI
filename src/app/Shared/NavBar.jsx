@@ -98,7 +98,7 @@ const NavBar = () => {
                   aria-label="Sidebar with multi-level dropdown example"
                   className="[&>div]:bg-transparent [&>div]:p-0"
                 >
-                  <div className="flex h-full w-24 flex-col justify-between py-2">
+                  <div className="flex h-full w-24 flex-col ms-10 py-2">
                     <div>
                       <Sidebar.Items>
                         <ul className="space-y-5">

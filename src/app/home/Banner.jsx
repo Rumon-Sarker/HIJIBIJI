@@ -5,13 +5,13 @@ import banner from "./../../../public/Image.png";
 
 const Banner = () => {
   return (
-    <div>
+    <div className="">
       <div>
         <div
           style={{
             backgroundImage: "url('/Background.png')",
-            height: "600px", // Ensure the element has some height
-            backgroundSize: "cover", // Ensure the image covers the element
+            height: "600px", 
+            backgroundSize: "cover", 
             backgroundPosition: "center",
           }}
         >

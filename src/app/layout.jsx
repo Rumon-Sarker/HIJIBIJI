@@ -2,17 +2,13 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "./Shared/NavBar";
 import Footer from "./Shared/Footer";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { Open_Sans, Poppins,  } from "next/font/google";
+const fontName = Open_Sans({subsets:['latin'],weight:'400'});
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
 export const metadata = {
   title: "Create Next App",
@@ -23,7 +19,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased my-2`}
+        className={`${fontName.className} antialiased my-2`}
       >
        <NavBar/> {children} <Footer/>
       </body>

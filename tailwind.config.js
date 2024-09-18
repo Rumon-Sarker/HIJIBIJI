@@ -10,13 +10,16 @@ module.exports = {
     // Or if using `src` directory:
     './src/**/*.{js,ts,jsx,tsx,mdx}',
     flowbite.content(),
+    "./node_modules/tw-elements-react/dist/js/**/*.js"
   ],
   theme: {
     colors:{
       'main' : '#209AD6',
       'text' : '#7A7A7A',
       'white': '#FFFFFF',
-      'black': '#000000'
+      'black': '#000000',
+      'footer': '#004E83',
+      'footerText': '#FFF'
 
   },
     extend: {},
@@ -24,5 +27,6 @@ module.exports = {
   plugins: [
     require('daisyui'),
     flowbite.plugin(),
+    [require("tw-elements-react/dist/plugin.cjs")]
   ],
 }
