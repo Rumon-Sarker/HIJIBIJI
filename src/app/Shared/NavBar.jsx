@@ -170,12 +170,12 @@ const NavBar = () => {
           </div>
 
           <div className="lg:space-x-4 mr-2 lg:mr-5 md:mr-3 hidden lg:flex">
-            <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
+            <Link href={'/contact'}><button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
               Contact
-            </button>
-            <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
+            </button></Link>
+            <Link href={'/blogs'}><button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
               Blogs
-            </button>
+            </button></Link>
           </div>
         </nav>
       </div>

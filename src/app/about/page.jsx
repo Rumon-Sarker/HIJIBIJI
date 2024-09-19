@@ -7,35 +7,16 @@ import logo4 from "./../../../public/timeline 1.png";
 import icon1 from "./../../../public/ph_target-bold.png";
 import icon2 from "./../../../public/tabler_bulb.png";
 import icon3 from "./../../../public/game-icons_achievement.png";
-import tab1 from "./../../../public/Swift_logo_svg 2.png";
-import tab2 from "./../../../public/ruby 2.png";
-import tab3 from "./../../../public/Python-Symbol 2.png";
-import tab4 from "./../../../public/php.png";
-import tab5 from "./../../../public/kotlin_jfif 2.png";
-import tab6 from "./../../../public/javascript-vector-logo-yellow-png-transparent-javascript-vector-12 2.png";
-import tab7 from "./../../../public/Java_programming_language_logo_svg 2.png";
-import tab8 from "./../../../public/c-sharp-c-logo-02F17714BA-seeklogo_com 2.png";
 import Image from "next/image";
-import {
-  TETabs,
-  TETabsContent,
-  TETabsItem,
-  TETabsPane,
-} from "tw-elements-react";
+import AboutTabContent from "./../../components/AboutTabContent";
 
 const AboutUs = () => {
-  const [basicActive, setBasicActive] = useState("tab1");
+  const [activeTab, setActiveTab] = useState(1);
 
-  const handleBasicClick = (value) => {
-    if (value === basicActive) {
-      return;
-    }
-    setBasicActive(value);
-  };
   return (
     <div>
       <div>
-        <div className="h-[200px] bg-main mx-10 flex justify-center items-end rounded-lg my-10">
+        <div className="h-[200px] bg-main mx-10 flex justify-center items-center rounded-lg my-10">
           <h1 className="text-white text-center text-[50px] lg:text-[80px]">
             About Us
           </h1>
@@ -292,98 +273,125 @@ const AboutUs = () => {
             </div>
           </div>
 
-          <div className="px-20 mx-10 my-20">
+          <div className="lg:mx-10 lg:my-20 px-2">
             <div>
-              <div className="mb-3">
-                <TETabs className="bg-base-100 shadow-xl py-2">
-                  <TETabsItem
-                    onClick={() => handleBasicClick("tab1")}
-                    active={basicActive === "tab1"}
+              <div className="w-full">
+                {/* Tab buttons */}
+                <div className="flex flex-wrap lg:flex-row justify-center border-b-4 shadow-xl p-3 mb-6">
+                  <button
+                    className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                      activeTab === 1
+                        ? "text-main border-b-4 border-main"
+                        : "text-gray-500 hover:text-main"
+                    }`}
+                    onClick={() => setActiveTab(1)}
                   >
                     Languages
-                  </TETabsItem>
-                  <TETabsItem
-                    onClick={() => handleBasicClick("tab2")}
-                    active={basicActive === "tab2"}
+                  </button>
+                  <button
+                    className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                      activeTab === 2
+                        ? "text-main border-b-4 border-main"
+                        : "text-gray-500 hover:text-main"
+                    }`}
+                    onClick={() => setActiveTab(2)}
                   >
                     Frontend
-                  </TETabsItem>
-                  <TETabsItem
-                    onClick={() => handleBasicClick("tab3")}
-                    active={basicActive === "tab3"}
+                  </button>
+                  <button
+                    className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                      activeTab === 3
+                        ? "text-main border-b-4 border-main"
+                        : "text-gray-500 hover:text-main"
+                    }`}
+                    onClick={() => setActiveTab(3)}
                   >
                     Backend
-                  </TETabsItem>
-                  <TETabsItem
-                    onClick={() => handleBasicClick("tab4")}
-                    active={basicActive === "tab4"}
-                
+                  </button>
+
+                  {/* Add more tab buttons */}
+                  <button
+                    className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                      activeTab === 4
+                        ? "text-main border-b-4 border-main"
+                        : "text-gray-500 hover:text-main"
+                    }`}
+                    onClick={() => setActiveTab(4)}
                   >
                     UI/UX
-                  </TETabsItem>
-                  <TETabsItem
-                    onClick={() => handleBasicClick("tab5")}
-                    active={basicActive === "tab5"}
-                
+                  </button>
+                  <button
+                    className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                      activeTab === 5
+                        ? "text-main border-b-4 border-main"
+                        : "text-gray-500 hover:text-main"
+                    }`}
+                    onClick={() => setActiveTab(5)}
                   >
                     DevOps/Server
-                  </TETabsItem>
-                  <TETabsItem
-                    onClick={() => handleBasicClick("tab6")}
-                    active={basicActive === "tab6"}
-                
+                  </button>
+                  <button
+                    className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                      activeTab === 6
+                        ? "text-main border-b-4 border-main"
+                        : "text-gray-500 hover:text-main"
+                    }`}
+                    onClick={() => setActiveTab(6)}
                   >
-              Mobile
-                  </TETabsItem>
-                  <TETabsItem
-                    onClick={() => handleBasicClick("tab7")}
-                    active={basicActive === "tab7"}
-                
+                    Mobile
+                  </button>
+                  <button
+                    className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                      activeTab === 7
+                        ? "text-main border-b-4 border-main"
+                        : "text-gray-500 hover:text-main"
+                    }`}
+                    onClick={() => setActiveTab(7)}
                   >
-                   Services
-                  </TETabsItem>
-                  <TETabsItem
-                    onClick={() => handleBasicClick("tab8")}
-                    active={basicActive === "tab8"}
-                
+                    Services
+                  </button>
+                  <button
+                    className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                      activeTab === 8
+                        ? "text-main border-b-4 border-main"
+                        : "text-gray-500 hover:text-main"
+                    }`}
+                    onClick={() => setActiveTab(8)}
                   >
-                   Other Technologies
-                  </TETabsItem>
-                </TETabs>
+                    Other Technologies
+                  </button>
+                 
+                </div>
 
-                <TETabsContent>
-                  <TETabsPane show={basicActive === "tab1"}>
-                   <ul className="flex lg:flex-row space-x-28 items-center">
-                    <li><Image className="object-cover" width={50} height={50} src={tab1} alt=""/></li>
-                    <li><Image className="object-cover" width={50} height={50} src={tab2} alt=""/></li>
-                    <li><Image className="object-cover" width={50} height={50} src={tab3} alt=""/></li>
-                    <li><Image className="object-cover" width={50} height={50} src={tab4} alt=""/></li>
-                    <li><Image className="object-cover" width={50} height={50} src={tab5} alt=""/></li>
-                    <li><Image className="object-cover" width={50} height={50} src={tab6} alt=""/></li>
-                    <li><Image className="object-cover" width={50} height={50} src={tab7} alt=""/></li>
-                    <li><Image className="object-cover" width={50} height={50} src={tab8} alt=""/></li>
-                   </ul>
-                   <ul className="flex space-x-28 mt-5 mb-10">
-                    <li>Swift</li>
-                    <li>Ruby</li>
-                    <li>Python</li>
-                    <li>Php</li>
-                    <li>Kotlin</li>
-                    <li>JavaScript</li>
-                    <li>Java</li>
-                    <li>C#</li>
-                   </ul>
-                  </TETabsPane>
-                  <TETabsPane show={basicActive === "tab2"}>
-                    Tab 2 content
-                  </TETabsPane>
-                  <TETabsPane show={basicActive === "tab3"}>
-                    Tab 3 content
-                  </TETabsPane>
-                  <TETabsPane show={basicActive === "tab4"}>
-                    Tab 4 content
-                  </TETabsPane>
-                </TETabsContent>
+                {/* Tab content */}
+                <div className="p-4">
+                  <div
+                    className={`transition-opacity duration-500 ${
+                      activeTab === 1 ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {activeTab === 1 && (
+                      <div>
+                        <AboutTabContent />
+                      </div>
+                    )}
+                  </div>
+                  <div
+                    className={`transition-opacity duration-500 ${
+                      activeTab === 2 ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {activeTab === 2 && <div>Content for Tab 2</div>}
+                  </div>
+                  <div
+                    className={`transition-opacity duration-500 ${
+                      activeTab === 3 ? "opacity-100" : "opacity-0"
+                    }`}
+                  >
+                    {activeTab === 3 && <div>Content for Tab 3</div>}
+                  </div>
+                  {/* Add more tab content */}
+                </div>
               </div>
             </div>
           </div>
