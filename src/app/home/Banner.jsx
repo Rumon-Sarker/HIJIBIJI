@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import banner from "./../../../public/Image.png";
+import Link from "next/link";
 
 const Banner = () => {
   return (
@@ -25,9 +26,9 @@ const Banner = () => {
               Let’s transform how people experience your business. All through
               next generation technology.
             </p>
-            <button className="btn btn-outline btn-info rounded-full bg-transparent border">
+           <Link href={'/about'}> <button className="btn btn-outline btn-info rounded-full bg-transparent border">
               Get in Touch <FaArrowRight />
-            </button>
+            </button></Link>
           </div>
         </div>
       </div>

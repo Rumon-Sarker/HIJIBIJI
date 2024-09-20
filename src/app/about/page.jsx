@@ -25,7 +25,7 @@ const AboutUs = () => {
           <h1 className="uppercase text-center text-main text-[35px]">
             Who we are
           </h1>
-          <p className="text-text my-10 px-24">
+          <p className="text-text my-10 p-5  md:px-24">
             We are a leading ICT company, our offices located in New York,
             Singapore and Dhaka, Bangladesh. We started our journey in the year
             2017. We are a team of technology enthusiasts, developing solutions
@@ -50,7 +50,7 @@ const AboutUs = () => {
 
         <div>
           <h1 className="text-center text-main text-[35px] my-10">WHY US</h1>
-          <p className="text-text my-10 px-24">
+          <p className="text-text my-10 px-5 md:px-24">
             You need someone that understands your needs, budget and desire to
             grow. We specialize in the needs of small businesses and the unique
             problems and issues they face every day. We’re budget friendly and
@@ -129,7 +129,7 @@ const AboutUs = () => {
           <h1 className="uppercase text-center text-main text-[35px] my-10">
             Years in Business
           </h1>
-          <p className="text-text px-20 mb-5">
+          <p className="text-text px-5 md:px-20 mb-5">
             It is a long-established fact that a reader will be distracted by
             the readable content of a page when looking at its layout. The point
             of using Lorem Ipsum is that it has a more-or-less normal
@@ -222,7 +222,7 @@ const AboutUs = () => {
             <h1 className="text-main text-[40px] text-center">
               Our Technology
             </h1>
-            <p className="text-center text-text my-10">
+            <p className="text-center text-text px-5 mx:10 my-10">
               One ICT LTD is a leading IT firm committed to delivering
               cutting-edge technology solutions to empower businesses and
               organizations. With a focus on innovation and client satisfaction,
