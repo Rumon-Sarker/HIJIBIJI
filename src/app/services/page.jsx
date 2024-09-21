@@ -22,7 +22,7 @@ const Services = () => {
             delectus aut maiores itaque sit ad explicabo tempore?
           </h1>
         </div>
-        <form className="flex lg:mx-20 md:mx-12 mx-5 my-10">
+        <form className="flex lg:mx-20 md:mx-12 mx-5 mt-10">
           <input
             type="text"
             placeholder="Search in service"
@@ -36,6 +36,7 @@ const Services = () => {
         <div>
           <ServiceData />
         </div>
+        
       </div>
     </div>
   );

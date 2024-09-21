@@ -16,7 +16,7 @@ const Contact = () => {
           <h1 className="text-text ps-10 text-[30px]">Contact Information</h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mx-10 my-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 content-center gap-5 mx-10 my-10">
           <div className="h-48 space-y-3 flex flex-col p-5 ps-16 shadow-xl bg-base-100 justify-center text-text rounded-md">
             <h1 className="font-bold underline">Our Location</h1>
             <h1 className="flex gap-1 items-center">
