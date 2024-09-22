@@ -154,12 +154,17 @@ const NavBar = () => {
                           </li>
                         </ul>
                         <div className="space-y-5 flex my-5 flex-col">
-                          <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
-                            Contact
-                          </button>
-                          <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
-                            Blogs
-                          </button>
+                          <Link href={'/contact'}>
+                            <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
+                              Contact
+                            </button>
+                          </Link>
+                          <Link href={"/blogs"}>
+                            {" "}
+                            <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
+                              Blogs
+                            </button>
+                          </Link>
                         </div>
                       </Sidebar.Items>
                     </div>
@@ -170,12 +175,16 @@ const NavBar = () => {
           </div>
 
           <div className="lg:space-x-4 mr-2 lg:mr-5 md:mr-3 hidden lg:flex">
-            <Link href={'/contact'}><button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
-              Contact
-            </button></Link>
-            <Link href={'/blogs'}><button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
-              Blogs
-            </button></Link>
+            <Link href={"/contact"}>
+              <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
+                Contact
+              </button>
+            </Link>
+            <Link href={"/blogs"}>
+              <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
+                Blogs
+              </button>
+            </Link>
           </div>
         </nav>
       </div>

@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <div>
       <div>
-        <div className="h-[200px] bg-main mx-10 flex justify-center shadow-xl items-center rounded-lg my-10">
+        <div className="h-[200px] bg-main mx-5 lg:mx-10s flex justify-center shadow-xl items-center rounded-lg my-10">
           <h1 className="text-white text-center text-[50px] lg:text-[80px]">
             Contact
           </h1>
@@ -63,7 +63,7 @@ const Contact = () => {
 
         <div className="mx-10 my-10 bg-base-100 shadow-xl flex justify-center items-center p-4 mb-20 md:p-16">
           <form className="space-y-5 w-full">
-            <div className="grid grid-cols-2 gap-5 content-center w-full">
+            <div className="md:flex justify-between flex-row gap-20 w-full">
               <label className="form-control w-full max-w-xs">
                 <div className="label">
                   <span className="label-text">First Name*</span>
@@ -85,7 +85,7 @@ const Contact = () => {
                 />
               </label>
             </div>
-            <div className="grid grid-cols-2 gap-5 w-full">
+            <div className="md:flex justify-between flex-row gap-20 w-full">
               <label className="form-control w-full max-w-xs">
                 <div className="label">
                   <span className="label-text">Contact Number*</span>

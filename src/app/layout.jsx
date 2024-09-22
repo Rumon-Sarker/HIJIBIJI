@@ -2,8 +2,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavBar from "./Shared/NavBar";
 import Footer from "./Shared/Footer";
-import { Open_Sans, Poppins,  } from "next/font/google";
-const fontName = Open_Sans({subsets:['latin'],weight:'400'});
+import { Kanit, Open_Sans, Poppins,  } from "next/font/google";
+const fontName = Kanit({subsets:['latin'],weight:'400'});
 // const geistMono = localFont({
 //   src: "./fonts/GeistMonoVF.woff",
 //   variable: "--font-geist-mono",
