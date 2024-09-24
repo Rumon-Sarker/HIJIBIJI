@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CaseStudy = () => {
+const CaseStudyCaro = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const CaseStudy = () => {
     );
 };
 
-export default CaseStudy;
+export default CaseStudyCaro;
