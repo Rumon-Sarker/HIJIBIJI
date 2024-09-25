@@ -1,9 +1,9 @@
 import React from 'react';
-
+import AdminHome from './../../components/AdminHome'
 const page = () => {
     return (
         <div>
-            <h1>this is home page of admin</h1>
+           <AdminHome/>
         </div>
     );
 };
