@@ -7,7 +7,7 @@ import img from "./../../../public/Link (2).png";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import 'swiper/css/navigation';
+import "swiper/css/navigation";
 // import required modules
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import Image from "next/image";
@@ -21,9 +21,8 @@ const Blog = () => {
         your world
       </h1>
       <Swiper
-       navigation={true}
-        slidesPerView={3}
-        spaceBetween={30}
+        navigation={true}
+       
         freeMode={true}
         pagination={{
           clickable: true,
@@ -32,10 +31,26 @@ const Blog = () => {
           delay: 2500,
           disableOnInteraction: false,
         }}
+        breakpoints={{
+          390: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 50,
+          },
+        }}
         modules={[Autoplay, FreeMode, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide className="">
+    
+       
+    <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -48,20 +63,17 @@ const Blog = () => {
             </div>
 
             <div className="">
-              <h1 className="text-xl font-semibold text-text my-5 mx-5">
-                Title of the Blogs
+              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
+                Product Lifecycle Management for Consumer & Retail
               </h1>
-              <div className="text-sm mx-5">
-                Amet voluptatum rerum delectus aut a aspernatur et laborum
-                dolores deserunt in. updated
-              </div>
+
               <div className="text-gray-400 text-xs mx-5 my-3">
                 <h1>August 22, 2024</h1>
               </div>
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="">
+    <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -74,20 +86,17 @@ const Blog = () => {
             </div>
 
             <div className="">
-              <h1 className="text-xl font-semibold text-text my-5 mx-5">
-                Title of the Blogs
+              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
+                Product Lifecycle Management for Consumer & Retail
               </h1>
-              <div className="text-sm mx-5">
-                Amet voluptatum rerum delectus aut a aspernatur et laborum
-                dolores deserunt in. updated
-              </div>
+
               <div className="text-gray-400 text-xs mx-5 my-3">
                 <h1>August 22, 2024</h1>
               </div>
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="">
+    <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -100,20 +109,17 @@ const Blog = () => {
             </div>
 
             <div className="">
-              <h1 className="text-xl font-semibold text-text my-5 mx-5">
-                Title of the Blogs
+              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
+                Product Lifecycle Management for Consumer & Retail
               </h1>
-              <div className="text-sm mx-5">
-                Amet voluptatum rerum delectus aut a aspernatur et laborum
-                dolores deserunt in. updated
-              </div>
+
               <div className="text-gray-400 text-xs mx-5 my-3">
                 <h1>August 22, 2024</h1>
               </div>
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="">
+    <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -126,20 +132,17 @@ const Blog = () => {
             </div>
 
             <div className="">
-              <h1 className="text-xl font-semibold text-text my-5 mx-5">
-                Title of the Blogs
+              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
+                Product Lifecycle Management for Consumer & Retail
               </h1>
-              <div className="text-sm mx-5">
-                Amet voluptatum rerum delectus aut a aspernatur et laborum
-                dolores deserunt in. updated
-              </div>
+
               <div className="text-gray-400 text-xs mx-5 my-3">
                 <h1>August 22, 2024</h1>
               </div>
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="">
+    <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -152,20 +155,17 @@ const Blog = () => {
             </div>
 
             <div className="">
-              <h1 className="text-xl font-semibold text-text my-5 mx-5">
-                Title of the Blogs
+              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
+                Product Lifecycle Management for Consumer & Retail
               </h1>
-              <div className="text-sm mx-5">
-                Amet voluptatum rerum delectus aut a aspernatur et laborum
-                dolores deserunt in. updated
-              </div>
+
               <div className="text-gray-400 text-xs mx-5 my-3">
                 <h1>August 22, 2024</h1>
               </div>
             </div>
           </div>
         </SwiperSlide>
-        <SwiperSlide className="">
+    <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -178,13 +178,33 @@ const Blog = () => {
             </div>
 
             <div className="">
-              <h1 className="text-xl font-semibold text-text my-5 mx-5">
-                Title of the Blogs
+              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
+                Product Lifecycle Management for Consumer & Retail
               </h1>
-              <div className="text-sm mx-5">
-                Amet voluptatum rerum delectus aut a aspernatur et laborum
-                dolores deserunt in. updated
+
+              <div className="text-gray-400 text-xs mx-5 my-3">
+                <h1>August 22, 2024</h1>
               </div>
+            </div>
+          </div>
+        </SwiperSlide>
+    <SwiperSlide className="">
+          <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
+            <div>
+              <Image
+                className="rounded-3xl cursor-pointer"
+                src={img}
+                width={500}
+                height={450}
+                alt=""
+              />
+            </div>
+
+            <div className="">
+              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
+                Product Lifecycle Management for Consumer & Retail
+              </h1>
+
               <div className="text-gray-400 text-xs mx-5 my-3">
                 <h1>August 22, 2024</h1>
               </div>
@@ -193,9 +213,9 @@ const Blog = () => {
         </SwiperSlide>
       </Swiper>
       <div className="flex justify-center items-center my-5">
-        <button className="text-white bg-main btn hover:bg-transparent hover:border-2 hover:border-main hover:text-black">
+        <Link href={'/blogs'}><button className="text-white bg-main btn hover:bg-transparent hover:border-2 hover:border-main hover:text-black my-10">
           See all Blogs
-        </button>
+        </button></Link>
       </div>
     </div>
   );
