@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-
+import { IoMdMenu } from "react-icons/io";
 const AdminLayout = ({ children }) => {
   return (
     <div className="-mt-5">
@@ -10,9 +10,9 @@ const AdminLayout = ({ children }) => {
           <div className="flex justify-center items-center">
             <label
               htmlFor="my-drawer-2"
-              className="btn bg-main drawer-button lg:hidden my-5"
+              className="btn bg-main text-white drawer-button hover:bg-transparent hover:border-2 hover:border-main hover:text-black lg:hidden my-5"
             >
-              Open menu bar
+              Open menu bar<IoMdMenu size={20} />
             </label>
           </div>
           {/* Page content here */}
@@ -24,9 +24,13 @@ const AdminLayout = ({ children }) => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu bg-blue-300 shadow-xl text-base-content min-h-full w-72 p-4 text-lg">
+          <ul className="menu bg-blue-300 text-base-content min-h-full w-72 p-4 text-lg">
             {/* Sidebar content here */}
 
+            <li>
+              {" "}
+              <Link href={"/admin"}>Dashboard</Link>
+            </li>
             <li>
               {" "}
               <Link href={"/admin/postPortfolio"}>Post Portfolio Data</Link>

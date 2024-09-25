@@ -3,7 +3,7 @@ import React from 'react';
 const page = () => {
     return (
         <div>
-           {/* <AdminHome/> */}
+          <h1 className='text-main text-3xl text-center my-5 uppercase'>Admin Control Section </h1>
         </div>
     );
 };
