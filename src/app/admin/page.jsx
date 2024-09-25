@@ -1,9 +1,9 @@
 import React from 'react';
-import AdminHome from './../../components/AdminHome'
+// import AdminHome from './../../components/AdminHome'
 const page = () => {
     return (
         <div>
-           <AdminHome/>
+           {/* <AdminHome/> */}
         </div>
     );
 };
