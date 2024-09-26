@@ -24,7 +24,7 @@ const AdminLayout = ({ children }) => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu bg-blue-300 text-base-content min-h-full w-72 p-4 text-lg">
+          <ul className="menu bg-blue-300 text-base-content min-h-full w-80 p-4 text-lg">
             {/* Sidebar content here */}
 
             <li>
@@ -46,6 +46,14 @@ const AdminLayout = ({ children }) => {
             <li>
               {" "}
               <Link href={"/admin/postJob"}>Post Job Data</Link>
+            </li>
+            <li>
+              {" "}
+              <Link href={"/admin/postHomeBg"}>Post Homepage Bg Image</Link>
+            </li>
+            <li>
+              {" "}
+              <Link href={"/admin/postPartner"}>Post Partners</Link>
             </li>
           </ul>
         </div>
