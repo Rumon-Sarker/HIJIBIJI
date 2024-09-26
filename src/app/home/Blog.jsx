@@ -22,7 +22,6 @@ const Blog = () => {
       </h1>
       <Swiper
         navigation={true}
-       
         freeMode={true}
         pagination={{
           clickable: true,
@@ -48,9 +47,7 @@ const Blog = () => {
         modules={[Autoplay, FreeMode, Navigation]}
         className="mySwiper"
       >
-    
-       
-    <SwiperSlide className="">
+        <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -73,7 +70,7 @@ const Blog = () => {
             </div>
           </div>
         </SwiperSlide>
-    <SwiperSlide className="">
+        <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -96,7 +93,7 @@ const Blog = () => {
             </div>
           </div>
         </SwiperSlide>
-    <SwiperSlide className="">
+        <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -119,7 +116,7 @@ const Blog = () => {
             </div>
           </div>
         </SwiperSlide>
-    <SwiperSlide className="">
+        <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -142,7 +139,7 @@ const Blog = () => {
             </div>
           </div>
         </SwiperSlide>
-    <SwiperSlide className="">
+        <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -165,7 +162,7 @@ const Blog = () => {
             </div>
           </div>
         </SwiperSlide>
-    <SwiperSlide className="">
+        <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -188,7 +185,7 @@ const Blog = () => {
             </div>
           </div>
         </SwiperSlide>
-    <SwiperSlide className="">
+        <SwiperSlide className="">
           <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
             <div>
               <Image
@@ -213,9 +210,11 @@ const Blog = () => {
         </SwiperSlide>
       </Swiper>
       <div className="flex justify-center items-center my-5">
-        <Link href={'/blogs'}><button className="text-white bg-main btn hover:bg-transparent hover:border-2 hover:border-main hover:text-black my-10">
-          See all Blogs
-        </button></Link>
+        <Link href={"/blogs"}>
+          <button className="text-white bg-main btn hover:bg-transparent hover:border-2 hover:border-main hover:text-black my-10">
+            See all Blogs
+          </button>
+        </Link>
       </div>
     </div>
   );
