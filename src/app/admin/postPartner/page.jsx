@@ -3,7 +3,7 @@ import React from 'react';
 const PostPartner = () => {
     return (
         <div>
-            partner
+            partner 
         </div>
     );
 };
