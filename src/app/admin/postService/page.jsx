@@ -19,7 +19,6 @@ const PostService = () => {
                 className="input input-bordered w-full max-w-xs"
               />
             </label>
-           
           </div>
           <label className="form-control">
             <div className="label">
