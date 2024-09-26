@@ -16,8 +16,7 @@ const Testimonial = () => {
   return (
     <div className="my-10 mx-5 md:mx-8 lg:mx-16 flex justify-center items-center">
       <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
+        
         freeMode={true}
         pagination={{
           clickable: true,
@@ -25,6 +24,20 @@ const Testimonial = () => {
         autoplay={{
             delay: 2500,
             disableOnInteraction: false,
+          }}
+          breakpoints={{
+            390: {
+              slidesPerView: 1,
+              spaceBetween: 30,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
           }}
         modules={[Autoplay, FreeMode,]}
       
