@@ -19,7 +19,6 @@ const RegisterPage = () => {
       console.error(error);
     }
   };
-
   return (
     <div>
       <div className="flex justify-center">
