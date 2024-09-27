@@ -83,6 +83,16 @@ const NavBar = () => {
             >
               <Link href={"/career"}>Career</Link>
             </li>
+            <li
+              className={`
+        ${
+          isActive("/career")
+            ? "text-main font-bold border-b-2 border-main"
+            : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
+        }`}
+            >
+              <Link href={"/admin"}>Admin</Link>
+            </li>
           </ul>
 
           <div className="md:hidden">
@@ -152,9 +162,19 @@ const NavBar = () => {
                           >
                             <Link href={"/career"}>Career</Link>
                           </li>
+                          <li
+                            className={`
+        ${
+          isActive("/career")
+            ? "text-main font-bold border-b-2 border-main"
+            : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
+        }`}
+                          >
+                            <Link href={"/admin"}>Admin</Link>
+                          </li>
                         </ul>
                         <div className="space-y-5 flex my-5 flex-col">
-                          <Link href={'/contact'}>
+                          <Link href={"/contact"}>
                             <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
                               Contact
                             </button>
