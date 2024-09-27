@@ -21,30 +21,46 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Register</button>
+        <label className="form-control w-full max-w-xs">
+          <span className="label-text">Name</span>
+          <input
+            className="input input-bordered"
+            type="text"
+            placeholder="Type Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </label>
+        <label className="form-control w-full max-w-xs">
+        <span className="label-text">Email</span>
+          <input
+            className="input input-bordered"
+            type="email"
+            placeholder="Type Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </label>
+        <label className="form-control w-full max-w-xs">
+        <span className="label-text">Password</span>
+          <input
+            className="input input-bordered"
+            type="password"
+            placeholder="Create a strong Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </label>
+        <button
+          className="btn bg-main hover:border-2 hover:border-main hover:text-black text-white"
+          type="submit"
+        >
+          Register
+        </button>
       </form>
     </div>
   );
