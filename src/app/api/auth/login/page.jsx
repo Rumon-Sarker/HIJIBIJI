@@ -57,7 +57,7 @@ const LoginPage = () => {
             <div className="flex justify-between">
               <h1>
                 Don&apos;t have an account?{" "}
-                <Link className="text-main link-hover" href={"/api/auth/login"}>
+                <Link className="text-main link-hover" href={"/api/auth/register"}>
                   Register Now
                 </Link>
               </h1>

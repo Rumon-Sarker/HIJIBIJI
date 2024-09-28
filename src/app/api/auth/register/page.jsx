@@ -14,7 +14,7 @@ const RegisterPage = () => {
     e.preventDefault();
     try {
       await axios.post("/api/register", { name, email, password });
-      router.push("/auth/login");
+      router.push("/api/auth/login");
     } catch (error) {
       console.error(error);
     }
