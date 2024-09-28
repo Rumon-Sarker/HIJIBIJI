@@ -51,7 +51,6 @@ model Services {
   updatedAt   DateTime @updatedAt
 
   @@index([name])
-  @@index([description])
 }
 
 model Bg1 {
@@ -81,4 +80,3 @@ model Video {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
