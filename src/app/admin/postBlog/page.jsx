@@ -24,9 +24,7 @@ const PostBlog = () => {
                 <span className="label-text">Select a Category</span>
               </div>
               <select className="select select-bordered">
-                <option disabled selected>
-                  Pick one
-                </option>
+                <option defaultChecked>Pick one</option>
                 <option>category1</option>
                 <option>category2</option>
                 <option>category3</option>

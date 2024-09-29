@@ -24,7 +24,7 @@ const PostJob = () => {
                 <span className="label-text">Select job Category</span>
               </div>
               <select className="select select-bordered">
-                <option disabled selected>
+                <option disabled defaultChecked>
                   Pick one
                 </option>
                 <option>half time</option>
