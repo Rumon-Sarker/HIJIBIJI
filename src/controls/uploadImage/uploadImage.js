@@ -1,7 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 
 export async function uploadImage(file) {
-  const uploadPreset = "upload";
+  const uploadPreset = "upload"
   const arrayBuffer = await file.arrayBuffer();
   const buffer = new Uint8Array(arrayBuffer);
   const result = await new Promise((resolve, reject) => {
@@ -15,6 +15,6 @@ export async function uploadImage(file) {
       })
       .end(buffer);
   });
-  // console.log(result.url)
+// console.log(result.url)
   return result.url;
 }

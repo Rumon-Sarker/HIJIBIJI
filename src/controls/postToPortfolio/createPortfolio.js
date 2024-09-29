@@ -6,7 +6,6 @@ import { revalidatePath } from "next/cache";
 const prisma = new PrismaClient();
 export async function createPortfolio(formData) {
   const name = formData.get("name");
-
   const category = formData.get("category");
   const description = formData.get("description");
   const scope = formData.get("scope");

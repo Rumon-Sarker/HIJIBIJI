@@ -1,18 +1,17 @@
 "use client";
-
 import toast, { Toaster } from "react-hot-toast";
 import { createPortfolio } from "../../../controls/postToPortfolio/createPortfolio.js";
-import React from "react";
 
 const PostPortfolio = () => {
   const handlePost = async (formData) => {
     const res = await createPortfolio(formData);
 
-    toast.promise(createPortfolio(formData), {
-      loading: "Posting portfolio to database",
-      success: <b>Portfolio has been posted successfully!</b>,
-      error: <b>Portfolio has not been posted</b>,
-    });
+    if (res.status) {
+      toast.success("Portfolio has been posted successfully!");
+    }
+    if (res.error) {
+      toast.error("Portfolio has not been posted!");
+    }
   };
   return (
     <div className="lg:mx-10 my-10">
@@ -30,6 +29,7 @@ const PostPortfolio = () => {
               <span className="label-text">Project Name</span>
             </div>
             <input
+              required
               id="name"
               type="text"
               name="name"
@@ -42,6 +42,7 @@ const PostPortfolio = () => {
               <span className="label-text">Select a Category</span>
             </div>
             <select
+              required
               id="category"
               name="category"
               className="select select-bordered"
@@ -61,6 +62,7 @@ const PostPortfolio = () => {
             <span className="label-text">Description</span>
           </div>
           <textarea
+            required
             id="description"
             name="description"
             className="textarea textarea-md textarea-bordered h-24"
@@ -83,6 +85,7 @@ const PostPortfolio = () => {
             <span className="label-text">Pick image</span>
           </div>
           <input
+            required
             name="image"
             type="file"
             className="file-input file-input-bordered w-full max-w-xs"
