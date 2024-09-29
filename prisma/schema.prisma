@@ -9,11 +9,9 @@ datasource db {
 
 model User {
   id             Int       @id @default(autoincrement())
-  name           String?
+  name           String
   email          String    @unique
-  emailVerified  DateTime?
-  image          String?
-  hashedPassword String?
+  hashedPassword String
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
 
@@ -22,31 +20,31 @@ model User {
 
 model Portfolio {
   id          Int      @id @default(autoincrement())
-  name        String?
-  category    String?
-  description String?
+  name        String
+  category    String
+  description String
   scope       String?
-  image       String?
+  image       String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model Blogs {
   id          Int      @id @default(autoincrement())
-  name        String?
-  category    String?
-  description String?
-  image       String?
+  name        String
+  category    String
+  description String
+  image       String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model Services {
   id          Int      @id @default(autoincrement())
-  name        String?
-  description String?
+  name        String
+  description String
   scope       String?
-  image       String?
+  image       String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -55,61 +53,61 @@ model Services {
 
 model Bg1 {
   id        Int      @id @default(autoincrement())
-  image     String?
+  image     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Bg2 {
   id        Int      @id @default(autoincrement())
-  image     String?
+  image     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Partners {
   id        Int      @id @default(autoincrement())
-  image     String?
+  image     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Video {
   id        Int      @id @default(autoincrement())
-  video     String?
+  video     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model HomeContact {
   id         Int      @id @default(autoincrement())
-  firstname  String?
-  lastname   String?
-  email      String?
-  country    String?
-  interested String?
+  firstname  String
+  lastname   String
+  email      String
+  country    String
+  interested String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
 
 model FooterContact {
   id        Int      @id @default(autoincrement())
-  firstname String?
-  lastname  String?
-  email     String?
-  country   String?
-  message   String?
+  firstname String
+  lastname  String
+  email     String
+  country   String
+  message   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model Contact {
   id        Int      @id @default(autoincrement())
-  firstname String?
-  lastname  String?
-  contact   String?
-  email     String?
-  message   String?
+  firstname String
+  lastname  String
+  contact   String
+  email     String
+  message   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

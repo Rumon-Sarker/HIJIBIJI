@@ -1,18 +1,18 @@
 "use client";
-import { createPortfolio } from "@/app/api/postToPortfolio/route.j";
+
+import { createPortfolio } from "../../../controls/postToPortfolio/createPortfolio.js";
 import React from "react";
 
 const PostPortfolio = () => {
   const handlePost = async (formData) => {
+    
     const res = await createPortfolio(formData);
+    // console.log(formData)
     if (res.status) {
-      toast(
-        <div className="toast toast-top toast-center">
-          <div className="alert alert-success">
-            <span>Portfolio added successfully</span>
-          </div>
-        </div>
-      );
+     alert('success')
+    }
+    if (res.error) {
+      alert('error')
     }
   };
   return (
@@ -30,6 +30,7 @@ const PostPortfolio = () => {
               <span className="label-text">Project Name</span>
             </div>
             <input
+            id="name"
               type="text"
               name="name"
               placeholder="type project name"
@@ -40,7 +41,7 @@ const PostPortfolio = () => {
             <div className="label">
               <span className="label-text">Select a Category</span>
             </div>
-            <select name="category" className="select select-bordered">
+            <select id="category" name="category" className="select select-bordered">
               <option disabled defaultChecked>
                 Pick one
               </option>
@@ -56,6 +57,7 @@ const PostPortfolio = () => {
             <span className="label-text">Description</span>
           </div>
           <textarea
+          id="description"
             name="description"
             className="textarea textarea-md textarea-bordered h-24"
             placeholder="Enter Your Message"
@@ -66,6 +68,7 @@ const PostPortfolio = () => {
             <span className="label-text">Scope of the work</span>
           </div>
           <textarea
+          id="scope"
             name="scope"
             className="textarea textarea-md textarea-bordered h-24"
             placeholder="Enter Your Message"
