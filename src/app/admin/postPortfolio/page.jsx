@@ -1,22 +1,22 @@
 "use client";
 
+import toast, { Toaster } from "react-hot-toast";
 import { createPortfolio } from "../../../controls/postToPortfolio/createPortfolio.js";
 import React from "react";
 
 const PostPortfolio = () => {
   const handlePost = async (formData) => {
-    
     const res = await createPortfolio(formData);
-    // console.log(formData)
-    if (res.status) {
-     alert('success')
-    }
-    if (res.error) {
-      alert('error')
-    }
+
+    toast.promise(createPortfolio(formData), {
+      loading: "Posting portfolio to database",
+      success: <b>Portfolio has been posted successfully!</b>,
+      error: <b>Portfolio has not been posted</b>,
+    });
   };
   return (
     <div className="lg:mx-10 my-10">
+      <Toaster />
       <h1 className="text-main text-3xl text-center my-2 uppercase">
         post portfolio data
       </h1>
@@ -30,7 +30,7 @@ const PostPortfolio = () => {
               <span className="label-text">Project Name</span>
             </div>
             <input
-            id="name"
+              id="name"
               type="text"
               name="name"
               placeholder="type project name"
@@ -41,7 +41,11 @@ const PostPortfolio = () => {
             <div className="label">
               <span className="label-text">Select a Category</span>
             </div>
-            <select id="category" name="category" className="select select-bordered">
+            <select
+              id="category"
+              name="category"
+              className="select select-bordered"
+            >
               <option disabled defaultChecked>
                 Pick one
               </option>
@@ -57,7 +61,7 @@ const PostPortfolio = () => {
             <span className="label-text">Description</span>
           </div>
           <textarea
-          id="description"
+            id="description"
             name="description"
             className="textarea textarea-md textarea-bordered h-24"
             placeholder="Enter Your Message"
@@ -68,7 +72,7 @@ const PostPortfolio = () => {
             <span className="label-text">Scope of the work</span>
           </div>
           <textarea
-          id="scope"
+            id="scope"
             name="scope"
             className="textarea textarea-md textarea-bordered h-24"
             placeholder="Enter Your Message"
