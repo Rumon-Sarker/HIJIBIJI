@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { createService } from "../../../controls/postToService/createService.js";
-import toast, {Toaster} from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const PostService = () => {
   const handlePost = async (formData) => {
@@ -15,7 +15,7 @@ const PostService = () => {
   };
   return (
     <div>
-      <Toaster/>
+      <Toaster />
       <div className="lg:mx-10 my-10">
         <h1 className="text-main text-3xl text-center my-2 uppercase">
           post service data
