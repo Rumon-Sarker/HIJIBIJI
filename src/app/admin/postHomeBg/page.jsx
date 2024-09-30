@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { createBg1, createBg2 } from "../../../controls/postBg/createBg.js";
+import { createBg1, createBg2 } from "../../../controls/postImageAndVIdeo/createImageAndVideo.js";
 
 const PostHomeBg = () => {
   const handlePost1 = async (formData) => {

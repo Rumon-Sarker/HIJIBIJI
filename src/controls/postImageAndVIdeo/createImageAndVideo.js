@@ -1,6 +1,7 @@
 "use server";
 import { PrismaClient } from "@prisma/client";
 import { uploadImage } from "../uploadImage/uploadImage";
+import { upload} from '../uploadVideo/upload.js'
 import { revalidatePath } from "next/cache";
 const prisma = new PrismaClient();
 export const createBg1 = async (formData) => {
@@ -16,7 +17,7 @@ export const createBg1 = async (formData) => {
   } catch (error) {
     return { error: "failed to created Background image 1" };
   } finally {
-    revalidatePath("/services");
+    revalidatePath("/");
   }
 };
 export const createBg2 = async (formData) => {
@@ -32,6 +33,23 @@ export const createBg2 = async (formData) => {
   } catch (error) {
     return { error: "failed to created background image 2" };
   } finally {
-    revalidatePath("/services");
+    revalidatePath("/");
+  }
+};
+export const createVideo = async (formData) => {
+  const imageFile = formData.get("video");
+  const videoUrl =await upload(imageFile);
+  console.log(videoUrl)
+  try {
+    await prisma.video.create({
+      data: {
+        video: videoUrl,
+      },
+    });
+    return { status: "Video created successfully" };
+  } catch (error) {
+    return { error: "failed to created Video" };
+  } finally {
+    revalidatePath("/about");
   }
 };
