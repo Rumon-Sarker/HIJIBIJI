@@ -29,6 +29,7 @@ const PostBlog = () => {
                 <span className="label-text">Title of the blog</span>
               </div>
               <input
+                required
                 name="name"
                 type="text"
                 placeholder="type title of the blog"
@@ -39,7 +40,11 @@ const PostBlog = () => {
               <div className="label">
                 <span className="label-text">Select a Category</span>
               </div>
-              <select name="category" className="select select-bordered">
+              <select
+                required
+                name="category"
+                className="select select-bordered"
+              >
                 <option defaultChecked>Pick one</option>
                 <option>category1</option>
                 <option>category2</option>
@@ -55,6 +60,7 @@ const PostBlog = () => {
             </div>
             <textarea
               name="description"
+              required
               className="textarea textarea-md textarea-bordered h-24"
               placeholder="Enter Your Message"
             ></textarea>
@@ -65,6 +71,7 @@ const PostBlog = () => {
               <span className="label-text">Pick image</span>
             </div>
             <input
+              required
               name="image"
               type="file"
               className="file-input file-input-bordered w-full max-w-xs"
