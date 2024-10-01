@@ -23,6 +23,7 @@ const PostHomeBg = () => {
     }
   };
 
+  
   return (
     <div>
       <Toaster />
