@@ -39,6 +39,19 @@ const PostPortfolio = () => {
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
+              <span className="label-text">Client Name</span>
+            </div>
+            <input
+              required
+              id="clientName"
+              type="text"
+              name="clientName"
+              placeholder="type client name"
+              className="input input-bordered w-full max-w-xs"
+            />
+          </label>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
               <span className="label-text">Select a Category</span>
             </div>
             <select
