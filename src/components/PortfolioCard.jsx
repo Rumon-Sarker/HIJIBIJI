@@ -8,7 +8,7 @@ const PortfolioCard = ({cardData}) => {
     // console.log(cardData)
     return (
         <div>
-            <div className='bg-base-100 rounded-3xl p-3 shadow-xl'>
+            <div className='bg-base-100  rounded-3xl p-3 shadow-xl'>
                 <div>
                     <Image className='rounded-3xl cursor-pointer' src={image} width={500} height={450} alt=''/>
                 </div>
