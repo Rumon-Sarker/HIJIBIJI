@@ -13,12 +13,12 @@ const ContactForm = () => {
           <div>
             <Image alt="" src={formBg} />
           </div>
-          <form className="max-w-lg mx-auto space-y-12 bg-base-100 shadow-xl p-10 rounded-lg lg:absolute lg:-top-32 lg:-right-80 lg:left-96 ">
+          <form action={handlePost} className="max-w-lg mx-auto space-y-12 bg-base-100 shadow-xl p-10 rounded-lg lg:absolute lg:-top-32 lg:-right-80 lg:left-96 ">
             <div className="grid md:grid-cols-2 md:gap-10">
               <div className="relative z-0 w-full mb-5 group">
                 <input
                   type="text"
-                  name="floating_first_name"
+                  name="firstname"
                   id="floating_first_name"
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-main appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
@@ -34,7 +34,7 @@ const ContactForm = () => {
               <div className="relative z-0 w-full mb-5 group">
                 <input
                   type="text"
-                  name="floating_last_name"
+                  name="lastname"
                   id="floating_last_name"
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-main appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
@@ -53,7 +53,7 @@ const ContactForm = () => {
               <div className="relative z-0 w-full mb-5 group">
                 <input
                   type="email"
-                  name="floating_first_name"
+                  name="email"
                   id="floating_first_name"
                   className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-main appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
