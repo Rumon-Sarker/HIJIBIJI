@@ -1,11 +1,24 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import logo from "./../../../public/final 2.png";
 import { IoLocationOutline } from "react-icons/io5";
-
+import Link from "next/link";
+import { createFooterContact } from "../../controls/postFooterContact/createFooterContact.js";
+import toast, { Toaster } from "react-hot-toast";
 const Footer = () => {
+  const handlePost = async (formData) => {
+    const res = await createFooterContact(formData);
+    if (res.status) {
+      toast.success("Contact info has been submitted successfully!");
+    }
+    if (res.error) {
+      toast.error("Contact info has not been submitted!");
+    }
+  };
   return (
     <div className=" bg-footer text-footerText mt-5">
+      <Toaster />
       <div>
         <footer className="footer lg:grid-col-3 gap-10 p-10">
           <div>
@@ -18,32 +31,52 @@ const Footer = () => {
             <div className="space-y-5">
               <h1 className="text-lg my-10">
                 From global enterprises to digital disruptors, we’ve partnered
-                with <br /> companies for over 20 years to reimagine, reshape and
-                redefine the way <br /> people experience your business.
+                with <br /> companies for over 20 years to reimagine, reshape
+                and redefine the way <br /> people experience your business.
               </h1>
-              <p className="flex gap-1"> <IoLocationOutline size={18} />Head Office: 285 Patharghata Chittagong <br /> Bangladesh</p>
-              <p className="flex gap-1"> <IoLocationOutline size={18} />Dhaka Office: 12/1 Segunbagicha, Dhaka,<br /> Bangladesh</p>
+              <p className="flex gap-1">
+                {" "}
+                <IoLocationOutline size={18} />
+                Head Office: 285 Patharghata Chittagong <br /> Bangladesh
+              </p>
+              <p className="flex gap-1">
+                {" "}
+                <IoLocationOutline size={18} />
+                Dhaka Office: 12/1 Segunbagicha, Dhaka,
+                <br /> Bangladesh
+              </p>
             </div>
           </div>
           <div className="pr-16">
             <nav className="flex flex-col space-y-5">
-              <h6 className="footer-title">Quick Links</h6>
-              <a className="link link-hover">Homepage</a>
-              <a className="link link-hover">About Us</a>
-              <a className="link link-hover">Portfolio</a>
-              <a className="link link-hover">Services</a>
-              <a className="link link-hover">Contact Us</a>
-              <a className="link link-hover">Blogs</a>
-             
+              <h1 className="footer-title">Quick Links</h1>
+              <Link href={"/"} className="link link-hover">
+                Homepage
+              </Link>
+              <Link href={"/about"} className="link link-hover">
+                About Us
+              </Link>
+              <Link href={"/portfolio"} className="link link-hover">
+                Portfolio
+              </Link>
+              <Link href={"/services"} className="link link-hover">
+                Services
+              </Link>
+              <Link href={"/contact"} className="link link-hover">
+                Contact Us
+              </Link>
+              <Link href={"/blogs"} className="link link-hover">
+                Blogs
+              </Link>
             </nav>
           </div>
           <div>
-            <form className="max-w-lg mx-auto space-y-16">
-            <div className="grid md:grid-cols-2 md:gap-10">
+            <form action={handlePost} className="max-w-lg mx-auto space-y-16">
+              <div className="grid md:grid-cols-2 md:gap-10">
                 <div className="relative z-0 w-full mb-5 group">
                   <input
                     type="text"
-                    name="floating_first_name"
+                    name="firstname"
                     id="floating_first_name"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
@@ -59,7 +92,7 @@ const Footer = () => {
                 <div className="relative z-0 w-full mb-5 group">
                   <input
                     type="text"
-                    name="floating_last_name"
+                    name="lastname"
                     id="floating_last_name"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
@@ -76,7 +109,7 @@ const Footer = () => {
               <div className="relative z-0 w-full mb-5 group">
                 <input
                   type="email"
-                  name="floating_email"
+                  name="email"
                   id="floating_email"
                   className="block py-2.5 px-0  w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder=" "
@@ -89,14 +122,12 @@ const Footer = () => {
                   Email address
                 </label>
               </div>
-            
-            
-             
+
               <div className="grid md:grid-cols-2 md:gap-10">
                 <div className="relative z-0 w-full mb-5 group">
                   <input
                     type="text"
-                    name="floating_first_name"
+                    name="message"
                     id="floating_first_name"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
@@ -110,13 +141,12 @@ const Footer = () => {
                   </label>
                 </div>
                 <button
-                type="submit"
-                className="text-white bg-main hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Submit
-              </button>
+                  type="submit"
+                  className="text-white bg-main hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Submit
+                </button>
               </div>
-              
             </form>
           </div>
         </footer>

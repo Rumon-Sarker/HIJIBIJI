@@ -1,10 +1,23 @@
+'use client'
 import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { createContact } from "../../controls/PostContact/CreateContact";
+import toast, { Toaster } from "react-hot-toast";
 const Contact = () => {
+  const handlePost = async (formData) => {
+    const res = await createContact(formData);
+    if (res.status) {
+      toast.success("Contact info has been submitted successfully!");
+    }
+    if (res.error) {
+      toast.error("Contact info has not been posted!");
+    }
+  };
   return (
     <div>
+      <Toaster />
       <div>
         <div className="h-[200px] bg-main mx-5 lg:mx-10s flex justify-center shadow-xl items-center rounded-lg my-10">
           <h1 className="text-white text-center text-[50px] lg:text-[80px]">
@@ -62,13 +75,14 @@ const Contact = () => {
         </div>
 
         <div className="mx-10 my-10 bg-base-100 shadow-xl flex justify-center items-center p-4 mb-20 md:p-16">
-          <form className="space-y-5 w-full">
+          <form action={handlePost} className="space-y-5 w-full">
             <div className="md:flex justify-between flex-row gap-20 w-full">
               <label className="form-control w-full max-w-xs">
                 <div className="label">
                   <span className="label-text">First Name*</span>
                 </div>
                 <input
+                  name="firstName"
                   type="text"
                   placeholder="First Name"
                   className="input input-bordered w-full max-w-xs"
@@ -79,6 +93,7 @@ const Contact = () => {
                   <span className="label-text">Last Name*</span>
                 </div>
                 <input
+                  name="lastName"
                   type="text"
                   placeholder="Last Name"
                   className="input input-bordered w-full max-w-xs"
@@ -91,6 +106,7 @@ const Contact = () => {
                   <span className="label-text">Contact Number*</span>
                 </div>
                 <input
+                  name="contactNumber"
                   type="number"
                   placeholder="Contact Number"
                   className="input input-bordered w-full max-w-xs"
@@ -101,6 +117,7 @@ const Contact = () => {
                   <span className="label-text">Email Address*</span>
                 </div>
                 <input
+                  name="email"
                   type="email"
                   placeholder="Email Address"
                   className="input input-bordered w-full max-w-xs"
@@ -112,12 +129,16 @@ const Contact = () => {
                 <span className="label-text">Message</span>
               </div>
               <textarea
+                name="message"
                 className="textarea textarea-md textarea-bordered h-24"
                 placeholder="Enter Your Message"
               ></textarea>
             </label>
             <div className="flex justify-end">
-              <button className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main">
+              <button
+                type="submit"
+                className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main"
+              >
                 Submit
               </button>
             </div>
