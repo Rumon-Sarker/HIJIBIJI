@@ -12,6 +12,7 @@ export const createJob = async (formData) => {
   const deadline = formData.get("date");
   const vacancy = formData.get("vacancy");
   const jobResponsibility = formData.get("jobResponsibility");
+  const slary = formData.get("salary");
 
   try {
     await prisma.job.create({
@@ -23,6 +24,7 @@ export const createJob = async (formData) => {
         location,
         jobResponsibility,
         vacancy,
+        slary
       },
     });
     return { status: "job created successfully" };

@@ -112,6 +112,17 @@ const PostJob = () => {
                 className="input input-bordered w-full max-w-xs"
               />
             </label>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                <span className="label-text">salary</span>
+              </div>
+              <input
+                name="salary"
+                type="text"
+                placeholder="type salary amount"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
           </div>
           <div>
             <span className="label-text font-bold uppercase text-main">

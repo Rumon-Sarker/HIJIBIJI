@@ -1,7 +1,11 @@
+import { PrismaClient } from "@prisma/client";
 import Link from "next/link";
 import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
-const Career = () => {
+
+const Career = async () => {
+  const prisma = new PrismaClient();
+  const jobs = await prisma.job.findMany({});
   return (
     <div>
       <div className="h-[200px] bg-main lg:mx-10 mx-5 flex justify-center items-center rounded-lg my-10">
@@ -99,71 +103,79 @@ const Career = () => {
         </form>
       </div>
 
-      <div className="bg-base-100 p-5 rounded-md mx-5 md:mx-10 lg:mx-20 my-10 shadow-xl">
-        <div className="flex justify-between flex-wrap">
-          <div className="flex gap-5 items-start">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="59"
-              height="50"
-              viewBox="0 0 59 50"
-              fill="none"
-            >
-              <path
-                d="M36.9842 12.9353C36.9842 12.9353 36.9842 6.88696 29.7637 6.88696C22.5433 6.88696 22.5433 12.9353 22.5433 12.9353M15.3228 40.1531V12.9353M44.2046 40.1531V12.9353M55.0352 12.9353H4.49219V40.1531H55.0352V12.9353Z"
-                stroke="#7A7A7A"
-                stroke-width="1.25"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <div className="text-text space-y-6">
-              <h1 className="text-2xl">Job Position Name</h1>
-              <Link  href={`/careerDetails/${1}`}>
-                <h1 className="flex gap-2 items-center">
-                  Job Description <IoIosArrowForward size={17} />
-                </h1>
-              </Link>
-            </div>
-          </div>
-          <div className="mt-10 sm:mt-0">
+      {jobs.map((job) => (
+        <div
+          key={job.id}
+          className="bg-base-100 p-5 rounded-md mx-5 md:mx-10 lg:mx-20 my-10 shadow-xl"
+        >
+          <div className="flex justify-between flex-wrap">
             <div className="flex gap-5 items-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="58"
-                height="61"
-                viewBox="0 0 58 61"
+                width="59"
+                height="50"
+                viewBox="0 0 59 50"
                 fill="none"
               >
                 <path
-                  d="M28.9161 4.58862C14.9603 4.58862 3.64453 16.3425 3.64453 30.8386C3.64453 45.3347 14.9603 57.0886 28.9161 57.0886C42.8718 57.0886 54.1876 45.3347 54.1876 30.8386C54.1876 16.3425 42.8718 4.58862 28.9161 4.58862ZM28.9161 52.6355C17.3295 52.6355 7.93167 42.8738 7.93167 30.8386C7.93167 18.8035 17.3295 9.04175 28.9161 9.04175C40.5026 9.04175 49.9005 18.8035 49.9005 30.8386C49.9005 42.8738 40.5026 52.6355 28.9161 52.6355ZM31.6068 29.4792L30.174 29.1335V21.2644C32.3176 21.5691 33.6432 22.9636 33.8688 24.6746C33.897 24.9089 34.0888 25.0789 34.3145 25.0789H36.8473C37.1124 25.0789 37.3211 24.8386 37.2985 24.5632C36.9544 20.9128 34.0606 18.5691 30.1966 18.1648V16.2488C30.1966 15.991 29.9935 15.78 29.7453 15.78H28.1602C27.912 15.78 27.7089 15.991 27.7089 16.2488V18.1824C23.7151 18.5867 20.59 20.8777 20.59 25.155C20.59 29.116 23.3992 31.0261 26.3494 31.7585L27.7427 32.1277V40.489C25.2494 40.1433 23.8505 38.7605 23.5628 36.8972C23.5289 36.6746 23.3371 36.5105 23.1171 36.5105H20.511C20.2459 36.5105 20.0372 36.7449 20.0597 37.0203C20.3136 40.2429 22.6659 43.2078 27.6863 43.5886V45.4285C27.6863 45.6863 27.8894 45.8972 28.1376 45.8972H29.7396C29.9878 45.8972 30.1909 45.6863 30.1909 45.4226L30.1796 43.5652C34.5965 43.1609 37.7555 40.7058 37.7555 36.2996C37.7498 32.2332 35.2621 30.4167 31.6068 29.4792ZM27.7371 28.53C27.4212 28.4363 27.1561 28.3484 26.891 28.2371C24.9843 27.5222 24.0987 26.3679 24.0987 24.8796C24.0987 22.7527 25.6499 21.5398 27.7371 21.2644V28.53ZM30.174 40.5066V32.6726C30.3489 32.7253 30.5068 32.7664 30.6704 32.8015C33.3386 33.6453 34.2355 34.8171 34.2355 36.616C34.2355 38.907 32.577 40.2839 30.174 40.5066Z"
-                  fill="#1C89ED"
+                  d="M36.9842 12.9353C36.9842 12.9353 36.9842 6.88696 29.7637 6.88696C22.5433 6.88696 22.5433 12.9353 22.5433 12.9353M15.3228 40.1531V12.9353M44.2046 40.1531V12.9353M55.0352 12.9353H4.49219V40.1531H55.0352V12.9353Z"
+                  stroke="#7A7A7A"
+                  stroke-width="1.25"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 />
               </svg>
               <div className="text-text space-y-6">
-                <h1 className="text-2xl">
-                  $60k-70k / <span className="text-sm">year</span>
-                </h1>
-                <h1>Number of Vacancies: 2</h1>
+                <h1 className="text-2xl">{job.jobTitle}</h1>
+                <Link href={`/careerDetails/${job.id}`}>
+                  <h1 className="flex gap-2 items-center">
+                    Job Description <IoIosArrowForward size={17} />
+                  </h1>
+                </Link>
+              </div>
+            </div>
+            <div className="mt-10 sm:mt-0">
+              <div className="flex gap-5 items-start">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="58"
+                  height="61"
+                  viewBox="0 0 58 61"
+                  fill="none"
+                >
+                  <path
+                    d="M28.9161 4.58862C14.9603 4.58862 3.64453 16.3425 3.64453 30.8386C3.64453 45.3347 14.9603 57.0886 28.9161 57.0886C42.8718 57.0886 54.1876 45.3347 54.1876 30.8386C54.1876 16.3425 42.8718 4.58862 28.9161 4.58862ZM28.9161 52.6355C17.3295 52.6355 7.93167 42.8738 7.93167 30.8386C7.93167 18.8035 17.3295 9.04175 28.9161 9.04175C40.5026 9.04175 49.9005 18.8035 49.9005 30.8386C49.9005 42.8738 40.5026 52.6355 28.9161 52.6355ZM31.6068 29.4792L30.174 29.1335V21.2644C32.3176 21.5691 33.6432 22.9636 33.8688 24.6746C33.897 24.9089 34.0888 25.0789 34.3145 25.0789H36.8473C37.1124 25.0789 37.3211 24.8386 37.2985 24.5632C36.9544 20.9128 34.0606 18.5691 30.1966 18.1648V16.2488C30.1966 15.991 29.9935 15.78 29.7453 15.78H28.1602C27.912 15.78 27.7089 15.991 27.7089 16.2488V18.1824C23.7151 18.5867 20.59 20.8777 20.59 25.155C20.59 29.116 23.3992 31.0261 26.3494 31.7585L27.7427 32.1277V40.489C25.2494 40.1433 23.8505 38.7605 23.5628 36.8972C23.5289 36.6746 23.3371 36.5105 23.1171 36.5105H20.511C20.2459 36.5105 20.0372 36.7449 20.0597 37.0203C20.3136 40.2429 22.6659 43.2078 27.6863 43.5886V45.4285C27.6863 45.6863 27.8894 45.8972 28.1376 45.8972H29.7396C29.9878 45.8972 30.1909 45.6863 30.1909 45.4226L30.1796 43.5652C34.5965 43.1609 37.7555 40.7058 37.7555 36.2996C37.7498 32.2332 35.2621 30.4167 31.6068 29.4792ZM27.7371 28.53C27.4212 28.4363 27.1561 28.3484 26.891 28.2371C24.9843 27.5222 24.0987 26.3679 24.0987 24.8796C24.0987 22.7527 25.6499 21.5398 27.7371 21.2644V28.53ZM30.174 40.5066V32.6726C30.3489 32.7253 30.5068 32.7664 30.6704 32.8015C33.3386 33.6453 34.2355 34.8171 34.2355 36.616C34.2355 38.907 32.577 40.2839 30.174 40.5066Z"
+                    fill="#1C89ED"
+                  />
+                </svg>
+                <div className="text-text space-y-6">
+                  <h1 className="text-2xl">
+                    ${job.slary} / <span className="text-sm">year</span>
+                  </h1>
+                  <h1>Number of Vacancies: {job.vacancy}</h1>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="flex justify-between flex-wrap items-center mt-32 space-y-5">
-          <ul className="text-text flex space-x-5 md:ms-20">
-            <li>Fulltime</li>
-            <li>Department name</li>
-            <li>Location</li>
-            <li>Deadline</li>
-          </ul>
-          <div>
-           <Link href={`/careerDetails/${1}`}> <button className="btn bg-main hover:border-2 hover:border-main text-white hover:text-black hover:bg-transparent">
-              Apply Now
-            </button></Link>
+          <div className="flex justify-between flex-wrap items-center mt-32 space-y-5">
+            <ul className="text-text flex space-x-5 md:ms-20">
+              <li>{job.category}</li>
+              <li>{job.departmentName}</li>
+              <li>{job.location}</li>
+              <li>{job.deadline}</li>
+            </ul>
+            <div>
+              <Link href={`/careerDetails/${job.id}`}>
+                {" "}
+                <button className="btn bg-main hover:border-2 hover:border-main text-white hover:text-black hover:bg-transparent">
+                  Apply Now
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
