@@ -111,3 +111,31 @@ model Contact {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Job {
+  id                Int      @id @default(autoincrement())
+  jobTitle          String
+  category          String
+  departmentName    String
+  location          String
+  deadline          String
+  vacancy           String
+  jobResponsibility String
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model ApplyForm {
+  id          Int      @id @default(autoincrement())
+  firsname    String
+  lastname    String
+  gender      String
+  date        String
+  contact     String
+  email       String
+  address     String
+  coverletter String
+  image       String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
