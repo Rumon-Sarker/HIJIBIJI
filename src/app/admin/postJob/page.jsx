@@ -17,11 +17,7 @@ const PostJob = () => {
     setInputFields(values);
   };
 
-  // Handle form submission (optional)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data: ", inputFields);
-  };
+  
   const handlePost = async (formData) => {
     formData.append("jobResponsibility", JSON.stringify(inputFields));
     console.log(formData);
