@@ -128,7 +128,8 @@ model Job {
 
 model ApplyForm {
   id          Int      @id @default(autoincrement())
-  firstname    String
+  jobTitle    String
+  firstname   String
   lastname    String
   gender      String
   date        String

@@ -25,13 +25,25 @@ const ApplicationForm = () => {
               <div className="md:flex justify-between flex-row gap-20 w-full">
                 <label className="form-control w-full max-w-xs">
                   <div className="label">
+                    <span className="label-text">Job title (position)*</span>
+                  </div>
+                  <input
+                  name="jobTitle"
+                  required
+                    type="text"
+                    placeholder="Job title"
+                    className="input input-bordered w-full max-w-xs"
+                  />
+                </label>
+                <label className="form-control w-full max-w-xs">
+                  <div className="label">
                     <span className="label-text">First Name*</span>
                   </div>
                   <input
                   name="firstname"
                   required
                     type="text"
-                    placeholder="Firs Name"
+                    placeholder="First Name"
                     className="input input-bordered w-full max-w-xs"
                   />
                 </label>

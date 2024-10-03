@@ -2,27 +2,39 @@
 
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+// Avoid creating too many Prisma instances in development mode
+const prisma = global.prisma || new PrismaClient();
+if (process.env.NODE_ENV !== "production") global.prisma = prisma;
 
-export const getPortfolioData = async () => {
+export const getJobData = async (formData) => {
+  const title = formData.get("title");
+  const type = formData.get("type");
+  const location = formData.get("location");
+
   try {
-    const data = await prisma.portfolio.findMany({});
-    return { status: "successfully loaded portfolio", data };
+    const data = await prisma.job.findMany({
+      where: {
+        AND: [
+          title ? { jobTitle: { contains: title, mode: "insensitive" } } : {},
+          type
+            ? { departmentName: { contains: type, mode: "insensitive" } }
+            : {},
+          location
+            ? { location: { contains: location, mode: "insensitive" } }
+            : {},
+        ].filter((condition) => Object.keys(condition).length > 0),
+      },
+    });
+    return { status: "successfully loaded job", data };
   } catch (error) {
-    return { status: "can not load portfolio", error: error.message };
+    return { status: "cannot load job", error: error.message };
   }
 };
-
-
-export const getPortfolioDataSpecific = async (id) => {
+export const getJobAllData = async () => {
   try {
-    const data = await prisma.portfolio.findUnique({
-        where: {
-            id: id
-        }
-    });
-    return { status: "successfully loaded portfolio", data };
+    const data = await prisma.job.findMany({});
+    return { status: "successfully loaded job", data };
   } catch (error) {
-    return { status: "can not load portfolio", error: error.message };
+    return { status: "cannot load job", error: error.message };
   }
 };

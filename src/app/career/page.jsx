@@ -1,11 +1,24 @@
-import { PrismaClient } from "@prisma/client";
+"use client";
+import React, { useEffect, useState } from "react";
+import { getJobData } from "../../controls/fetchData/fetchData";
+import { getJobAllData } from "../../controls/fetchData/fetchData";
 import Link from "next/link";
-import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
+const Career = () => {
+  const [jobs, setJobs] = useState([]);
+  useEffect(() => {
+    const fetchJobs = async () => {
+      const res = await getJobAllData();
+      setJobs(res.data);
+    };
 
-const Career = async () => {
-  const prisma = new PrismaClient();
-  const jobs = await prisma.job.findMany({});
+    fetchJobs(); // Call the fetch function on mount
+  }, []); // Empty dependency array to run only on mount
+  const handlePost = async (formData) => {
+    const res = await getJobData(formData);
+    setJobs(res.data);
+  };
+
   return (
     <div>
       <div className="h-[200px] bg-main lg:mx-10 mx-5 flex justify-center items-center rounded-lg my-10">
@@ -14,7 +27,10 @@ const Career = async () => {
         </h1>
       </div>
       <div className="bg-base-100 p-5 shadow-xl  mx-5 md:mx-10 lg:mx-20">
-        <form className="grid  grid-cols-2 md:grid-cols-3 content-center">
+        <form
+          action={handlePost}
+          className="grid  grid-cols-2 md:grid-cols-3 content-center"
+        >
           <div className="flex items-center gap-5 border-r-2 border-gray-400  bg-base-200">
             <h1 className="ms-2">
               <svg
@@ -24,7 +40,7 @@ const Career = async () => {
                 viewBox="0 0 30 30"
                 fill="none"
               >
-                <g clip-path="url(#clip0_17_5686)">
+                <g clipPath="url(#clip0_17_5686)">
                   <path
                     d="M13.6087 4.20833C15.4138 4.20669 17.1789 4.74046 18.6806 5.74212C20.1823 6.74379 21.3531 8.16834 22.0451 9.83557C22.737 11.5028 22.9189 13.3378 22.5677 15.1084C22.2166 16.879 21.3482 18.5057 20.0724 19.7827C18.7965 21.0597 17.1706 21.9296 15.4003 22.2824C13.63 22.6352 11.7949 22.4549 10.127 21.7645C8.45914 21.0741 7.03352 19.9046 6.03048 18.4038C5.02745 16.903 4.49206 15.1384 4.49206 13.3333C4.50301 10.918 5.46676 8.60468 7.17386 6.89601C8.88097 5.18735 11.1935 4.22148 13.6087 4.20833ZM13.6087 2.5C11.4661 2.5 9.37158 3.13536 7.59005 4.32575C5.80852 5.51613 4.41998 7.20806 3.60003 9.1876C2.78008 11.1671 2.56555 13.3454 2.98355 15.4468C3.40156 17.5483 4.43334 19.4786 5.94841 20.9937C7.46347 22.5087 9.39379 23.5405 11.4953 23.9585C13.5967 24.3765 15.7749 24.162 17.7545 23.342C19.734 22.5221 21.4259 21.1335 22.6163 19.352C23.8067 17.5705 24.4421 15.476 24.4421 13.3333C24.4421 10.4602 23.3007 7.70465 21.2691 5.67301C19.2374 3.64137 16.4819 2.5 13.6087 2.5Z"
                     fill="#209AD6"
@@ -42,6 +58,7 @@ const Career = async () => {
               </svg>
             </h1>
             <input
+              name="title"
               type="text"
               placeholder="Job Title"
               className="input w-full max-w-xs bg-base-200"
@@ -59,13 +76,14 @@ const Career = async () => {
                 <path
                   d="M17.75 4.5C17.75 4.5 17.75 0.75 14 0.75C10.25 0.75 10.25 4.5 10.25 4.5M6.5 21.375V4.5M21.5 21.375V4.5M27.125 4.5H0.875V21.375H27.125V4.5Z"
                   stroke="#209AD6"
-                  stroke-width="1.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </h1>
             <input
+              name="type"
               type="text"
               placeholder="Job Type"
               className="input w-full max-w-xs bg-base-200"
@@ -87,6 +105,7 @@ const Career = async () => {
               </svg>
             </h1>
             <input
+              name="location"
               type="text"
               placeholder="Location"
               className="input bg-base-200 w-full max-w-xs"
