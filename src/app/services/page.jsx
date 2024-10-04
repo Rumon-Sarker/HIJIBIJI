@@ -42,12 +42,12 @@ const Services = () => {
             placeholder="Search for the service that you want with the name"
             className="input input-bordered input-md w-full"
           />
-          <button className="bg-main p-2 rounded-sm">
+          <button type="submit" className="bg-main p-2 rounded-sm">
             <FaSearch size={25} />
           </button>
         </form>
         {/* service  card */}
-        <div>
+        <div className="my-5">
           <ServiceData ServiceData={data} />
         </div>
         
