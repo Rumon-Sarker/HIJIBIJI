@@ -1,19 +1,21 @@
 "use client";
-
+import advancedFormat from 'dayjs/plugin/advancedFormat';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-import img from "./../../../public/Link (2).png";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-// import required modules
+// Import required modules
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
+import dayjs from 'dayjs';
 
-const Blog = () => {
+const Blog = ({ blog }) => {
+  dayjs.extend(advancedFormat); 
+
   return (
     <div className="my-10 mx-5 md:mx-10 lg:mx-20">
       <h1 className="text-main text-3xl text-center my-10">
@@ -47,167 +49,32 @@ const Blog = () => {
         modules={[Autoplay, FreeMode, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide className="">
-          <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
-            <div>
-              <Image
-                className="rounded-3xl cursor-pointer"
-                src={img}
-                width={500}
-                height={450}
-                alt=""
-              />
-            </div>
+        {blog?.map((item) => (
+          <SwiperSlide key={item.id} className="">
+            <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
+              <div>
+                <Image
+                  className="rounded-3xl cursor-pointer h-[250px]"
+                  src={item.image}
+                  width={500}
+                  height={450}
+                  alt={item.name || "Blog image"}
+                />
+              </div>
 
-            <div className="">
-              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
-                Product Lifecycle Management for Consumer & Retail
-              </h1>
+              <div className="">
+                <h1 className="text-2xl font-semibold text-text my-5 mx-5">
+                  {item.name}
+                </h1>
 
-              <div className="text-gray-400 text-xs mx-5 my-3">
-                <h1>August 22, 2024</h1>
+                <div className="text-gray-400 text-xs mx-5 my-3">
+                  {/* Format the date here using dayjs */}
+                  <h1>{dayjs(item?.createdAt).format('dddd - MMMM Do, YYYY')}</h1>
+                </div>
               </div>
             </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className="">
-          <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
-            <div>
-              <Image
-                className="rounded-3xl cursor-pointer"
-                src={img}
-                width={500}
-                height={450}
-                alt=""
-              />
-            </div>
-
-            <div className="">
-              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
-                Product Lifecycle Management for Consumer & Retail
-              </h1>
-
-              <div className="text-gray-400 text-xs mx-5 my-3">
-                <h1>August 22, 2024</h1>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className="">
-          <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
-            <div>
-              <Image
-                className="rounded-3xl cursor-pointer"
-                src={img}
-                width={500}
-                height={450}
-                alt=""
-              />
-            </div>
-
-            <div className="">
-              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
-                Product Lifecycle Management for Consumer & Retail
-              </h1>
-
-              <div className="text-gray-400 text-xs mx-5 my-3">
-                <h1>August 22, 2024</h1>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className="">
-          <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
-            <div>
-              <Image
-                className="rounded-3xl cursor-pointer"
-                src={img}
-                width={500}
-                height={450}
-                alt=""
-              />
-            </div>
-
-            <div className="">
-              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
-                Product Lifecycle Management for Consumer & Retail
-              </h1>
-
-              <div className="text-gray-400 text-xs mx-5 my-3">
-                <h1>August 22, 2024</h1>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className="">
-          <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
-            <div>
-              <Image
-                className="rounded-3xl cursor-pointer"
-                src={img}
-                width={500}
-                height={450}
-                alt=""
-              />
-            </div>
-
-            <div className="">
-              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
-                Product Lifecycle Management for Consumer & Retail
-              </h1>
-
-              <div className="text-gray-400 text-xs mx-5 my-3">
-                <h1>August 22, 2024</h1>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className="">
-          <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
-            <div>
-              <Image
-                className="rounded-3xl cursor-pointer"
-                src={img}
-                width={500}
-                height={450}
-                alt=""
-              />
-            </div>
-
-            <div className="">
-              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
-                Product Lifecycle Management for Consumer & Retail
-              </h1>
-
-              <div className="text-gray-400 text-xs mx-5 my-3">
-                <h1>August 22, 2024</h1>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide className="">
-          <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
-            <div>
-              <Image
-                className="rounded-3xl cursor-pointer"
-                src={img}
-                width={500}
-                height={450}
-                alt=""
-              />
-            </div>
-
-            <div className="">
-              <h1 className="text-2xl font-semibold text-text my-5 mx-5">
-                Product Lifecycle Management for Consumer & Retail
-              </h1>
-
-              <div className="text-gray-400 text-xs mx-5 my-3">
-                <h1>August 22, 2024</h1>
-              </div>
-            </div>
-          </div>
-        </SwiperSlide>
+          </SwiperSlide>
+        ))}
       </Swiper>
       <div className="flex justify-center items-center my-5">
         <Link href={"/blogs"}>
