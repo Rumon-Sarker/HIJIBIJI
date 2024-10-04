@@ -8,9 +8,9 @@ const PortfolioCard = ({cardData}) => {
     // console.log(cardData)
     return (
         <div>
-            <div className='bg-base-100 h-72 rounded-3xl p-3 shadow-xl'>
+            <div className='bg-base-100 h-80 rounded-3xl p-3 shadow-xl'>
                 <div>
-                    <Image className='rounded-3xl cursor-pointer' src={image} width={500} height={500} alt=''/>
+                    <Image className='rounded-3xl object-fill h-[200px] cursor-pointer' src={image} width={500} height={500} alt=''/>
                 </div>
                 <div className='flex justify-between px-3 mt-5 text-text'>
                     <h1 className='text-xl font-semibold'>{name}</h1>

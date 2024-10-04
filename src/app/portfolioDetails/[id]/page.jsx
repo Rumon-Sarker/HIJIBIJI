@@ -9,7 +9,8 @@ import Image from "next/image";
 import img from "./../../../../public/Link (1).png";
 import PortfolioDataFilter from "../../../components/PortfolioDataFilter";
 import { PrismaClient } from "@prisma/client";
-
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import dayjs from "dayjs";
 const PortfolioDetails = async ({ params }) => {
   const prisma = new PrismaClient();
 
@@ -18,15 +19,10 @@ const PortfolioDetails = async ({ params }) => {
   });
   const data = await prisma.portfolio.findMany({});
   const { name, category, id, image, description, scope ,createdAt } = res;
-  const now = new Date();
-  const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  const dateWithDayName = now.toLocaleDateString("en-US", options);
-
+  
+  dayjs.extend(advancedFormat);
+  const formattedDate = dayjs(createdAt).format('dddd - MMMM Do, YYYY');
+  
   const getFilteredItems = (data, category, excludedIds,) => {
     return data
       .filter((item) => item.category === category && item.id !== excludedIds)
@@ -46,7 +42,7 @@ const PortfolioDetails = async ({ params }) => {
         <div className="lg:mx-20 mx-10">
           <h1 className="text-main text-3xl">{name}</h1>
 
-          <h1 className="text-text text-xl my-6">{dateWithDayName}</h1>
+          <h1 className="text-text text-xl my-6">{formattedDate}</h1>
           <h1 className="text-text ">Share </h1>
           <div className="text-text flex gap-5 my-5">
             <Link href={"/"}>

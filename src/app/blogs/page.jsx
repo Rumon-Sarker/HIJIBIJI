@@ -9,18 +9,19 @@ import img from "./../../../public/Link.png";
 import Image from "next/image";
 import BlogComponents from "../../components/BlogComponents";
 import { PrismaClient } from "@prisma/client";
-
+import dayjs from "dayjs";
+import advancedFormat from 'dayjs/plugin/advancedFormat';
 const Blogs = async () => {
   const prisma = new PrismaClient();
   const data = await prisma.blogs.findMany({});
-  const now = new Date();
-  const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
-  const dateWithDayName = now.toLocaleDateString("en-US", options);
+  const LatestData = await prisma.blogs.findFirst({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  dayjs.extend(advancedFormat);
+  const formattedDate = dayjs(LatestData.createdAt).format('dddd - MMMM Do, YYYY');
   return (
     <div>
       <div>
@@ -33,16 +34,12 @@ const Blogs = async () => {
           <div className="grid lg:grid-cols-2 gap-5 content-center">
             <div>
               <h1 className="text-main text-3xl uppercase">
-                Title of the latest blog
+                {LatestData.name}
               </h1>
               <p className="mt-10">
-                Eum quibusdam quam ex est numquam quidem et. A sint et impedit
-                nesciunt. Aut minus laborum fugiat labore possimus tenetur. Non
-                nesciunt similique ipsam quae totam. Laboriosam necessitatibus
-                distinctio consequuntur quia qui. Debitis magni totam eos fugiat
-                voluptas qui. Rerum nobis accusamus ab{" "}
+               {LatestData.description}
               </p>
-              <h1 className="text-xl mb-5 mt-2">{dateWithDayName}</h1>
+              <h1 className="text-xl mb-5 mt-2">{formattedDate}</h1>
               <h1 className="text-text ">Share </h1>
               <div className="text-text flex gap-5 my-5">
                 <Link href={"/"}>
@@ -61,12 +58,14 @@ const Blogs = async () => {
                   <FaLink />
                 </Link>
               </div>
+              <Link href={`/blogDetails/${LatestData.id}`}>
               <button className="btn btn-md bg-main hover:bg-transparent hover:border-2 hover:border-main text-white hover:text-black">
                 Read Article
               </button>
+              </Link>
             </div>
             <div>
-              <Image src={img} width={580} height={480} alt="" />
+              <Image className="cursor-pointer" src={LatestData.image} width={580} height={480} alt="" />
             </div>
           </div>
         </div>

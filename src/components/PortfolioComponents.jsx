@@ -6,17 +6,17 @@ const PortfolioComponents = ({ portfolioData }) => {
   const [activeTab, setActiveTab] = useState(1);
 
   //   --------------data filtering-------------
-  const softwareData = portfolioData.filter(
+  const softwareData = portfolioData?.filter(
     (item) => item.category === "software"
   );
-  const mobileAppData = portfolioData.filter(
+  const mobileAppData = portfolioData?.filter(
     (item) => item.category === "mobileApp"
   );
 
-  const webAppData = portfolioData.filter(
+  const webAppData = portfolioData?.filter(
     (item) => item.category === "webDevelopment"
   );
-  const infrastructureData = portfolioData.filter(
+  const infrastructureData = portfolioData?.filter(
     (item) => item.category === "infrastructure"
   );
 

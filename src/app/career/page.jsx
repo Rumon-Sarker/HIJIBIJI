@@ -12,8 +12,8 @@ const Career = () => {
       setJobs(res.data);
     };
 
-    fetchJobs(); // Call the fetch function on mount
-  }, []); // Empty dependency array to run only on mount
+    fetchJobs(); 
+  }, []); 
   const handlePost = async (formData) => {
     const res = await getJobData(formData);
     setJobs(res.data);
