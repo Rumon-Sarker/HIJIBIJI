@@ -5,7 +5,7 @@ import formBg from "./../../../public/formbg.png";
 import Link from "next/link";
 import { createHomeContact } from "../../controls/postHomeContact/createHomeContact";
 import toast, { Toaster } from "react-hot-toast";
-const ContactForm = () => {
+const ContactForm = ({bg2}) => {
   const handlePost = async (formData) => {
     const res = await createHomeContact(formData);
     if (res.status) {
@@ -25,7 +25,7 @@ const ContactForm = () => {
       <div>
         <div className="lg:flex flex-row relative">
           <div>
-            <Image alt="" src={formBg} />
+            <Image alt="" height={1000} width={1920} src={bg2?.image} />
           </div>
           <form
             action={handlePost}

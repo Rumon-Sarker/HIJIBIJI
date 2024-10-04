@@ -4,13 +4,14 @@ import { FaArrowRight } from "react-icons/fa";
 import banner from "./../../../public/Image.png";
 import Link from "next/link";
 
-const Banner = () => {
+const Banner = ({bg1}) => {
+  const {image} = bg1;
   return (
     <div className="">
       <div>
         <div
           style={{
-            backgroundImage: "url('/Background.png')",
+            backgroundImage: `url(${image})`,
             height: "600px", 
             backgroundSize: "cover", 
             backgroundPosition: "center",
