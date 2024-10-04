@@ -36,3 +36,25 @@ export const getJobAllData = async () => {
     return { status: "cannot load job", error: error.message };
   }
 };
+export const getServicesData = async (formData) => {
+  const title = formData.get("name");
+
+  try {
+    const data = await prisma.services.findMany({
+      where: {
+        name: { contains: title, mode: "insensitive" },
+      },
+    });
+    return { status: "successfully loaded services", data };
+  } catch (error) {
+    return { status: "cannot load services", error: error.message };
+  }
+};
+export const getServicesAllData = async () => {
+  try {
+    const data = await prisma.services.findMany({});
+    return { status: "successfully loaded services", data };
+  } catch (error) {
+    return { status: "cannot services", error: error.message };
+  }
+};

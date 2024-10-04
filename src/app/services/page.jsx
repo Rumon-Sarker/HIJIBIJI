@@ -1,9 +1,22 @@
-import React from "react";
+'use client'
+import React, {useEffect, useState} from "react";
 import { FaSearch } from "react-icons/fa";
 import ServiceData from './../../components/ServiceData'
-
+import {getServicesData,getServicesAllData} from '../../controls/fetchData/fetchData'
 
 const Services = () => {
+  const [data ,setData] = useState([])
+  useEffect(() => {
+    const fetchService = async () => {
+      const res = await getServicesAllData();
+      setData(res.data);
+    };
+
+    fetchService();  }, []); 
+  const handleSubmit = async (formData) => {
+    const res = await getServicesData(formData)
+    setData(res.data)
+  }
   return (
     <div>
       <div>
@@ -22,10 +35,11 @@ const Services = () => {
             delectus aut maiores itaque sit ad explicabo tempore?
           </h1>
         </div>
-        <form className="flex lg:mx-20 md:mx-12 mx-5 mt-10">
+        <form action={handleSubmit} className="flex lg:mx-20 md:mx-12 mx-5 mt-10">
           <input
             type="text"
-            placeholder="Search in service"
+            name="name"
+            placeholder="Search for the service that you want with the name"
             className="input input-bordered input-md w-full"
           />
           <button className="bg-main p-2 rounded-sm">
@@ -34,7 +48,7 @@ const Services = () => {
         </form>
         {/* service  card */}
         <div>
-          <ServiceData />
+          <ServiceData ServiceData={data} />
         </div>
         
       </div>
