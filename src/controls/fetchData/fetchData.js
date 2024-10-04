@@ -16,9 +16,7 @@ export const getJobData = async (formData) => {
       where: {
         AND: [
           title ? { jobTitle: { contains: title, mode: "insensitive" } } : {},
-          type
-            ? { departmentName: { contains: type, mode: "insensitive" } }
-            : {},
+          type ? { category: { contains: type, mode: "insensitive" } } : {},
           location
             ? { location: { contains: location, mode: "insensitive" } }
             : {},

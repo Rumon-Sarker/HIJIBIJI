@@ -1,35 +1,13 @@
 "use client";
-import { useState } from "react";
-import PortfolioDataFilter from "../components/PortfolioDataFilter";
-
-const PortfolioComponents = ({ portfolioData }) => {
+import React, { useState } from "react";
+import BlogData from "../components/BlogData";
+const BlogComponents = ({ data }) => {
   const [activeTab, setActiveTab] = useState(1);
-
-  //   --------------data filtering-------------
-  const softwareData = portfolioData.filter(
-    (item) => item.category === "software"
-  );
-  const mobileAppData = portfolioData.filter(
-    (item) => item.category === "mobileApp"
-  );
-
-  const webAppData = portfolioData.filter(
-    (item) => item.category === "webDevelopment"
-  );
-  const infrastructureData = portfolioData.filter(
-    (item) => item.category === "infrastructure"
-  );
-
   return (
     <div>
-      <div className="h-[200px] bg-main mx-5 lg:mx-10 flex justify-center items-center rounded-lg my-10">
-        <h1 className="text-white text-center text-[50px] lg:text-[80px]">
-          Portfolio
-        </h1>
-      </div>
       <div className="w-full">
         {/* Tab buttons */}
-        <div className="flex flex-wrap lg:flex-row justify-center space-x-5 mx-10 rounded-lg border-b-4 shadow-xl p-3 mb-6">
+        <div className="flex flex-wrap lg:mx-10 lg:flex-row justify-center space-x-5 rounded-lg border-b-4 shadow-xl p-3 my-8">
           <button
             className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
               activeTab === 1
@@ -48,10 +26,8 @@ const PortfolioComponents = ({ portfolioData }) => {
             }`}
             onClick={() => setActiveTab(2)}
           >
-            SOFTWARE
+            Category 1
           </button>
-         
-
           <button
             className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
               activeTab === 3
@@ -60,8 +36,9 @@ const PortfolioComponents = ({ portfolioData }) => {
             }`}
             onClick={() => setActiveTab(3)}
           >
-            MOBILE APP
+            Category 2
           </button>
+
           <button
             className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
               activeTab === 4
@@ -70,7 +47,7 @@ const PortfolioComponents = ({ portfolioData }) => {
             }`}
             onClick={() => setActiveTab(4)}
           >
-            WEB DEVELOPMENT
+            Category 3
           </button>
           <button
             className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
@@ -80,41 +57,51 @@ const PortfolioComponents = ({ portfolioData }) => {
             }`}
             onClick={() => setActiveTab(5)}
           >
-            INFRASTRUCTURE
+            Category 4
+          </button>
+          <button
+            className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+              activeTab === 6
+                ? "text-main border-b-4 border-main"
+                : "text-gray-500 hover:text-main"
+            }`}
+            onClick={() => setActiveTab(6)}
+          >
+            Category 5
           </button>
         </div>
 
         {/* Tab content */}
-        <div className="p-4">
+        <div>
           {/* Tab 1 content */}
           {activeTab === 1 && (
             <div className="transition-opacity duration-500 opacity-100">
-              <PortfolioDataFilter cardData={portfolioData} />
+              <BlogData cardData={data} />
             </div>
           )}
 
           {/* Tab 2 content */}
           {activeTab === 2 && (
             <div className="transition-opacity duration-500 opacity-100">
-              <PortfolioDataFilter cardData={softwareData} />
+              {" "}
+              <BlogData />
             </div>
           )}
           {/* Tab 3 content */}
           {activeTab === 3 && (
-            <div className="transition-opacity duration-500 opacity-100">
-              <PortfolioDataFilter cardData={mobileAppData} />
-            </div>)}
+            <div className="transition-opacity duration-500 opacity-100"></div>
+          )}
           {/* Tab 4 content */}
           {activeTab === 4 && (
-            <div className="transition-opacity duration-500 opacity-100">
-              <PortfolioDataFilter cardData={webAppData} />
-            </div>
+            <div className="transition-opacity duration-500 opacity-100"></div>
           )}
           {/* Tab 5 content */}
           {activeTab === 5 && (
-            <div className="transition-opacity duration-500 opacity-100">
-              <PortfolioDataFilter cardData={infrastructureData} />
-            </div>
+            <div className="transition-opacity duration-500 opacity-100"></div>
+          )}
+          {/* Tab 6 content */}
+          {activeTab === 6 && (
+            <div className="transition-opacity duration-500 opacity-100"></div>
           )}
         </div>
       </div>
@@ -122,4 +109,4 @@ const PortfolioComponents = ({ portfolioData }) => {
   );
 };
 
-export default PortfolioComponents;
+export default BlogComponents;

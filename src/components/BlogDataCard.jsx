@@ -4,7 +4,8 @@ import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import image from "./../../public/Link (1).png";
 
-const BlogDataCard = () => {
+const BlogDataCard = ({cardData}) => {
+  const {name,category} = cardData;
   return (
     <div>
       <div className="bg-base-100 rounded-3xl p-3 shadow-xl">
@@ -18,12 +19,12 @@ const BlogDataCard = () => {
           />
         </div>
         <div className="text-gray-400 text-xs mx-5 my-3">
-            <h1>Category Name</h1>
+            <h1>{category}</h1>
             <h1>August 22, 2024 /// No Comments</h1>
         </div>
         <div className="">
           <h1 className="text-xl font-semibold text-text my-5 mx-5">
-            Title of the Blogs
+            {name}
           </h1>
           <div className="text-sm mx-5">
           Amet voluptatum rerum delectus aut a aspernatur et laborum dolores deserunt in. updated
