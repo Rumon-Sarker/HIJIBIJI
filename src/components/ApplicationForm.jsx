@@ -3,7 +3,7 @@ import {FileInput, Label} from 'flowbite-react';
 import React from 'react';
 import {createApplication} from '../controls/PostApplication/postApplication'
 import toast, {Toaster} from 'react-hot-toast';
-const ApplicationForm = () => {
+const ApplicationForm = ({jobId}) => {
     const handlePost = async (formData) => {
         const res = await createApplication(formData)
         if (res.status) {
@@ -35,6 +35,7 @@ const ApplicationForm = () => {
                     className="input input-bordered w-full max-w-xs"
                   />
                 </label>
+                <input className='input hidden' name='jobId' value={jobId} type="text" />
                 <label className="form-control w-full max-w-xs">
                   <div className="label">
                     <span className="label-text">First Name*</span>

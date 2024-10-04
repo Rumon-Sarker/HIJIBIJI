@@ -6,7 +6,7 @@ import { VscDebugBreakpointLogUnverified } from "react-icons/vsc";
 const CareerDetails = async ({ params }) => {
   let prisma = new PrismaClient();
   let application = await prisma.job.findUnique({ where: { id: parseInt(params.id) } });
-  let jobResponsibility = application.jobResponsibility;
+  let jobResponsibility = application?.jobResponsibility;
   let responsibility = JSON.parse(jobResponsibility);
   console.log(responsibility);
   return (
@@ -27,7 +27,7 @@ const CareerDetails = async ({ params }) => {
           }
           </ul>
         </div>
-        <ApplicationForm />
+        <ApplicationForm jobId = {application.id} />
       </div>
     </div>
   );
