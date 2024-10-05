@@ -11,11 +11,12 @@ const Home = async () => {
   const bg2 = await prisma.bg2.findFirst({ orderBy: { createdAt: "desc" } });
   const partners = await prisma.partners.findMany({});
   const blog = await prisma.blogs.findMany({});
+  const caseStudies = await prisma.caseStudy.findMany({});
   return (
     <div>
       <Banner bg1={bg1} />
       <OurPartner partners={partners} />
-      <CaseStudyCaro />
+      <CaseStudyCaro caseStudies={caseStudies} />
       <Blog blog={blog} />
       <ContactForm bg2={bg2} />
     </div>

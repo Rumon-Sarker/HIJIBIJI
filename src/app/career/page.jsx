@@ -171,7 +171,7 @@ const Career = () => {
                   <h1 className="text-2xl">
                     ${job.slary} / <span className="text-sm">year</span>
                   </h1>
-                  <h1>Vacancies: {job.vacancy}</h1>
+                  <h1>Vacancy: {job.vacancy}</h1>
                 </div>
               </div>
             </div>
