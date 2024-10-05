@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import NavBar from "./Shared/NavBar";
+import NavWrapper from "./Shared/NavWrapper";
 import Footer from "./Shared/Footer";
 import { Kanit, Open_Sans, Poppins,  } from "next/font/google";
 const fontName = Kanit({subsets:['latin'],weight:'400'});
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${fontName.className} antialiased my-2`}
       >
-       <NavBar/> {children} <Footer/>
+       <NavWrapper/> {children} <Footer/>
       </body>
     </html>
   );

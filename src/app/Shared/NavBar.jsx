@@ -18,7 +18,7 @@ import {
 } from "react-icons/hi";
 import { TiThMenuOutline } from "react-icons/ti";
 
-const NavBar = () => {
+const NavBar = ({ session }) => {
   const pathName = usePathname();
   const isActive = (path) => pathName === path;
   const [isOpen, setIsOpen] = useState(true);
@@ -29,7 +29,10 @@ const NavBar = () => {
       <div>
         <nav className="flex justify-between items-center h-16 mb-5 bg-slate-50 shadow-xl">
           <div className="lg:ml-5 md:ml-3 ml-2">
-           <Link href={'/'}> <Image alt="" width={130} height={38} src={logo} /></Link>
+            <Link href={"/"}>
+              {" "}
+              <Image alt="" width={130} height={38} src={logo} />
+            </Link>
           </div>
 
           <ul className="hidden  lg:flex  lg:gap-7 lg:pl-[400px] lg:pr-[68px]">
@@ -83,16 +86,29 @@ const NavBar = () => {
             >
               <Link href={"/career"}>Career</Link>
             </li>
-            <li
-              className={`
+            {session ? (
+              <li
+                className={`
         ${
-          isActive("/career")
+          isActive("/admin")
             ? "text-main font-bold border-b-2 border-main"
             : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
         }`}
-            >
-              <Link href={"/api/auth/adminWrapper"}>Admin</Link>
-            </li>
+              >
+                <Link href={"/admin"}>Admin</Link>
+              </li>
+            ) : (
+              <li
+                className={`
+        ${
+          isActive("/admin")
+            ? "text-main font-bold border-b-2 border-main"
+            : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
+        }`}
+              >
+                <Link href={"/api/auth/adminWrapper"}>Admin</Link>
+              </li>
+            )}
           </ul>
 
           <div className="md:hidden">
@@ -162,16 +178,29 @@ const NavBar = () => {
                           >
                             <Link href={"/career"}>Career</Link>
                           </li>
-                          <li
-                            className={`
+                          {session ? (
+                            <li
+                              className={`
         ${
-          isActive("/career")
+          isActive("/admin")
             ? "text-main font-bold border-b-2 border-main"
             : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
         }`}
-                          >
-                            <Link href={"/api/auth/adminWrapper"}>Admin</Link>
-                          </li>
+                            >
+                              <Link href={"/admin"}>Admin</Link>
+                            </li>
+                          ) : (
+                            <li
+                              className={`
+        ${
+          isActive("/admin")
+            ? "text-main font-bold border-b-2 border-main"
+            : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
+        }`}
+                            >
+                              <Link href={"/api/auth/adminWrapper"}>Admin</Link>
+                            </li>
+                          )}
                         </ul>
                         <div className="space-y-5 flex my-5 flex-col">
                           <Link href={"/contact"}>
