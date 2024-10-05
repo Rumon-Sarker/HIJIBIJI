@@ -9,7 +9,7 @@ const jobRequest = async () => {
     <div className="mx-5 md:mx-10 lg:mx-20">
       {appliers.map((applier) => (
         <div key={applier.id}>
-          <h1 className="text-main text-3xl my-5">{applier.jobTitle}</h1>
+          <h1 className="text-main text-3xl my-5">{applier.jobTitle} (Job-id: {applier.id})</h1>
 
           {applier.applyForms.map((applyInfo, index) => (
             <div className="" key={applyInfo.id}>

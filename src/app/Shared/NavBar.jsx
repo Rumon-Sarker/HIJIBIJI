@@ -91,7 +91,7 @@ const NavBar = () => {
             : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
         }`}
             >
-              <Link href={"/admin"}>Admin</Link>
+              <Link href={"/api/auth/adminWrapper"}>Admin</Link>
             </li>
           </ul>
 
@@ -170,7 +170,7 @@ const NavBar = () => {
             : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
         }`}
                           >
-                            <Link href={"/admin"}>Admin</Link>
+                            <Link href={"/api/auth/adminWrapper"}>Admin</Link>
                           </li>
                         </ul>
                         <div className="space-y-5 flex my-5 flex-col">

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -14,14 +15,16 @@ const RegisterPage = () => {
     e.preventDefault();
     try {
       await axios.post("/api/register", { name, email, password });
+      toast.success("You have successfully Created your account!");
       router.push("/api/auth/login");
     } catch (error) {
+      toast.error("An error occurred!");
       console.error(error);
     }
   };
   return (
     <div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-10">
         <div className="bg-base-100 shadow-xl md:mx-0 mx-5 p-10 rounded-md w-96">
           <h1 className="text-main text-4xl my-5 uppercase text-center">
             Register Here

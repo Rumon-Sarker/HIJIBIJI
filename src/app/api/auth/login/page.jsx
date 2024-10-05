@@ -3,6 +3,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import toast, { Toaster } from "react-hot-toast";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,14 +19,17 @@ const LoginPage = () => {
     });
 
     if (result.ok) {
+      toast.success("You have successfully logged in here!");
       router.push("/admin");
     } else {
+      toast.error("Invalid credential!");
       console.error(result.error);
     }
   };
 
   return (
     <div>
+      <Toaster />
       <div className="flex justify-center">
         <div className="bg-base-100 shadow-xl md:mx-0 mx-5 p-10 rounded-md w-96">
           <h1 className="text-main text-4xl my-5 uppercase text-center">
@@ -57,7 +61,10 @@ const LoginPage = () => {
             <div className="flex justify-between">
               <h1>
                 Don&apos;t have an account?{" "}
-                <Link className="text-main link-hover" href={"/api/auth/register"}>
+                <Link
+                  className="text-main link-hover"
+                  href={"/admin/register"}
+                >
                   Register Now
                 </Link>
               </h1>

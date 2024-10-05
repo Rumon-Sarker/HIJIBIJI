@@ -44,7 +44,7 @@ const AboutUs = async () => {
 
         {/* video */}
         <div className="flex justify-center my-10">
-          <video width={1020} height={550} autoPlay controls preload="yes">
+          <video width={1020} height={550} controls preload="yes">
             <source src={video?.video} type="video/mp4" />
             <track src='' kind="subtitles" srcLang="en" label="English" />
           </video>
