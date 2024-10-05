@@ -47,7 +47,7 @@ const CaseStudyCaro = ({ caseStudies }) => {
         modules={[Autoplay, FreeMode, Navigation]}
         className="mySwiper"
       >
-        
+
         {caseStudies?.map((caseStudy) => (
           <SwiperSlide key={caseStudy.id} className="">
             <div className="bg-base-100 rounded-3xl p-3 m-3 h-96 shadow-xl">
@@ -58,7 +58,7 @@ const CaseStudyCaro = ({ caseStudies }) => {
                 
               </div>
               <div className="flex justify-start mt-10 px-5 mx-5 text-text">
-                <Link className="text-main flex gap-3 items-center" href={`/caseStudyDetails/${caseStudy.id}`}>
+                <Link className="text-main flex gap-3 items-center" href={`/caseStudy/${caseStudy.id}`}>
                   Read
                   <FaArrowRight />
                 </Link>
