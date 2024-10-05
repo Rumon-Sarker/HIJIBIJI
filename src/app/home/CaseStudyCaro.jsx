@@ -68,7 +68,7 @@ const CaseStudyCaro = ({ caseStudies }) => {
         ))}
       </Swiper>
       <div className="flex justify-center items-center my-5">
-        <Link href={"/caseStudy"}>
+        <Link href={"/"}>
           <button className="text-white bg-main btn hover:bg-transparent hover:border-2 hover:border-main hover:text-black my-10">
             See all Case Study
           </button>
