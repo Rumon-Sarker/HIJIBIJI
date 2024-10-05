@@ -29,7 +29,7 @@ const NavBar = () => {
       <div>
         <nav className="flex justify-between items-center h-16 mb-5 bg-slate-50 shadow-xl">
           <div className="lg:ml-5 md:ml-3 ml-2">
-            <Image alt="" width={130} height={38} src={logo} />
+           <Link href={'/'}> <Image alt="" width={130} height={38} src={logo} /></Link>
           </div>
 
           <ul className="hidden  lg:flex  lg:gap-7 lg:pl-[400px] lg:pr-[68px]">
