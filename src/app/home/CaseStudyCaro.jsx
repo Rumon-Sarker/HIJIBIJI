@@ -47,6 +47,7 @@ const CaseStudyCaro = ({ caseStudies }) => {
         modules={[Autoplay, FreeMode, Navigation]}
         className="mySwiper"
       >
+        
         {caseStudies?.map((caseStudy) => (
           <SwiperSlide key={caseStudy.id} className="">
             <div className="bg-base-100 rounded-3xl p-3 m-3 h-96 shadow-xl">
