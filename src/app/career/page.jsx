@@ -14,6 +14,7 @@ const Career = () => {
 
     fetchJobs(); 
   }, []); 
+  s
   const handlePost = async (formData) => {
     const res = await getJobData(formData);
     setJobs(res.data);
