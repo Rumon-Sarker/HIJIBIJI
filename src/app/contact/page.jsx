@@ -1,15 +1,17 @@
 'use client'
-import React from "react";
+import React, { useRef } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { createContact } from "../../controls/PostContact/CreateContact";
 import toast, { Toaster } from "react-hot-toast";
 const Contact = () => {
+  const formRef = useRef(null)
   const handlePost = async (formData) => {
     const res = await createContact(formData);
     if (res.status) {
       toast.success("Contact info has been submitted successfully!");
+      formRef.current.reset();
     }
     if (res.error) {
       toast.error("Contact info has not been posted!");
@@ -75,7 +77,7 @@ const Contact = () => {
         </div>
 
         <div className="mx-10 my-10 bg-base-100 shadow-xl flex justify-center items-center p-4 mb-20 md:p-16">
-          <form action={handlePost} className="space-y-5 w-full">
+          <form action={handlePost} ref={formRef} className="space-y-5 w-full">
             <div className="md:flex justify-between flex-row gap-20 w-full">
               <label className="form-control w-full max-w-xs">
                 <div className="label">
