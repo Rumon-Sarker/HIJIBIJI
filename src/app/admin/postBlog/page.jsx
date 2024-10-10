@@ -1,12 +1,15 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { createBlog } from "../../../controls/postToBlog/createBlog.js";
 import toast, { Toaster } from "react-hot-toast";
 const PostBlog = () => {
+  let formRef = useRef(null);
+
   const handlePost = async (formData) => {
     const res = await createBlog(formData);
     if (res.status) {
       toast.success("Blog has been posted successfully!");
+      formRef.current.reset();
     }
     if (res.error) {
       toast.error("Blog has not been posted!");
@@ -21,6 +24,7 @@ const PostBlog = () => {
         </h1>
         <form
           action={handlePost}
+          ref={formRef}
           className="space-y-5 w-full bg-base-100 shadow-xl p-8"
         >
           <div className="md:flex justify-between flex-row gap-20 w-full">

@@ -71,6 +71,10 @@ const AdminLayout = ({ children }) => {
               {" "}
               <Link href={"/admin/register"}>Register Admin</Link>
             </li>
+            <li>
+              {" "}
+              <Link href={"/admin/contactMessage"}>Contact Message</Link>
+            </li>
           </ul>
         </div>
       </div>
