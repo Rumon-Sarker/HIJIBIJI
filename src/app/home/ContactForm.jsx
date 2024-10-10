@@ -1,15 +1,17 @@
-'use client'
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import formBg from "./../../../public/formbg.png";
 import Link from "next/link";
 import { createHomeContact } from "../../controls/postHomeContact/createHomeContact";
 import toast, { Toaster } from "react-hot-toast";
-const ContactForm = ({bg2}) => {
+const ContactForm = ({ bg2 }) => {
+  let formRef = useRef(null);
   const handlePost = async (formData) => {
     const res = await createHomeContact(formData);
     if (res.status) {
       toast.success("Contact info has been submitted successfully!");
+      formRef.current.reset();
     }
     if (res.error) {
       toast.error("Contact info has not been posted!");
@@ -29,6 +31,7 @@ const ContactForm = ({bg2}) => {
           </div>
           <form
             action={handlePost}
+            ref={formRef}
             className="max-w-lg mx-auto space-y-12 bg-base-100 shadow-xl p-10 rounded-lg lg:absolute lg:-top-32 lg:-right-80 lg:left-96 "
           >
             <div className="grid md:grid-cols-2 md:gap-10">
