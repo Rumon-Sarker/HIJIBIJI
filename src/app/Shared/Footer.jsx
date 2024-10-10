@@ -1,16 +1,18 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 import logo from "./../../../public/final 2.png";
 import { IoLocationOutline } from "react-icons/io5";
 import Link from "next/link";
 import { createFooterContact } from "../../controls/postFooterContact/createFooterContact.js";
 import toast, { Toaster } from "react-hot-toast";
 const Footer = () => {
+  let formRef = useRef(null);
   const handlePost = async (formData) => {
     const res = await createFooterContact(formData);
     if (res.status) {
       toast.success("Contact info has been submitted successfully!");
+      formRef.current.reset();
     }
     if (res.error) {
       toast.error("Contact info has not been submitted!");
@@ -71,7 +73,11 @@ const Footer = () => {
             </nav>
           </div>
           <div>
-            <form action={handlePost} className="max-w-lg mx-auto space-y-16">
+            <form
+              action={handlePost}
+              ref={formRef}
+              className="max-w-lg mx-auto space-y-16"
+            >
               <div className="grid md:grid-cols-2 md:gap-10">
                 <div className="relative z-0 w-full mb-5 group">
                   <input
