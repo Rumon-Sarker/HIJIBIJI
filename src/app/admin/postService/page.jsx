@@ -1,13 +1,15 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { createService } from "../../../controls/postToService/createService.js";
 import toast, { Toaster } from "react-hot-toast";
 
 const PostService = () => {
+  let formRef = useRef(null)
   const handlePost = async (formData) => {
     const res = await createService(formData);
     if (res.status) {
       toast.success("Service has been posted successfully!");
+      formRef.current.reset();
     }
     if (res.error) {
       toast.error("Service has not been posted!");
@@ -22,6 +24,7 @@ const PostService = () => {
         </h1>
         <form
           action={handlePost}
+          ref={formRef}
           className="space-y-5 w-full bg-base-100 shadow-xl p-8"
         >
           <div className="md:flex justify-between flex-row gap-20 w-full">

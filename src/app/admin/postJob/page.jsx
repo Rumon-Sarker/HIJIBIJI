@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { createJob } from "../../../controls/postJob/postJob";
 import toast, {Toaster} from "react-hot-toast";
 const PostJob = () => {
+  let formRef = useRef(null)
   const [inputFields, setInputFields] = useState([{ value: "" }]);
 
   // Handle adding a new input field
@@ -24,6 +25,7 @@ const PostJob = () => {
     const res = await createJob(formData);
     if (res.status) {
       toast.success("Job has been created successfully!");
+      formRef.current.reset();
     }
     if (res.error) {
       toast.error("Job has not been created!");
@@ -38,6 +40,7 @@ const PostJob = () => {
         </h1>
         <form
           action={handlePost}
+          ref={formRef}
           className="space-y-5 w-full bg-base-100 shadow-xl p-8"
         >
           <div className="md:flex justify-between flex-row gap-20 w-full">

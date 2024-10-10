@@ -1,13 +1,16 @@
 "use client";
 import toast, { Toaster } from "react-hot-toast";
 import { createPortfolio } from "../../../controls/postToPortfolio/createPortfolio.js";
+import { useRef } from "react";
 
 const PostPortfolio = () => {
+  const formRef = useRef(null);
   const handlePost = async (formData) => {
     const res = await createPortfolio(formData);
 
     if (res.status) {
       toast.success("Portfolio has been posted successfully!");
+      formRef.current.reset();
     }
     if (res.error) {
       toast.error("Portfolio has not been posted!");
@@ -21,6 +24,7 @@ const PostPortfolio = () => {
       </h1>
       <form
         action={handlePost}
+        ref={formRef}
         className="space-y-5 w-full bg-base-100 shadow-xl p-8"
       >
         <div className="md:flex justify-between flex-row gap-20 w-full">
