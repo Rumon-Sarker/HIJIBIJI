@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 import ExcelJS from "exceljs";
 import { PrismaClient } from "@prisma/client";
 
-// Initialize PrismaClient outside the handler to prevent multiple instances in development
 const prisma = global.prisma || new PrismaClient();
 
 if (process.env.NODE_ENV !== "production") {
@@ -16,25 +15,30 @@ export async function GET(request) {
   const id = parseInt(idParam, 10);
 
   if (isNaN(id)) {
-    return NextResponse.json({ error: "Invalid id parameter" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid id parameter" },
+      { status: 400 }
+    );
   }
 
   try {
-    // Fetch data from the database
-    const [contactData, footerContactData, homeContactData] = await Promise.all([
-      prisma.contact.findUnique({ where: { id } }),
-      prisma.footerContact.findUnique({ where: { id } }),
-      prisma.homeContact.findUnique({ where: { id } }),
-    ]);
+    const [contactData, footerContactData, homeContactData] = await Promise.all(
+      [
+        prisma.contact.findUnique({ where: { id } }),
+        prisma.footerContact.findUnique({ where: { id } }),
+        prisma.homeContact.findUnique({ where: { id } }),
+      ]
+    );
 
-    // Log fetched data for debugging
     console.log("contactData:", contactData);
     console.log("footerContactData:", footerContactData);
     console.log("homeContactData:", homeContactData);
 
-    // Check if all data are null
     if (!contactData && !footerContactData && !homeContactData) {
-      return NextResponse.json({ error: "No data found for the provided id" }, { status: 404 });
+      return NextResponse.json(
+        { error: "No data found for the provided id" },
+        { status: 404 }
+      );
     }
 
     const workbook = new ExcelJS.Workbook();
@@ -42,7 +46,6 @@ export async function GET(request) {
     const footerContactWorksheet = workbook.addWorksheet("Footer Data");
     const homeContactWorksheet = workbook.addWorksheet("Home Data");
 
-    // Define columns for each worksheet
     contactWorksheet.columns = [
       { header: "ID", key: "id", width: 10 },
       { header: "Name", key: "name", width: 30 },
@@ -66,7 +69,6 @@ export async function GET(request) {
       { header: "Interested", key: "interested", width: 30 },
     ];
 
-    // Add rows to each worksheet only if data exists
     if (contactData) {
       contactWorksheet.addRow({
         id: contactData.id,
@@ -96,22 +98,22 @@ export async function GET(request) {
       });
     }
 
-    // Create a buffer to hold the Excel file
     const buffer = await workbook.xlsx.writeBuffer();
 
-    // Set response headers for file download
     const headers = {
-      "Content-Type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "Content-Type":
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       "Content-Disposition": 'attachment; filename="data.xlsx"',
     };
 
-    // Return the Excel file as a response
     return new NextResponse(buffer, { headers });
   } catch (error) {
     console.error("Error exporting data:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   } finally {
-    // Disconnect PrismaClient to prevent potential memory leaks
     await prisma.$disconnect();
   }
 }
