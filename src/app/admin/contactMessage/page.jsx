@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import ContactTable from '../../../components/ContactTable'
 
-const page = () => {
+const page = async () => {
   return (
     <div>
      <ContactTable/>

@@ -6,7 +6,7 @@ const ContactTable = () => {
     return (
         <div>
              <div>
-        <h1>From Main contact</h1>
+        <h1 className='text-center text-main text-2xl my-5'>From Main contact</h1>
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}

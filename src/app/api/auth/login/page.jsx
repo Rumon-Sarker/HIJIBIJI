@@ -58,16 +58,8 @@ const LoginPage = () => {
                 required
               />
             </label>
-            <div className="flex justify-between">
-              <h1>
-                Don&apos;t have an account?{" "}
-                <Link
-                  className="text-main link-hover"
-                  href={"/admin/register"}
-                >
-                  Register Now
-                </Link>
-              </h1>
+            <div className="flex justify-end">
+           
               <button
                 className="btn bg-main hover:border-2 hover:border-main hover:bg-transparent hover:text-black text-white"
                 type="submit"
