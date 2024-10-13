@@ -1,8 +1,14 @@
+
 "use client";
 import Image from "next/image";
 import React from "react";
-import { IoIosContact } from "react-icons/io";
+import {downloadExcel} from '../utils/download';
+
 const ContactTable = ({data}) => {
+  const handleDownload = (id) => {
+    downloadExcel(id); 
+  };
+
   return (
     <div>
       <div>
@@ -37,7 +43,7 @@ const ContactTable = ({data}) => {
                 <td><h1>{item.email}</h1></td>
                 <td><h1>{item.message}</h1></td>
                 <th>
-                  <button className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main text-white hover:text-black btn-xs">
+                  <button onClick={()=> handleDownload(item.id)} className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main text-white hover:text-black btn-xs">
                     Download
                   </button>
                 </th>

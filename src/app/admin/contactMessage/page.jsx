@@ -6,7 +6,7 @@ import { PrismaClient } from "@prisma/client";
 const ContactMessage = async () => {
   const prisma = new PrismaClient();
   const data = await prisma.contact.findMany({});
-  console.log(data);
+  
   return (
     <div>
       <ContactTable data={data} />
