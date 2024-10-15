@@ -3,13 +3,8 @@ import { NextResponse } from "next/server";
 import ExcelJS from "exceljs";
 import { PrismaClient } from "@prisma/client";
 
-const prisma = global.prisma || new PrismaClient();
-
-if (process.env.NODE_ENV !== "production") {
-  global.prisma = prisma;
-}
-
 export async function GET(request) {
+  const prisma = new PrismaClient();
   const { searchParams } = new URL(request.url);
   const idParam = searchParams.get("id");
   const id = parseInt(idParam, 10);
