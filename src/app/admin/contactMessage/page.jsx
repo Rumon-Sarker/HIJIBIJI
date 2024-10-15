@@ -2,6 +2,8 @@
 import Image from "next/image";
 import React from "react";
 import ContactTable from "../../../components/ContactTable";
+import HomeTable from "../../../components/HomeTable";
+import FooterTable from "../../../components/FooterTable";
 import { PrismaClient } from "@prisma/client";
 
 const ContactMessage = async () => {
@@ -13,6 +15,8 @@ const ContactMessage = async () => {
   return (
     <div>
       <ContactTable data={data} />
+      <HomeTable homeData={data2}/>
+      <FooterTable homeData={data3}/>
     </div>
   );
 };
