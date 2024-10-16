@@ -51,7 +51,7 @@ const Blog = ({ blog }) => {
       >
         {blog?.map((item) => (
           <SwiperSlide key={item.id} className="">
-            <div className="bg-base-100 rounded-3xl p-3 m-3 shadow-xl">
+            <div className="bg-base-100 rounded-3xl h-[450px] p-3 m-3 shadow-xl">
               <div>
                 <Image
                   className="rounded-3xl cursor-pointer h-[250px]"

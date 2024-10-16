@@ -7,6 +7,7 @@ export async function GET(request) {
   const prisma = new PrismaClient();
   const { searchParams } = new URL(request.url);
   const idParam = searchParams.get("id");
+  const type = searchParams.get("type"); // New parameter
   const id = parseInt(idParam, 10);
 
   if (isNaN(id)) {
@@ -16,89 +17,114 @@ export async function GET(request) {
     );
   }
 
-  try {
-    const [contactData, footerContactData, homeContactData] = await Promise.all(
-      [
-        prisma.contact.findUnique({ where: { id } }),
-        prisma.footerContact.findUnique({ where: { id } }),
-        prisma.homeContact.findUnique({ where: { id } }),
-      ]
+  if (!type || !["contact", "footerContact", "homeContact"].includes(type)) {
+    return NextResponse.json(
+      { error: "Invalid or missing type parameter" },
+      { status: 400 }
     );
+  }
 
-    console.log("contactData:", contactData);
-    console.log("footerContactData:", footerContactData);
-    console.log("homeContactData:", homeContactData);
+  try {
+    let data;
+    let worksheetName;
+    let columns;
+    let row;
 
-    if (!contactData && !footerContactData && !homeContactData) {
-      return NextResponse.json(
-        { error: "No data found for the provided id" },
-        { status: 404 }
-      );
+    // Fetch data based on the type
+    switch (type) {
+      case "contact":
+        data = await prisma.contact.findUnique({ where: { id } });
+        if (!data) {
+          return NextResponse.json(
+            { error: "No contact data found for the provided id" },
+            { status: 404 }
+          );
+        }
+        worksheetName = "Contact Data";
+        columns = [
+          { header: "ID", key: "id", width: 10 },
+          { header: "Name", key: "name", width: 30 },
+          { header: "Contact", key: "contact", width: 30 },
+          { header: "Email", key: "email", width: 30 },
+          { header: "Message", key: "message", width: 30 },
+        ];
+        row = {
+          id: data.id,
+          name: `${data.firstname} ${data.lastname}`,
+          contact: data.contact,
+          email: data.email,
+          message: data.message,
+        };
+        break;
+
+      case "footerContact":
+        data = await prisma.footerContact.findUnique({ where: { id } });
+        if (!data) {
+          return NextResponse.json(
+            { error: "No footer contact data found for the provided id" },
+            { status: 404 }
+          );
+        }
+        worksheetName = "Footer Data";
+        columns = [
+          { header: "ID", key: "id", width: 10 },
+          { header: "Name", key: "name", width: 30 },
+          { header: "Email", key: "email", width: 30 },
+          { header: "Message", key: "message", width: 30 },
+        ];
+        row = {
+          id: data.id,
+          name: `${data.firstname} ${data.lastname}`,
+          email: data.email,
+          message: data.message,
+        };
+        break;
+
+      case "homeContact":
+        data = await prisma.homeContact.findUnique({ where: { id } });
+        if (!data) {
+          return NextResponse.json(
+            { error: "No home contact data found for the provided id" },
+            { status: 404 }
+          );
+        }
+        worksheetName = "Home Data";
+        columns = [
+          { header: "ID", key: "id", width: 10 },
+          { header: "Name", key: "name", width: 30 },
+          { header: "Email", key: "email", width: 30 },
+          { header: "Country", key: "country", width: 30 },
+          { header: "Interested", key: "interested", width: 30 },
+        ];
+        row = {
+          id: data.id,
+          name: `${data.firstname} ${data.lastname}`,
+          email: data.email,
+          country: data.country,
+          interested: data.interested,
+        };
+        break;
+
+      default:
+        return NextResponse.json(
+          { error: "Invalid type parameter" },
+          { status: 400 }
+        );
     }
 
+    // Create a new Excel workbook and add the relevant worksheet
     const workbook = new ExcelJS.Workbook();
-    const contactWorksheet = workbook.addWorksheet("Contact Data");
-    const footerContactWorksheet = workbook.addWorksheet("Footer Data");
-    const homeContactWorksheet = workbook.addWorksheet("Home Data");
+    const worksheet = workbook.addWorksheet(worksheetName);
+    worksheet.columns = columns;
+    worksheet.addRow(row);
 
-    contactWorksheet.columns = [
-      { header: "ID", key: "id", width: 10 },
-      { header: "Name", key: "name", width: 30 },
-      { header: "Contact", key: "contact", width: 30 },
-      { header: "Email", key: "email", width: 30 },
-      { header: "Message", key: "message", width: 30 },
-    ];
-
-    footerContactWorksheet.columns = [
-      { header: "ID", key: "id", width: 10 },
-      { header: "Name", key: "name", width: 30 },
-      { header: "Email", key: "email", width: 30 },
-      { header: "Message", key: "message", width: 30 },
-    ];
-
-    homeContactWorksheet.columns = [
-      { header: "ID", key: "id", width: 10 },
-      { header: "Name", key: "name", width: 30 },
-      { header: "Email", key: "email", width: 30 },
-      { header: "Country", key: "country", width: 30 },
-      { header: "Interested", key: "interested", width: 30 },
-    ];
-
-    if (contactData) {
-      contactWorksheet.addRow({
-        id: contactData.id,
-        name: `${contactData.firstname} ${contactData.lastname}`,
-        contact: contactData.contact,
-        email: contactData.email,
-        message: contactData.message,
-      });
-    }
-
-    if (footerContactData) {
-      footerContactWorksheet.addRow({
-        id: footerContactData.id,
-        name: `${footerContactData.firstname} ${footerContactData.lastname}`,
-        email: footerContactData.email,
-        message: footerContactData.message,
-      });
-    }
-
-    if (homeContactData) {
-      homeContactWorksheet.addRow({
-        id: homeContactData.id,
-        name: `${homeContactData.firstname} ${homeContactData.lastname}`,
-        email: homeContactData.email,
-        country: homeContactData.country,
-        interested: homeContactData.interested,
-      });
-    }
-
+    // Generate the Excel file and send it as a response
     const buffer = await workbook.xlsx.writeBuffer();
 
     const headers = {
       "Content-Type":
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-      "Content-Disposition": 'attachment; filename="data.xlsx"',
+      "Content-Disposition": `attachment; filename="${worksheetName}.xlsx"`,
     };
 
     return new NextResponse(buffer, { headers });

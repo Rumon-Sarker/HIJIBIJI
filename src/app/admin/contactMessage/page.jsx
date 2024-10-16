@@ -16,7 +16,7 @@ const ContactMessage = async () => {
     <div>
       <ContactTable data={data} />
       <HomeTable homeData={data2}/>
-      <FooterTable homeData={data3}/>
+      <FooterTable footerData={data3}/>
     </div>
   );
 };

@@ -3,16 +3,17 @@ import Image from "next/image";
 import React from "react";
 import { downloadExcel } from "../utils/download";
 
-const FooterTable = ({ data }) => {
+const FooterTable = ({ footerData }) => {
   const handleDownload = (id) => {
-    downloadExcel(id);
+    const type = 'footerContact'
+    downloadExcel(id,type);
   };
 
   return (
     <div>
       <div>
         <h1 className="text-center text-main text-2xl my-5">
-          From Main contact
+          From Footer contact
         </h1>
         <div className="overflow-x-auto">
           <table className="table">
@@ -27,7 +28,7 @@ const FooterTable = ({ data }) => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {data?.map((item) => (
+              {footerData?.map((item) => (
                 <tr key={item.id}>
                   <td>
                     <div className="flex items-center gap-3">

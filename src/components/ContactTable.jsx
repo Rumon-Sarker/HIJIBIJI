@@ -6,7 +6,8 @@ import {downloadExcel} from '../utils/download';
 
 const ContactTable = ({data}) => {
   const handleDownload = (id) => {
-    downloadExcel(id); 
+    const type = 'contact'
+    downloadExcel(id,type); 
   };
 
   return (
