@@ -7,7 +7,7 @@ export async function GET(request) {
   const prisma = new PrismaClient();
   const { searchParams } = new URL(request.url);
   const idParam = searchParams.get("id");
-  const type = searchParams.get("type"); // New parameter
+  const type = searchParams.get("type");
   const id = parseInt(idParam, 10);
 
   if (isNaN(id)) {
