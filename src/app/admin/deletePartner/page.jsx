@@ -1,10 +1,13 @@
 import React from 'react';
 import DeleteWrapper from './DeleteWrapper';
+import { PrismaClient } from '@prisma/client';
 
-const DeletePartner = () => {
+const DeletePartner = async () => {
+    const prisma = new PrismaClient();
+    const data = await prisma.partners.findMany();
     return (
         <div>
-            <DeleteWrapper/>
+            <DeleteWrapper data={data}/>
         </div>
     );
 };
