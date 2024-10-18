@@ -4,7 +4,7 @@ import { createService } from "../../../controls/postToService/createService.js"
 import toast, { Toaster } from "react-hot-toast";
 
 const PostService = () => {
-  let formRef = useRef(null)
+  let formRef = useRef(null);
   const handlePost = async (formData) => {
     const res = await createService(formData);
     if (res.status) {
@@ -39,6 +39,39 @@ const PostService = () => {
                 className="input input-bordered w-full max-w-xs"
               />
             </label>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                <span className="label-text">Service Title 1</span>
+              </div>
+              <input
+                name="line1"
+                type="text"
+                placeholder="type title 1"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                <span className="label-text">Service Title 2</span>
+              </div>
+              <input
+                name="line2"
+                type="text"
+                placeholder="type Title 2"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                <span className="label-text">Service Title 3</span>
+              </div>
+              <input
+                name="line3"
+                type="text"
+                placeholder="type Title 3"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
           </div>
           <label className="form-control">
             <div className="label">
@@ -66,6 +99,16 @@ const PostService = () => {
             </div>
             <input
               name="image"
+              type="file"
+              className="file-input file-input-bordered w-full max-w-xs"
+            />
+          </label>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">Pick pdf</span>
+            </div>
+            <input
+              name="pdf"
               type="file"
               className="file-input file-input-bordered w-full max-w-xs"
             />
