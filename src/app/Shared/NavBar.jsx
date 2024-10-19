@@ -28,14 +28,14 @@ const NavBar = ({ session }) => {
     <div className="">
       <div>
         <nav className="flex justify-between items-center h-16 mb-5 bg-slate-50 shadow-xl">
-          <div className="lg:ml-5 md:ml-3 ml-2">
+          <div className="lg:md:ml-5 md:ml-3 ml-2">
             <Link href={"/"}>
               {" "}
-              <Image alt="" width={130} height={38} src={logo} />
+              <Image alt="" width={120} height={38} src={logo} />
             </Link>
           </div>
 
-          <ul className="hidden  lg:flex  lg:gap-7 lg:pl-[400px] lg:pr-[68px]">
+          <ul className="hidden  lg:flex space-x-6 justify-between">
             <li
               className={`
         ${
@@ -203,6 +203,11 @@ const NavBar = ({ session }) => {
                           )}
                         </ul>
                         <div className="space-y-5 flex my-5 flex-col">
+                          <Link href={"/domain"}>
+                            <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
+                              Domain
+                            </button>
+                          </Link>
                           <Link href={"/contact"}>
                             <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
                               Contact
@@ -223,7 +228,12 @@ const NavBar = ({ session }) => {
             </Drawer>
           </div>
 
-          <div className="lg:space-x-4 mr-2 lg:mr-5 md:mr-3 hidden lg:flex">
+          <div className="lg:space-x-2 lg:mr-5 md:space-x-1 hidden lg:flex">
+          <Link href={"/domain"}>
+              <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
+                Domain
+              </button>
+            </Link>
             <Link href={"/contact"}>
               <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
                 Contact
