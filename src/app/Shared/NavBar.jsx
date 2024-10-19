@@ -35,7 +35,7 @@ const NavBar = ({ session }) => {
             </Link>
           </div>
 
-          <ul className="hidden  lg:flex space-x-6 justify-between">
+          <ul className="hidden lg:pl-32 lg:flex space-x-6 justify-between">
             <li
               className={`
         ${
@@ -229,7 +229,7 @@ const NavBar = ({ session }) => {
           </div>
 
           <div className="lg:space-x-2 lg:mr-5 md:space-x-1 hidden lg:flex">
-          <Link href={"/domain"}>
+            <Link href={"/domain"}>
               <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
                 Domain
               </button>
