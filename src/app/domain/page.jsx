@@ -9,11 +9,10 @@ const Domain = () => {
         </h1>
       </div>
       <div>
-        <form className="">
+        <form className="flex items-center justify-center">
           {" "}
-          <div className="flex justify-center items-center gap-2">
           <label className="form-control w-full max-w-xs">
-            <div className="label"></div>
+
             <input
               name="input"
               type="text"
@@ -24,7 +23,6 @@ const Domain = () => {
           <button className="btn bg-main rounded-md text-white hover:bg-transparent hover:text-black hover:border-main border-2">
             Search
           </button>
-          </div>
         </form>
       </div>
     </div>
