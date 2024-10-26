@@ -4,6 +4,7 @@ import {getServerSession} from 'next-auth';
 
 const NavWrapper = async () => {
     const session = await getServerSession()
+    
     return (
         <div>
             <NavBar session={session}/>
