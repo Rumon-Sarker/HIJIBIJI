@@ -1,5 +1,5 @@
 import React from "react";
-import PortfolioComponents from "../../components/portfolioComponents";
+import PortfolioComponents from "@/components/PortfolioComponents";
 import { PrismaClient } from "@prisma/client";
 const Portfolio = async () => {
   const prisma = new PrismaClient();
