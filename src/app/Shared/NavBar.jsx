@@ -106,7 +106,7 @@ const NavBar = ({ session }) => {
             : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
         }`}
               >
-                <Link href={"/api/auth/adminWrapper"}>Admin</Link>
+                <Link href={"/admin"}>Admin</Link>
               </li>
             )}
           </ul>
@@ -198,7 +198,7 @@ const NavBar = ({ session }) => {
             : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
         }`}
                             >
-                              <Link href={"/api/auth/adminWrapper"}>Admin</Link>
+                              <Link href={"/admin"}>Admin</Link>
                             </li>
                           )}
                         </ul>
