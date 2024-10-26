@@ -9,7 +9,6 @@ module.exports = {
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     flowbite.content(),
-    "./node_modules/tw-elements-react/dist/js/**/*.js",
   ],
   theme: {
     colors: {
