@@ -17,7 +17,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html className="light" lang="en">
+    <html data-theme="light" lang="en">
       <body className={`${fontName.className} antialiased my-2`}>
         <NavWrapper /> {children} <Footer />
       </body>
