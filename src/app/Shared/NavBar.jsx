@@ -86,7 +86,7 @@ const NavBar = ({ session }) => {
             >
               <Link href={"/career"}>Career</Link>
             </li>
-            {session ? (
+          
               <li
                 className={`
         ${
@@ -97,8 +97,8 @@ const NavBar = ({ session }) => {
               >
                 <Link href={"/admin"}>Admin</Link>
               </li>
-            ) : (
-              <li
+        
+              {/* <li
                 className={`
         ${
           isActive("/admin")
@@ -108,7 +108,7 @@ const NavBar = ({ session }) => {
               >
                 <Link href={"/api/auth/login"}>Admin</Link>
               </li>
-            )}
+          */}
           </ul>
 
           <div className="md:hidden">
@@ -178,7 +178,7 @@ const NavBar = ({ session }) => {
                           >
                             <Link href={"/career"}>Career</Link>
                           </li>
-                          {session ? (
+                         
                             <li
                               className={`
         ${
@@ -189,8 +189,8 @@ const NavBar = ({ session }) => {
                             >
                               <Link href={"/admin"}>Admin</Link>
                             </li>
-                          ) : (
-                            <li
+                         
+                            {/* <li
                               className={`
         ${
           isActive("/admin")
@@ -199,8 +199,8 @@ const NavBar = ({ session }) => {
         }`}
                             >
                               <Link href={"/api/auth/login"}>Admin</Link>
-                            </li>
-                          )}
+                            </li> */}
+                         
                         </ul>
                         <div className="space-y-5 flex my-5 flex-col">
                           <Link href={"/domain"}>
