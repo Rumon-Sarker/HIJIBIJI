@@ -86,7 +86,7 @@ const NavBar = ({ session }) => {
             >
               <Link href={"/career"}>Career</Link>
             </li>
-            {session ? (
+            {session?.user ? (
               <li
                 className={`
         ${
@@ -178,7 +178,7 @@ const NavBar = ({ session }) => {
                           >
                             <Link href={"/career"}>Career</Link>
                           </li>
-                          {session ? (
+                          {session?.user ? (
                             <li
                               className={`
         ${
