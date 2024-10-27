@@ -22,7 +22,7 @@ module.exports = {
     extend: {},
   },
   daisyui: {
-    themes: ["light"],
+    themes: ["light", "dark"],
   },
-  plugins: [flowbite.plugin(), require("daisyui")],
+  plugins: [require("daisyui")],
 };

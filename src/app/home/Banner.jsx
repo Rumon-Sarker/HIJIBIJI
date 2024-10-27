@@ -2,18 +2,20 @@ import Image from "next/image";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import banner from "./../../../public/Image.png";
+import img1 from "./../../../public/Gradient.png";
+import img2 from "./../../../public/bg.png";
 import Link from "next/link";
 
-const Banner = ({bg1}) => {
-  const {image} = bg1;
+const Banner = ({ bg1 }) => {
+  const { image } = bg1;
   return (
     <div className="">
       <div>
         <div
           style={{
             backgroundImage: `url(${image})`,
-            height: "600px", 
-            backgroundSize: "cover", 
+            height: "600px",
+            backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
@@ -27,18 +29,55 @@ const Banner = ({bg1}) => {
               Let’s transform how people experience your business. All through
               next generation technology.
             </p>
-           <Link href={'/about'}> <button className="btn btn-outline btn-info rounded-full bg-transparent border">
-              Get in Touch <FaArrowRight />
-            </button></Link>
+            <Link href={"/about"}>
+              {" "}
+              <button className="btn btn-outline btn-info rounded-full bg-transparent border">
+                Get in Touch <FaArrowRight />
+              </button>
+            </Link>
           </div>
         </div>
       </div>
-      <div className="lg:flex px-5 gap-10 my-28">
-        <div>
-          <Image alt="" width={1920} height={900} src={banner} />
+      <div className="lg:flex px-5 gap-16 my-28 mx-5 md:mx-16">
+        <div className="flex relative ms-10">
+          <Image alt="" className="md:h-[550px]" width={1920} height={900} src={banner} />
+          <div className="absolute -left-20">
+          <Image
+          className="w-[85px] ms-2 md:w-[180px]"
+            src={img1}
+            alt=""
+            width={200}
+            height={700}
+          
+          />
         </div>
-        <div className="space-y-6 md:pr-20 mt-5">
-          <h1 className="text-main text-4xl">Your experience starts with Hijibusy</h1>
+          <div className="absolute -left-8 -mt-1">
+          <Image
+          className="w-[90px] md:w-[185px]"
+            src={img2}
+            alt=""
+            width={200}
+            height={700}
+            
+          />
+        </div>
+          {/* <div className="absolute -right-16 ">
+          <Image
+          className="md:w-[185px]"
+            src={img2}
+            alt=""
+            width={200}
+            height={700}
+            
+          />
+        </div> */}
+        </div>
+        
+       
+        <div className="space-y-6 mt-5 ms-5  w-2/3">
+          <h1 className="text-main text-4xl">
+            Your experience starts with Hijibusy
+          </h1>
           <p className="pt-12 text-text">
             Engineering experiences that accelerate the growth of your business
             has never been simpler
@@ -48,7 +87,9 @@ const Banner = ({bg1}) => {
             combine next generation product engineering, slick customer
             experience and advanced AI.
           </p>
-          <p className="text-text">End-to-end partnership is at the heart of the Ciklum experience</p>
+          <p className="text-text">
+            End-to-end partnership is at the heart of the Ciklum experience
+          </p>
         </div>
       </div>
     </div>

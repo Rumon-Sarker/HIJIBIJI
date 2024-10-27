@@ -78,6 +78,7 @@ const Footer = () => {
               ref={formRef}
               className="max-w-lg mx-auto space-y-16"
             >
+              <h1 className="text-white text-xl">Contact Form</h1>
               <div className="grid md:grid-cols-2 md:gap-10">
                 <div className="relative z-0 w-full mb-5 group">
                   <input
@@ -101,7 +102,7 @@ const Footer = () => {
                     name="lastname"
                     id="floating_last_name"
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=" "
+                    placeholder=""
                     required
                   />
                   <label

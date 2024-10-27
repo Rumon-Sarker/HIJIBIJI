@@ -50,12 +50,16 @@ const CaseStudyCaro = ({ caseStudies }) => {
 
         {caseStudies?.map((caseStudy) => (
           <SwiperSlide key={caseStudy.id} className="">
-            <div className="bg-base-100 rounded-3xl p-3 m-3 h-96 shadow-xl">
-              <div className="px-5 text-4xl   text-main my-5 mx-5">
-                <h1 className="font-bold"> {caseStudy.name.slice(0,25)} <span className="font-2xl font-thin">
+            <div className="bg-base-100 rounded-3xl p-3 m-3 h-[400px] shadow-xl">
+              <div className="text-main my-1 mx-5">
+                <h1 className="px-5 text-4xl font-bold"> {caseStudy.name.slice(0,25)} <span className=" font-thin">
                {caseStudy.name.slice(25)}
                 </span></h1>
-                
+                <div className="flex gap-5 flex-wrap my-3 text-xs px-5">
+                  <h1 className="bg-main px-2 py-1 text-white rounded-md">BFSI</h1>
+                  <h1 className="bg-main px-2 py-1 text-white rounded-md">Product Engineering</h1>
+                  <h1 className="bg-main px-2 py-1 text-white rounded-md">Software Architecture</h1>
+                </div>
               </div>
               <div className="flex justify-start mt-10 px-5 mx-5 text-text">
                 <Link className="text-main flex gap-3 items-center" href={`/caseStudy/${caseStudy.id}`}>
@@ -68,7 +72,7 @@ const CaseStudyCaro = ({ caseStudies }) => {
         ))}
       </Swiper>
       <div className="flex justify-center items-center my-5">
-        <Link href={"/"}>
+        <Link href={"/caseStudies"}>
           <button className="text-white bg-main btn hover:bg-transparent hover:border-2 hover:border-main hover:text-black my-10">
             See all Case Study
           </button>

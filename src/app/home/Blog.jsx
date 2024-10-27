@@ -51,10 +51,10 @@ const Blog = ({ blog }) => {
       >
         {blog?.map((item) => (
           <SwiperSlide key={item.id} className="">
-            <div className="bg-base-100 rounded-3xl h-[450px] p-3 m-3 shadow-xl">
+            <div className="bg-base-100 rounded-3xl h-[430px] p-3 m-3 shadow-xl">
               <div>
                 <Image
-                  className="rounded-3xl cursor-pointer h-[250px]"
+                  className="rounded-3xl cursor-pointer h-[200px]"
                   src={item.image}
                   width={500}
                   height={450}
@@ -67,9 +67,14 @@ const Blog = ({ blog }) => {
                   {item.name}
                 </h1>
 
-                <div className="text-gray-400 text-xs mx-5 my-3">
+                <div className="text-gray-400 text-xs mx-5 my-4">
                   {/* Format the date here using dayjs */}
                   <h1>{dayjs(item?.createdAt).format('dddd - MMMM Do, YYYY')}</h1>
+                </div>
+                <div className="flex gap-5 flex-wrap my-3 text-xs px-5">
+                  <h1 className="bg-main px-2 py-1 text-white rounded-md">BFSI</h1>
+                  <h1 className="bg-main px-2 py-1 text-white rounded-md">Product Engineering</h1>
+                
                 </div>
               </div>
             </div>
