@@ -10,6 +10,7 @@ import BlogComponents from "../../../components/BlogComponents";
 import { PrismaClient } from "@prisma/client";
 import dayjs from "dayjs";
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import SocialSharing from "@/components/SocialSharing";
 const BlogDetails = async ({ params }) => {
   const prisma = new PrismaClient();
   const data = await prisma.blogs.findMany({});
@@ -37,23 +38,7 @@ const BlogDetails = async ({ params }) => {
 
         <h1 className="text-text text-xl my-6"></h1>
         <h1 className="text-text ">Share </h1>
-        <div className="text-text flex gap-5 my-5">
-          <Link href={"/"}>
-            <FaTwitter />
-          </Link>
-          <Link href={"/"}>
-            <FaSquareFacebook />
-          </Link>
-          <Link href={"/"}>
-            <TiSocialLinkedin />
-          </Link>
-          <Link href={"/"}>
-            <MdEmail />
-          </Link>
-          <Link href={"/"}>
-            <FaLink />
-          </Link>
-        </div>
+       <SocialSharing title={specificData.name}/>
         <p>{specificData.description}</p>
        <div className="mt-10">
        <BlogComponents data={data} />
