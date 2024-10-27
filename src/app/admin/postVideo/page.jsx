@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-import toast, {Toaster} from "react-hot-toast";
-import {createVideo} from "../../../controls/postImageAndVIdeo/createImageAndVideo";
+import toast, { Toaster } from "react-hot-toast";
+import { createVideo } from "../../../controls/postImageAndVIdeo/createImageAndVideo";
 
 const PostVideo = () => {
   const handlePost = async (fromData) => {
@@ -16,7 +16,7 @@ const PostVideo = () => {
   };
   return (
     <div>
-      <Toaster/>
+      <Toaster />
       <div className="my-10 lg:mx-10 mx-5">
         <h1 className="text-main text-3xl text-center my-2 uppercase">
           post Video for about us{" "}
@@ -30,6 +30,7 @@ const PostVideo = () => {
               <span className="label-text">Pick a video for about page</span>
             </div>
             <input
+              required
               name="video"
               type="file"
               className="file-input file-input-bordered w-full max-w-xs"

@@ -30,6 +30,36 @@ const PostBlog = () => {
           <div className="md:flex justify-between flex-row gap-20 w-full">
             <label className="form-control w-full max-w-xs">
               <div className="label">
+                <span className="label-text">
+                  Card Title word 1 ( maximum 1 word*)
+                </span>
+              </div>
+              <input
+                required
+                name="word1"
+                type="text"
+                placeholder="type only one word"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                <span className="label-text">
+                  Card Title word 2 ( maximum 1 word*)
+                </span>
+              </div>
+              <input
+                required
+                name="word2"
+                type="text"
+                placeholder="type only one word"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
+          </div>
+          <div className="md:flex justify-between flex-row gap-20 w-full">
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
                 <span className="label-text">Title of the blog</span>
               </div>
               <input
@@ -72,7 +102,7 @@ const PostBlog = () => {
 
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">Pick image</span>
+              <span className="label-text">Pick image(maximum file size 5MB)</span>
             </div>
             <input
               required

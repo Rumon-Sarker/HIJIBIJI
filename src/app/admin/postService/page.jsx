@@ -33,6 +33,7 @@ const PostService = () => {
                 <span className="label-text">Service Name</span>
               </div>
               <input
+                required
                 name="name"
                 type="text"
                 placeholder="type service name"
@@ -44,6 +45,7 @@ const PostService = () => {
                 <span className="label-text">Service Title 1</span>
               </div>
               <input
+                required
                 name="line1"
                 type="text"
                 placeholder="type title 1"
@@ -55,6 +57,7 @@ const PostService = () => {
                 <span className="label-text">Service Title 2</span>
               </div>
               <input
+                required
                 name="line2"
                 type="text"
                 placeholder="type Title 2"
@@ -66,6 +69,7 @@ const PostService = () => {
                 <span className="label-text">Service Title 3</span>
               </div>
               <input
+                required
                 name="line3"
                 type="text"
                 placeholder="type Title 3"
@@ -78,6 +82,7 @@ const PostService = () => {
               <span className="label-text">Description</span>
             </div>
             <textarea
+              required
               name="description"
               className="textarea textarea-md textarea-bordered h-24"
               placeholder="Enter Your Message"
@@ -88,6 +93,7 @@ const PostService = () => {
               <span className="label-text">Scope of the work</span>
             </div>
             <textarea
+              required
               name="scope"
               className="textarea textarea-md textarea-bordered h-24"
               placeholder="Enter Your Message"
@@ -95,9 +101,10 @@ const PostService = () => {
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">Pick image</span>
+              <span className="label-text">Pick image (maximum file size 5MB)</span>
             </div>
             <input
+              required
               name="image"
               type="file"
               className="file-input file-input-bordered w-full max-w-xs"
@@ -108,6 +115,7 @@ const PostService = () => {
               <span className="label-text">Pick pdf</span>
             </div>
             <input
+              required
               name="pdf"
               type="file"
               className="file-input file-input-bordered w-full max-w-xs"

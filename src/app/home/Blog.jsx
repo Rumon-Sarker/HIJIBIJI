@@ -1,5 +1,5 @@
 "use client";
-import advancedFormat from 'dayjs/plugin/advancedFormat';
+import advancedFormat from "dayjs/plugin/advancedFormat";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -11,10 +11,10 @@ import "swiper/css/navigation";
 import { Autoplay, FreeMode, Navigation } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
-import dayjs from 'dayjs';
+import dayjs from "dayjs";
 
 const Blog = ({ blog }) => {
-  dayjs.extend(advancedFormat); 
+  dayjs.extend(advancedFormat);
 
   return (
     <div className="my-10 mx-5 md:mx-10 lg:mx-20">
@@ -69,12 +69,17 @@ const Blog = ({ blog }) => {
 
                 <div className="text-gray-400 text-xs mx-5 my-4">
                   {/* Format the date here using dayjs */}
-                  <h1>{dayjs(item?.createdAt).format('dddd - MMMM Do, YYYY')}</h1>
+                  <h1>
+                    {dayjs(item?.createdAt).format("dddd - MMMM Do, YYYY")}
+                  </h1>
                 </div>
                 <div className="flex gap-5 flex-wrap my-3 text-xs px-5">
-                  <h1 className="bg-main px-2 py-1 text-white rounded-md">BFSI</h1>
-                  <h1 className="bg-main px-2 py-1 text-white rounded-md">Product Engineering</h1>
-                
+                  <h1 className="bg-main px-2 py-1 text-white rounded-md">
+                    {item.word1}
+                  </h1>
+                  <h1 className="bg-main px-2 py-1 text-white rounded-md">
+                    {item.word2}
+                  </h1>
                 </div>
               </div>
             </div>

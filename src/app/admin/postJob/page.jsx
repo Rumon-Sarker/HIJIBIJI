@@ -1,9 +1,9 @@
 "use client";
 import React, { useRef, useState } from "react";
 import { createJob } from "../../../controls/postJob/postJob";
-import toast, {Toaster} from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 const PostJob = () => {
-  let formRef = useRef(null)
+  let formRef = useRef(null);
   const [inputFields, setInputFields] = useState([{ value: "" }]);
 
   // Handle adding a new input field
@@ -18,7 +18,6 @@ const PostJob = () => {
     setInputFields(values);
   };
 
-  
   const handlePost = async (formData) => {
     formData.append("jobResponsibility", JSON.stringify(inputFields));
     console.log(formData);
@@ -33,7 +32,7 @@ const PostJob = () => {
   };
   return (
     <div>
-      <Toaster/>
+      <Toaster />
       <div className="lg:mx-10 my-10">
         <h1 className="text-main text-3xl text-center my-2 uppercase">
           post blog data
@@ -49,6 +48,7 @@ const PostJob = () => {
                 <span className="label-text">Title of Job</span>
               </div>
               <input
+                required
                 name="jobTitle"
                 type="text"
                 placeholder="type title of the job"
@@ -59,7 +59,11 @@ const PostJob = () => {
               <div className="label">
                 <span className="label-text">Select job Category</span>
               </div>
-              <select name="category" className="select select-bordered">
+              <select
+                required
+                name="category"
+                className="select select-bordered"
+              >
                 <option disabled defaultChecked>
                   Pick one
                 </option>
@@ -74,6 +78,7 @@ const PostJob = () => {
                 <span className="label-text">Department name</span>
               </div>
               <input
+                required
                 type="text"
                 name="departmentName"
                 placeholder="type department name"
@@ -85,6 +90,7 @@ const PostJob = () => {
                 <span className="label-text">Location</span>
               </div>
               <input
+                required
                 name="location"
                 type="text"
                 placeholder="type location"
@@ -98,6 +104,7 @@ const PostJob = () => {
                 <span className="label-text">Deadline</span>
               </div>
               <input
+                required
                 name="date"
                 type="date"
                 placeholder="type deadline"
@@ -109,6 +116,7 @@ const PostJob = () => {
                 <span className="label-text">Vacancy</span>
               </div>
               <input
+                required
                 name="vacancy"
                 type="number"
                 placeholder="type number of vacancies"
@@ -120,6 +128,7 @@ const PostJob = () => {
                 <span className="label-text">salary</span>
               </div>
               <input
+                required
                 name="salary"
                 type="text"
                 placeholder="type salary amount"
@@ -135,6 +144,7 @@ const PostJob = () => {
               {inputFields.map((input, index) => (
                 <div key={index}>
                   <input
+                    required
                     className="input input-bordered mt-5"
                     type="text"
                     value={input.value}

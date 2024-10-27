@@ -32,6 +32,8 @@ model Portfolio {
 
 model Blogs {
   id          Int      @id @default(autoincrement())
+  word1       String
+  word2       String
   name        String
   category    String
   description String
@@ -151,6 +153,9 @@ model ApplyForm {
 
 model CaseStudy {
   id         Int    @id @default(autoincrement())
+  word1      String
+  word2      String
+  word3      String
   name       String
   descripion String
 }

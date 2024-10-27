@@ -30,9 +30,54 @@ const PostCaseStudy = () => {
             <div className="md:flex justify-between flex-row gap-20 w-full">
               <label className="form-control w-full max-w-xs">
                 <div className="label">
+                  <span className="label-text">
+                    Card Title word 1 ( maximum 1 word*)
+                  </span>
+                </div>
+                <input
+                  required
+                  name="word1"
+                  type="text"
+                  placeholder="type only one word"
+                  className="input input-bordered w-full max-w-xs"
+                />
+              </label>
+              <label className="form-control w-full max-w-xs">
+                <div className="label">
+                  <span className="label-text">
+                    Card Title word 2 ( maximum 1 word*)
+                  </span>
+                </div>
+                <input
+                  required
+                  name="word2"
+                  type="text"
+                  placeholder="type only one word"
+                  className="input input-bordered w-full max-w-xs"
+                />
+              </label>
+              <label className="form-control w-full max-w-xs">
+                <div className="label">
+                  <span className="label-text">
+                    Card Title word 3 ( maximum 1 word*)
+                  </span>
+                </div>
+                <input
+                  required
+                  name="word3"
+                  type="text"
+                  placeholder="type only one word"
+                  className="input input-bordered w-full max-w-xs"
+                />
+              </label>
+            </div>
+            <div className="md:flex justify-between flex-row gap-20 w-full">
+              <label className="form-control w-full max-w-xs">
+                <div className="label">
                   <span className="label-text">CaseStudy Name</span>
                 </div>
                 <input
+                  required
                   name="name"
                   type="text"
                   placeholder="type service name"
@@ -45,6 +90,7 @@ const PostCaseStudy = () => {
                 <span className="label-text">Description</span>
               </div>
               <textarea
+                required
                 name="description"
                 className="textarea textarea-md textarea-bordered h-24"
                 placeholder="Enter Your Message"

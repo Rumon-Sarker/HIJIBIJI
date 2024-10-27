@@ -1,7 +1,10 @@
 "use client";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { createBg1, createBg2 } from "../../../controls/postImageAndVIdeo/createImageAndVideo.js";
+import {
+  createBg1,
+  createBg2,
+} from "../../../controls/postImageAndVIdeo/createImageAndVideo.js";
 
 const PostHomeBg = () => {
   const handlePost1 = async (formData) => {
@@ -23,7 +26,6 @@ const PostHomeBg = () => {
     }
   };
 
-  
   return (
     <div>
       <Toaster />
@@ -37,9 +39,12 @@ const PostHomeBg = () => {
         >
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">Pick image for 1st background</span>
+              <span className="label-text">
+                Pick image for 1st background (maximum file size 5MB)
+              </span>
             </div>
             <input
+              required
               name="image"
               type="file"
               className="file-input file-input-bordered w-full max-w-xs"
@@ -62,10 +67,11 @@ const PostHomeBg = () => {
             <label className="form-control w-full max-w-xs">
               <div className="label">
                 <span className="label-text">
-                  Pick image for 2nd background
+                  Pick image for 2nd background (maximum file size 5MB)
                 </span>
               </div>
               <input
+                required
                 name="image"
                 type="file"
                 className="file-input file-input-bordered w-full max-w-xs"

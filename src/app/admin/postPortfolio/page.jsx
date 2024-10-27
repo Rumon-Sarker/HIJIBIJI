@@ -91,6 +91,7 @@ const PostPortfolio = () => {
             <span className="label-text">Scope of the work</span>
           </div>
           <textarea
+            required
             id="scope"
             name="scope"
             className="textarea textarea-md textarea-bordered h-24"
@@ -99,7 +100,7 @@ const PostPortfolio = () => {
         </label>
         <label className="form-control w-full max-w-xs">
           <div className="label">
-            <span className="label-text">Pick image</span>
+            <span className="label-text">Pick image (maximum file size 5MB)</span>
           </div>
           <input
             required

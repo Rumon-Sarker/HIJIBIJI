@@ -18,8 +18,8 @@ const RegisterPage = () => {
       toast.success("You have successfully Created your account!");
       router.push("/api/auth/login");
     } catch (error) {
-      toast.error("An error occurred!");
-      console.error(error);
+      toast.error(`User already exists`);
+      console.log(error);
     }
   };
   return (
