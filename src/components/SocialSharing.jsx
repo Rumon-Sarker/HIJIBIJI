@@ -9,7 +9,7 @@ import { FaLink } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 const SocialSharing = ({ title }) => {
   const [currentUrl, setCurrentUrl] = useState("");
-console.log(currentUrl);
+  console.log(currentUrl);
   useEffect(() => {
     if (typeof window !== "undefined") {
       setCurrentUrl(window.location.href);
@@ -27,10 +27,16 @@ console.log(currentUrl);
   };
 
   const handleShare = (platformUrl) => {
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const popupWidth = Math.floor(screenWidth * 0.9);
+    const popupHeight = Math.floor(screenHeight * 0.9);
+    const left = Math.floor((screenWidth - popupWidth) / 2);
+    const top = Math.floor((screenHeight - popupHeight) / 2);
     window.open(
       platformUrl,
       "_blank",
-      "noopener,noreferrer,width=600,height=400"
+      `noopener,noreferrer,width=${popupWidth},height=${popupHeight},left=${left},top=${top}`
     );
   };
 
