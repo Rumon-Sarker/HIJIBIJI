@@ -43,7 +43,7 @@ const Banner = ({ bg1 }) => {
           <Image alt="" className="md:h-[550px]" width={1920} height={900} src={banner} />
           <div className="absolute -left-20">
           <Image
-          className="w-[85px] ms-2 md:w-[180px]"
+          className="w-[70px] ms-2 md:w-[180px]"
             src={img1}
             alt=""
             width={200}
@@ -53,7 +53,7 @@ const Banner = ({ bg1 }) => {
         </div>
           <div className="absolute -left-8 -mt-1">
           <Image
-          className="w-[90px] md:w-[185px]"
+          className="w-[75px] md:w-[185px]"
             src={img2}
             alt=""
             width={200}
