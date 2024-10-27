@@ -56,7 +56,7 @@ const CaseStudyCaro = ({ caseStudies }) => {
                     {" "}
                     {caseStudy.name.slice(0, 25)}{" "}
                     <span className=" font-thin">
-                      {caseStudy.name.slice(25)}
+                      {caseStudy.name.slice(25,56)}
                     </span>
                   </h1>
                   <div className="flex gap-5 flex-wrap my-3 text-xs px-5">

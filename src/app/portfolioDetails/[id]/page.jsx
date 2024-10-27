@@ -11,6 +11,7 @@ import PortfolioDataFilter from "../../../components/PortfolioDataFilter";
 import { PrismaClient } from "@prisma/client";
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import dayjs from "dayjs";
+import SocialSharing from "@/components/SocialSharing";
 const PortfolioDetails = async ({ params }) => {
   const prisma = new PrismaClient();
 
@@ -44,23 +45,7 @@ const PortfolioDetails = async ({ params }) => {
 
           <h1 className="text-text text-xl my-6">{formattedDate}</h1>
           <h1 className="text-text ">Share </h1>
-          <div className="text-text flex gap-5 my-5">
-            <Link href={"/"}>
-              <FaTwitter />
-            </Link>
-            <Link href={"/"}>
-              <FaSquareFacebook />
-            </Link>
-            <Link href={"/"}>
-              <TiSocialLinkedin />
-            </Link>
-            <Link href={"/"}>
-              <MdEmail />
-            </Link>
-            <Link href={"/"}>
-              <FaLink />
-            </Link>
-          </div>
+         <SocialSharing title={name}/>
           <h1 className="border-b-2 border-text my-5"></h1>
         </div>
         <div className="lg:mx-20 mx-5 md:mx-12 flex flex-col justify-center items-center">
