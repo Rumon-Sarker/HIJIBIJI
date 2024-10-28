@@ -1,8 +1,8 @@
 "use server";
 import { PrismaClient } from "@prisma/client";
 import { uploadImage } from "../uploadImage/uploadImage";
-import { uploadPDF } from "../uploadPdf/uploadpdf";
 import { revalidatePath } from "next/cache";
+import { uploadPDF } from "../uploadPdf/uploadpdf";
 
 const prisma = new PrismaClient();
 
@@ -21,7 +21,7 @@ export const createService = async (formData) => {
   const line3 = formData.get("line3");
 
   try {
-    const serviceResponse = await prisma.services.create({
+    await prisma.services.create({
       data: {
         name,
         line1,
@@ -33,7 +33,7 @@ export const createService = async (formData) => {
         image: imageUrl,
       },
     });
-    return { status: "Service created successfully", service: serviceResponse };
+    return { status: "Service created successfully" };
   } catch (error) {
     console.error("Error creating service:", error);
     return { error: error.message || "Failed to create service" };
