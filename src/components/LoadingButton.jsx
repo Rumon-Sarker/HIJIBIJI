@@ -9,7 +9,7 @@ const LoadingButton = ({title,loadingTitle}) => {
     <div className="flex justify-end">
       <button
         type="submit"
-        className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main"
+        className="btn rounded-full bg-main hover:bg-transparent hover:border-2 hover:border-main"
         disabled={pending}
       >
         {pending ? (
