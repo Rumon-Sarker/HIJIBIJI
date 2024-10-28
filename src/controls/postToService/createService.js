@@ -10,9 +10,9 @@ export const createService = async (formData) => {
   const description = formData.get("description");
   const imageFile = formData.get("image");
   const pdfFile = formData.get("pdf");
-  const imageUrl = await uploadImage(imageFile);
-  // const pdfUrl = await uploadPDF(pdfFile);
-  const pdfUrl = 'hijibusy.com'
+  // const imageUrl = await uploadImage(imageFile);
+  const pdfUrl = await uploadPDF(pdfFile);
+  const imageUrl = "hijibusy.com";
   const line1 = formData.get("line1");
   const line2 = formData.get("line2");
   const line3 = formData.get("line3");
@@ -20,11 +20,11 @@ export const createService = async (formData) => {
     await prisma.services.create({
       data: {
         name,
-        description,
-        scope,
         line1,
         line2,
         line3,
+        description,
+        scope,
         pdf: pdfUrl,
         image: imageUrl,
       },
