@@ -1,6 +1,6 @@
 import { storage } from "../../firebase/firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
+import { v2 as cloudinary } from "cloudinary";
 // Function to upload a file
 export const uploadFile = async (file) => {
   const storageRef = ref(storage, `uploads/${file.name}`);
