@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { createCaseStudy } from "../../../controls/postToCaseStudy/postToCaseStudy";
+import LoadingButton from "@/components/LoadingButton";
 const PostCaseStudy = () => {
   let formRef = useRef(null);
   const handlePost = async (formData) => {
@@ -98,12 +99,7 @@ const PostCaseStudy = () => {
             </label>
 
             <div className="flex justify-end">
-              <button
-                type="submit"
-                className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main"
-              >
-                Post
-              </button>
+              <LoadingButton title={"Post"} loadingTitle={"Posting"} />
             </div>
           </form>
         </div>

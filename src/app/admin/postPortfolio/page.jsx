@@ -2,6 +2,7 @@
 import toast, { Toaster } from "react-hot-toast";
 import { createPortfolio } from "../../../controls/postToPortfolio/createPortfolio.js";
 import { useRef } from "react";
+import LoadingButton from "@/components/LoadingButton.jsx";
 
 const PostPortfolio = () => {
   const formRef = useRef(null);
@@ -100,7 +101,9 @@ const PostPortfolio = () => {
         </label>
         <label className="form-control w-full max-w-xs">
           <div className="label">
-            <span className="label-text">Pick image (maximum file size 5MB)</span>
+            <span className="label-text">
+              Pick image (maximum file size 5MB)
+            </span>
           </div>
           <input
             required
@@ -110,12 +113,7 @@ const PostPortfolio = () => {
           />
         </label>
         <div className="flex justify-end">
-          <button
-            type="submit"
-            className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main"
-          >
-            Post
-          </button>
+          <LoadingButton title={"Post"} loadingTitle={"Posting"} />
         </div>
       </form>
     </div>

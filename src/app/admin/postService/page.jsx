@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import { createService } from "../../../controls/postToService/createService.js";
 import toast, { Toaster } from "react-hot-toast";
+import LoadingButton from "@/components/LoadingButton.jsx";
 
 const PostService = () => {
   let formRef = useRef(null);
@@ -101,7 +102,9 @@ const PostService = () => {
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">Pick image (maximum file size 5MB)</span>
+              <span className="label-text">
+                Pick image (maximum file size 5MB)
+              </span>
             </div>
             <input
               required
@@ -122,12 +125,7 @@ const PostService = () => {
             />
           </label>
           <div className="flex justify-end">
-            <button
-              type="submit"
-              className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main"
-            >
-              Post
-            </button>
+            <LoadingButton title={"Post"} loadingTitle={"Posting"} />
           </div>
         </form>
       </div>

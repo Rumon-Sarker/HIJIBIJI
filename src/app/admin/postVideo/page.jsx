@@ -3,6 +3,7 @@ import React from "react";
 
 import toast, { Toaster } from "react-hot-toast";
 import { createVideo } from "../../../controls/postImageAndVIdeo/createImageAndVideo";
+import LoadingButton from "@/components/LoadingButton";
 
 const PostVideo = () => {
   const handlePost = async (fromData) => {
@@ -37,12 +38,7 @@ const PostVideo = () => {
             />
           </label>
           <div className="flex justify-end">
-            <button
-              type="submit"
-              className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main"
-            >
-              Post
-            </button>
+            <LoadingButton title={"Post"} loadingTitle={"Posting"} />
           </div>
         </form>
       </div>

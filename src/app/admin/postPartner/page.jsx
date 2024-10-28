@@ -2,6 +2,7 @@
 import React from "react";
 import { createPartnerImage } from "../../../controls/postImageAndVIdeo/createImageAndVideo";
 import toast, { Toaster } from "react-hot-toast";
+import LoadingButton from "@/components/LoadingButton";
 
 const PostPartner = () => {
   const handlePost = async (formData) => {
@@ -26,7 +27,9 @@ const PostPartner = () => {
         >
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">Pick image (maximum file size 5MB)</span>
+              <span className="label-text">
+                Pick image (maximum file size 5MB)
+              </span>
             </div>
             <input
               required
@@ -36,9 +39,7 @@ const PostPartner = () => {
             />
           </label>
           <div className="flex justify-end">
-            <button className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main">
-              Post
-            </button>
+            <LoadingButton title={"Post"} loadingTitle={"Posting"} />
           </div>
         </form>
       </div>

@@ -5,6 +5,7 @@ import {
   createBg1,
   createBg2,
 } from "../../../controls/postImageAndVIdeo/createImageAndVideo.js";
+import LoadingButton from "@/components/LoadingButton.jsx";
 
 const PostHomeBg = () => {
   const handlePost1 = async (formData) => {
@@ -51,12 +52,7 @@ const PostHomeBg = () => {
             />
           </label>
           <div className="flex justify-end">
-            <button
-              type="submit"
-              className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main"
-            >
-              Post
-            </button>
+            <LoadingButton title={"Post"} loadingTitle={"Posting"} />
           </div>
         </form>
         <div>
@@ -78,12 +74,7 @@ const PostHomeBg = () => {
               />
             </label>
             <div className="flex justify-end">
-              <button
-                type="submit"
-                className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main"
-              >
-                Post
-              </button>
+              <LoadingButton title={"Post"} loadingTitle={"Posting"} />
             </div>
           </form>
         </div>

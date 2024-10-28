@@ -2,6 +2,7 @@
 import React, { useRef, useState } from "react";
 import { createJob } from "../../../controls/postJob/postJob";
 import toast, { Toaster } from "react-hot-toast";
+import LoadingButton from "@/components/LoadingButton";
 const PostJob = () => {
   let formRef = useRef(null);
   const [inputFields, setInputFields] = useState([{ value: "" }]);
@@ -163,12 +164,7 @@ const PostJob = () => {
             </div>
           </div>
           <div className="flex justify-end">
-            <button
-              type="submit"
-              className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main"
-            >
-              Post
-            </button>
+            <LoadingButton title={"Post"} loadingTitle={"Posting"} />
           </div>
         </form>
       </div>

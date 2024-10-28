@@ -1,12 +1,13 @@
-'use client'
+"use client";
 import React, { useRef } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { createContact } from "../../controls/PostContact/CreateContact";
 import toast, { Toaster } from "react-hot-toast";
+import LoadingButton from "@/components/LoadingButton";
 const Contact = () => {
-  const formRef = useRef(null)
+  const formRef = useRef(null);
   const handlePost = async (formData) => {
     const res = await createContact(formData);
     if (res.status) {
@@ -137,12 +138,7 @@ const Contact = () => {
               ></textarea>
             </label>
             <div className="flex justify-end">
-              <button
-                type="submit"
-                className="btn bg-main hover:bg-transparent hover:border-2 hover:border-main"
-              >
-                Submit
-              </button>
+              <LoadingButton title={"Submit"} loadingTitle={"Submitting"} />
             </div>
           </form>
         </div>
