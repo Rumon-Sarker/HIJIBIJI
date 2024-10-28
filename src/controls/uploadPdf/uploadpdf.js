@@ -1,15 +1,24 @@
-import { v2 as cloudinary } from "cloudinary";
+import { storage } from "../../firebase/firebaseConfig";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+// Function to upload a file
+export const uploadFile = async (file) => {
+  const storageRef = ref(storage, `uploads/${file.name}`);
+  await uploadBytes(storageRef, file);
+  const url = await getDownloadURL(storageRef);
+  return url;
+};
 
 export async function uploadPDF(file) {
-  const uploadPreset = "upload"; // Make sure this preset allows PDF uploads
+  const uploadPreset = "upload";
   const arrayBuffer = await file.arrayBuffer();
   const buffer = new Uint8Array(arrayBuffer);
   const result = await new Promise((resolve, reject) => {
     cloudinary.uploader
       .upload_stream(
-        { 
+        {
           upload_preset: uploadPreset,
-          resource_type: 'raw' // Specify that you're uploading a non-image file (like PDF)
+          resource_type: "raw",
         },
         function (error, result) {
           if (error || result === undefined) {
@@ -22,5 +31,5 @@ export async function uploadPDF(file) {
       .end(buffer);
   });
 
-  return result.secure_url; // Return the secure URL for the uploaded PDF
+  return result.secure_url;
 }

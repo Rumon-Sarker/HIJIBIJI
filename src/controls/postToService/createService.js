@@ -11,7 +11,8 @@ export const createService = async (formData) => {
   const imageFile = formData.get("image");
   const pdfFile = formData.get("pdf");
   const imageUrl = await uploadImage(imageFile);
-  const pdfUrl = await uploadPDF(pdfFile);
+  // const pdfUrl = await uploadPDF(pdfFile);
+  const pdfUrl = 'hijibusy.com'
   const line1 = formData.get("line1");
   const line2 = formData.get("line2");
   const line3 = formData.get("line3");
