@@ -12,9 +12,9 @@ const OurPartners = ({ partners }) => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 px-2 md:px-12 my-16 content-center">
         {partners?.map((partner) => (
-          <div className="shadow-xl bg-base-200 rounded-xl" key={partner.id}>
+          <div className="shadow-xl bg-base-100 rounded-xl" key={partner.id}>
             <Image
-              className="object-cover rounded-xl"
+              className="rounded-xl"
               alt=""
               width={250}
               height={150}
