@@ -4,6 +4,8 @@ import React, { useRef } from "react";
 import { createApplication } from "../controls/PostApplication/postApplication";
 import toast, { Toaster } from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Loading from "@/app/loading";
+import LoadingButton from "./LoadingButton";
 const ApplicationForm = ({ jobId }) => {
   let formRef = useRef(null);
   let router = useRouter();
@@ -206,12 +208,7 @@ const ApplicationForm = ({ jobId }) => {
               </Label>
             </div>
             <div className="flex justify-end">
-              <button
-                type="submit"
-                className="btn bg-main hover:border-2 hover:border-main text-white hover:text-black hover:bg-transparent my-5"
-              >
-                Submit
-              </button>
+              <LoadingButton title={"Submit"} loadingTitle={"Submitting"} />
             </div>
           </form>
         </div>
