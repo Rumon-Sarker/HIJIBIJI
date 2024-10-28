@@ -16,8 +16,8 @@ const OurPartners = ({ partners }) => {
             <Image
               className="rounded-xl"
               alt=""
-              width={250}
-              height={150}
+              width={400}
+              height={300}
               src={partner.image}
             />
           </div>

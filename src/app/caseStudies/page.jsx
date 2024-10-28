@@ -17,7 +17,7 @@ const CaseStudies = async () => {
         {data?.map((caseStudy) => (
           <div
             key={caseStudy.id}
-            className="bg-base-100 rounded-3xl p-3 m-3 h-[400px] shadow-xl"
+            className="bg-base-100 rounded-3xl p-3 m-3 w-[350px] h-[400px] shadow-xl"
           >
             <div className="text-main my-1 mx-5">
               <h1 className="px-5 text-4xl font-bold">
