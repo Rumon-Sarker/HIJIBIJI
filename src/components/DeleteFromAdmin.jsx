@@ -6,18 +6,19 @@ import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 const DeleteFromAdmin = ({ data, deleteFromServer }) => {
-  const [loading, setLoading] = useState(false);
+  const [loadingId, setLoadingId] = useState(null);
+
   const handleDelete = async (id) => {
-    setLoading(true);
+    setLoadingId(id);
     const res = await deleteFromServer(id);
     if (res.status) {
       toast.success("You have successfully deleted this");
+    } else if (res.error) {
+      toast.error("An error occurred, couldn't delete");
     }
-    if (res.error) {
-      toast.error("An error occurred couldn't Delete");
-    }
-    setLoading(false);
+    setLoadingId(null);
   };
+
   return (
     <div>
       <Toaster />
@@ -37,15 +38,15 @@ const DeleteFromAdmin = ({ data, deleteFromServer }) => {
             <button
               onClick={() => handleDelete(item.id)}
               className="btn rounded-full btn-error hover:ease-in-out hover:scale-110 hover:transition-all hover:duration-150"
-              disabled={loading}
+              disabled={loadingId === item.id}
             >
-              {loading ? (
+              {loadingId === item.id ? (
                 <span className="flex items-center">
                   Deleting
                   <span className="loading loading-spinner text-neutral ml-2"></span>
                 </span>
               ) : (
-                `Delete`
+                "Delete"
               )}
             </button>
           </div>
