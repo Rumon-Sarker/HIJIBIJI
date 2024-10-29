@@ -23,17 +23,19 @@ const CaseStudies = async () => {
               <h1 className="px-5 text-4xl font-bold">
                 {" "}
                 {caseStudy.name.slice(0, 25)}{" "}
-                <span className=" font-thin">{caseStudy.name.slice(25,50)}</span>
+                <span className=" font-thin">
+                  {caseStudy.name.slice(25, 50)}
+                </span>
               </h1>
               <div className="flex gap-5 flex-wrap my-3 text-xs px-5">
                 <h1 className="bg-main px-2 py-1 text-white rounded-md">
-                  BFSI
+                  {caseStudy.word1}
                 </h1>
                 <h1 className="bg-main px-2 py-1 text-white rounded-md">
-                  Product Engineering
+                  {caseStudy.word2}
                 </h1>
                 <h1 className="bg-main px-2 py-1 text-white rounded-md">
-                  Software Architecture
+                  {caseStudy.word3}
                 </h1>
               </div>
             </div>

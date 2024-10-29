@@ -58,3 +58,13 @@ export const deleteJob = async (id) => {
     revalidatePath("/admin/postJob");
   }
 };
+export const deleteCaseStudy = async (id) => {
+  try {
+    await prisma.caseStudy.delete({ where: { id: id } });
+    return { status: "successfully deleted" };
+  } catch (error) {
+    return { error: "could not delete" };
+  } finally {
+    revalidatePath("/admin/postCaseStudy");
+  }
+};
