@@ -27,7 +27,7 @@ const DeleteFromAdmin = ({ data, deleteFromServer }) => {
         {data.map((item) => (
           <div
             key={item.id}
-            className="flex gap-1 justify-between items-center"
+            className="flex gap-1 justify-between items-center shadow-xl p-5 rounded-lg bg-base-100"
           >
             <div className="avatar">
               <div className="w-16 rounded-xl">

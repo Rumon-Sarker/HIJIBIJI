@@ -12,7 +12,7 @@ const BlogComponents = ({ data }) => {
     <div>
       <div className="w-full">
         {/* Tab buttons */}
-        <div className="flex flex-wrap lg:mx-10 lg:flex-row justify-center space-x-5 rounded-lg border-b-4 shadow-xl p-3 my-8">
+        <div className="flex flex-wrap lg:mx-10 lg:flex-row justify-center space-x-5 rounded-lg shadow-xl p-3 my-8">
           <button
             className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
               activeTab === 1

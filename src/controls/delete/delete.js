@@ -47,6 +47,9 @@ export const deleteService = async (id) => {
 };
 export const deleteJob = async (id) => {
   try {
+    await prisma.applyForm.deleteMany({
+      where: { jobId: id },
+    });
     await prisma.job.delete({ where: { id: id } });
     return { status: "successfully deleted" };
   } catch (error) {
