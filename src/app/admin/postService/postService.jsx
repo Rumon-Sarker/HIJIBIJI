@@ -106,7 +106,7 @@ const PostService = () => {
           <label className="form-control w-full max-w-xs">
             <div className="label">
               <span className="label-text">
-                Pick image (maximum file size 5MB)
+                Pick image (maximum file size 5MB & lower Resolution must)
               </span>
             </div>
             <input
@@ -156,7 +156,7 @@ const PostService = () => {
                   <span className="font-semibold">Click to upload</span> or drag
                   and drop
                 </p>
-                <p className=" text-gray-500 dark:text-gray-400">Upload PDF</p>
+                <p className=" text-gray-500 dark:text-gray-400">Upload PDF (Max 5MB)</p>
               </div>
               <FileInput
                 required
