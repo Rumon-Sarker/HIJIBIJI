@@ -116,6 +116,7 @@ const PostService = () => {
               className="file-input file-input-bordered w-full max-w-xs"
             />
           </label>
+          
           <div className="flex w-full items-center justify-center">
             <Label
               htmlFor="dropzone-file"
