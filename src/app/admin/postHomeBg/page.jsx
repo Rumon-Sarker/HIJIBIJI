@@ -11,7 +11,7 @@ const PostHomeBg = () => {
   const handlePost1 = async (formData) => {
     const res = await createBg1(formData);
     if (res.status) {
-      toast.success("Background image 1 has been posted successfully!");
+      toast.success("Background image 1 & title has been posted successfully!");
     }
     if (res.error) {
       toast.error("Background image 1 has not been posted!");
@@ -49,6 +49,30 @@ const PostHomeBg = () => {
               name="image"
               type="file"
               className="file-input file-input-bordered w-full max-w-xs"
+            />
+          </label>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">Title</span>
+            </div>
+            <input
+              required
+              name="title"
+              type="text"
+              placeholder="type here"
+              className="input input-bordered w-full max-w-xs"
+            />
+          </label>
+          <label className="form-control w-full max-w-xs">
+            <div className="label">
+              <span className="label-text">Short description</span>
+            </div>
+            <input
+              required
+              name="description"
+              type="text"
+              placeholder="type here"
+              className="input input-bordered w-full max-w-xs"
             />
           </label>
           <div className="flex justify-end">

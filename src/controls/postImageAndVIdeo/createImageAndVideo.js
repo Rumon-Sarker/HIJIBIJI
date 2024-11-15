@@ -6,11 +6,15 @@ import { revalidatePath } from "next/cache";
 const prisma = new PrismaClient();
 
 export const createBg1 = async (formData) => {
+  const title = formData.get("title");
+  const details = formData.get("details");
   const imageFile = formData.get("image");
   const imageUrl = await uploadImage(imageFile);
   try {
     await prisma.bg1.create({
       data: {
+        title,
+        details,
         image: imageUrl,
       },
     });
