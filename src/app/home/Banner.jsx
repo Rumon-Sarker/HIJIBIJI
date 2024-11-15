@@ -7,13 +7,13 @@ import img2 from "./../../../public/bg.png";
 import Link from "next/link";
 
 const Banner = ({ bg1 }) => {
-  const { image } = bg1;
+  
   return (
     <div className="">
       <div>
         <div
           style={{
-            backgroundImage: `url(${image})`,
+            backgroundImage: `url(${bg1?.image})`,
             height: "600px",
             backgroundSize: "cover",
             backgroundPosition: "center",
