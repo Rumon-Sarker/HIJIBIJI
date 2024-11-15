@@ -60,6 +60,8 @@ model Services {
 
 model Bg1 {
   id        Int      @id @default(autoincrement())
+  title     String
+  details   String
   image     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -158,4 +160,11 @@ model CaseStudy {
   word3      String
   name       String
   descripion String
+}
+
+model Experience {
+  id      Int    @id @default(autoincrement())
+  title   String
+  details String
+  image   String
 }
