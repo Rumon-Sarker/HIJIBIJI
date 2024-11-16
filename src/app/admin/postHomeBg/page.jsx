@@ -69,7 +69,7 @@ const PostHomeBg = () => {
             </div>
             <input
               required
-              name="description"
+              name="details"
               type="text"
               placeholder="type here"
               className="input input-bordered w-full max-w-xs"

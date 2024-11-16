@@ -10,6 +10,7 @@ export const createBg1 = async (formData) => {
   const details = formData.get("details");
   const imageFile = formData.get("image");
   const imageUrl = await uploadImage(imageFile);
+
   try {
     await prisma.bg1.create({
       data: {
@@ -73,6 +74,28 @@ export const createVideo = async (formData) => {
     return { status: "Video created successfully" };
   } catch (error) {
     return { error: "failed to created Video" };
+  } finally {
+    revalidatePath("/about");
+  }
+};
+export const createExperience = async (formData) => {
+  const title = formData.get('title');
+  const details = formData.get('details');
+  const imageFile = formData.get("image");
+  const imageUrl = await uploadImage(imageFile);
+  console.log(videoUrl);
+  try {
+    await prisma.experience.create({
+      data: {
+        title,
+        details,
+        image: imageUrl
+       
+      },
+    });
+    return { status: "experience created successfully" };
+  } catch (error) {
+    return { error: "failed to create experience"};
   } finally {
     revalidatePath("/about");
   }
