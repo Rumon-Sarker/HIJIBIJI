@@ -4,23 +4,20 @@ import React from "react";
 const AboutTabContent = ({ tabData }) => {
   return (
     <div>
-      {tabData?.map((data) => (
-        <div
-          key={data.id}
-          className="flex lg:flex-row lg:space-x-28 px-2 space-x-3 md:space-x-12 items-center"
-        >
-          <div className="flex flex-col space-y-5">
+      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-5">
+        {tabData?.map((data) => (
+          <div key={data.id} className="flex flex-col space-y-5 items-center">
             <Image
-              className="object-cover"
+              className="object-cover h-14 w-14"
               width={50}
               height={50}
               src={data.image}
               alt=""
             />
-            <h1>{}</h1>
+            <h1>{data.name}</h1>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@
 import LoadingButton from "@/components/LoadingButton";
 import { createTechnology } from "@/controls/postImageAndVIdeo/createImageAndVideo";
 import { useRef } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const Technology = () => {
   const formRef = useRef(null);
@@ -19,7 +20,8 @@ const Technology = () => {
 
   return (
     <div className="my-10 mx-10">
-        <h1 className="my-5 text-center text-3xl">Post Technology</h1>
+      <Toaster />
+      <h1 className="my-5 text-center text-3xl">Post Technology</h1>
       <form ref={formRef} action={handlePost}>
         <label className="form-control w-full max-w-xs">
           <div className="label">
@@ -35,15 +37,25 @@ const Technology = () => {
         </label>
         <label className="form-control w-full max-w-xs">
           <div className="label">
-            <span className="label-text">Category</span>
+            <span className="label-text">Select a Category</span>
           </div>
-          <input
+          <select
             required
+            id="category"
             name="category"
-            type="text"
-            placeholder="type here"
-            className="input input-bordered w-full max-w-xs"
-          />
+            className="select select-bordered"
+          >
+            <option disabled defaultChecked>
+              Pick one
+            </option>
+            <option>frontEnd</option>
+            <option>backend</option>
+            <option>uiUx</option>
+            <option>devOps</option>
+            <option>mobile</option>
+            <option>services</option>
+            <option>others</option>
+          </select>
         </label>
         <label className="form-control w-full max-w-xs">
           <div className="label">
