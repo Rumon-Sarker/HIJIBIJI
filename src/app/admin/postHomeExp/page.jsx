@@ -49,12 +49,15 @@ const PostHomeExp = () => {
             placeholder="Enter Your Message"
           ></textarea>
         </label>
-        <input
-          required
-          name="image"
-          type="file"
-          className="file-input file-input-bordered w-full max-w-xs"
-        />
+        <div className="flex flex-col gap-2">
+          <span>Pick an image(Max file size 5MB)</span>
+          <input
+            required
+            name="image"
+            type="file"
+            className="file-input file-input-bordered w-full max-w-xs"
+          />
+        </div>
         <div className="flex justify-end">
           <LoadingButton title={"Post"} loadingTitle={"Posting"} />
         </div>

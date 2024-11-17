@@ -99,6 +99,27 @@ export const createExperience = async (formData) => {
     revalidatePath("/");
   }
 };
+export const createTechnology = async (formData) => {
+  const name = formData.get("name");
+  const category = formData.get("category");
+  const imageFile = formData.get("image");
+  const imageUrl = await uploadImage(imageFile);
+
+  try {
+    await prisma.technology.create({
+      data: {
+        name,
+        category,
+        image: imageUrl,
+      },
+    });
+    return { status: "technology created successfully" };
+  } catch (error) {
+    return { error: "failed to create technology" };
+  } finally {
+    revalidatePath("/about");
+  }
+};
 export const createAboutUs = async (formData) => {
   const whoWeAre = formData.get("whoWeAre");
   const whyUs = formData.get("whyUs");

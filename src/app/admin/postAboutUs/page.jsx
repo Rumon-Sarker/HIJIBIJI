@@ -3,6 +3,7 @@ import LoadingButton from "@/components/LoadingButton";
 import React, { useRef } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { createAboutUs } from "@/controls/postImageAndVIdeo/createImageAndVideo";
+import Technology from "./Technology";
 const PostAboutUs = () => {
   const formRef = useRef(null);
   const handlePost = async (formData) => {
@@ -107,6 +108,7 @@ const PostAboutUs = () => {
             <LoadingButton title={"Post"} loadingTitle={"Posting"} />
           </div>
         </form>
+        <Technology />
       </div>
     </div>
   );
