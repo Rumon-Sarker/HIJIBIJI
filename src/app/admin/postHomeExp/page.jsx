@@ -33,7 +33,7 @@ const PostHomeExp = () => {
               required
               name="title"
               type="text"
-              placeholder="type service name"
+              placeholder="type here"
               className="input input-bordered w-full max-w-xs"
             />
           </label>

@@ -9,12 +9,15 @@ const Home = async () => {
   const prisma = new PrismaClient();
   const bg1 = await prisma.bg1.findFirst({ orderBy: { createdAt: "desc" } });
   const bg2 = await prisma.bg2.findFirst({ orderBy: { createdAt: "desc" } });
+  const exp = await prisma.experience.findFirst({
+    orderBy: { createdAt: "desc" },
+  });
   const partners = await prisma.partners.findMany({});
   const blog = await prisma.blogs.findMany({});
   const caseStudies = await prisma.caseStudy.findMany({});
   return (
     <div>
-      <Banner bg1={bg1} />
+      <Banner bg1={bg1} exp={exp} />
       <OurPartner partners={partners} />
       <CaseStudyCaro caseStudies={caseStudies} />
       <Blog blog={blog} />

@@ -34,6 +34,10 @@ const AdminLayout = ({ children }) => {
             </li>
             <li>
               {" "}
+              <Link href={"/admin/postAboutUs"}>Post AboutUs Data</Link>
+            </li>
+            <li>
+              {" "}
               <Link href={"/admin/postPortfolio"}>Post Portfolio Data</Link>
             </li>
             <li>

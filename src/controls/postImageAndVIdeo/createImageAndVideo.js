@@ -79,23 +79,50 @@ export const createVideo = async (formData) => {
   }
 };
 export const createExperience = async (formData) => {
-  const title = formData.get('title');
-  const details = formData.get('details');
+  const title = formData.get("title");
+  const details = formData.get("details");
   const imageFile = formData.get("image");
   const imageUrl = await uploadImage(imageFile);
-  console.log(videoUrl);
+
   try {
     await prisma.experience.create({
       data: {
         title,
         details,
-        image: imageUrl
-       
+        image: imageUrl,
       },
     });
     return { status: "experience created successfully" };
   } catch (error) {
-    return { error: "failed to create experience"};
+    return { error: "failed to create experience" };
+  } finally {
+    revalidatePath("/");
+  }
+};
+export const createAboutUs = async (formData) => {
+  const whoWeAre = formData.get("whoWeAre");
+  const whyUs = formData.get("whyUs");
+  const yearsInBusiness = formData.get("yearsInBusiness");
+  const mission = formData.get("mission");
+  const vision = formData.get("vision");
+  const values = formData.get("values");
+  const ourTechnology = formData.get("ourTechnology");
+
+  try {
+    await prisma.aboutUs.create({
+      data: {
+        whoWeAre,
+        whyUs,
+        yearsInBusiness,
+        mission,
+        vision,
+        values,
+        ourTechnology,
+      },
+    });
+    return { status: "About us created successfully" };
+  } catch (error) {
+    return { error: "failed to create aboutUs" };
   } finally {
     revalidatePath("/about");
   }

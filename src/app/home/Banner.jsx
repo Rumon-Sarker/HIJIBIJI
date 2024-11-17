@@ -1,12 +1,18 @@
 import Image from "next/image";
 import React from "react";
 import { FaArrowRight } from "react-icons/fa";
-import banner from "./../../../public/Image.png";
 import img1 from "./../../../public/Gradient.png";
 import img2 from "./../../../public/bg.png";
 import Link from "next/link";
 
-const Banner = ({ bg1 }) => {
+const Banner = ({ bg1, exp }) => {
+  function stringToSeparateArrays(inputString, separator = ".") {
+    const parts = inputString.split(separator);
+    return parts.map((part) => [part]);
+  }
+  const separateArrays = stringToSeparateArrays(exp?.details);
+  console.log(separateArrays);
+
   return (
     <div className="">
       <div>
@@ -43,7 +49,7 @@ const Banner = ({ bg1 }) => {
             className="md:h-[550px]"
             width={1920}
             height={900}
-            src={banner}
+            src={exp?.image}
           />
           <div className="absolute -left-20">
             <Image
@@ -76,21 +82,12 @@ const Banner = ({ bg1 }) => {
         </div>
 
         <div className="space-y-6 mt-5 ms-5  w-2/3">
-          <h1 className="text-main text-4xl">
-            Your experience starts with Hijibusy
-          </h1>
-          <p className="pt-12 text-text">
-            Engineering experiences that accelerate the growth of your business
-            has never been simpler
-          </p>
-          <p className="text-text">
-            We partner with you every step of the way to create solutions that
-            combine next generation product engineering, slick customer
-            experience and advanced AI.
-          </p>
-          <p className="text-text">
-            End-to-end partnership is at the heart of the Ciklum experience
-          </p>
+          <h1 className="text-main text-4xl">{exp?.title}</h1>
+          {separateArrays.map((newDetails, index) => (
+            <p key={index} className="mt-3 text-text">
+              {newDetails}
+            </p>
+          ))}
         </div>
       </div>
     </div>
