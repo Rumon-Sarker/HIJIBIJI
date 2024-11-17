@@ -5,24 +5,12 @@ import logo from "./../../../public/final 1.png";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button, Drawer, Sidebar } from "flowbite-react";
-import {
-  HiChartPie,
-  HiClipboard,
-  HiCollection,
-  HiInformationCircle,
-  HiLogin,
-  HiPencil,
-  HiSearch,
-  HiShoppingBag,
-  HiUsers,
-} from "react-icons/hi";
 import { TiThMenuOutline } from "react-icons/ti";
 
 const NavBar = ({ session }) => {
   const pathName = usePathname();
   const isActive = (path) => pathName === path;
-  const [isOpen, setIsOpen] = useState(true);
-
+  const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => setIsOpen(false);
   return (
     <div className="">
@@ -86,29 +74,6 @@ const NavBar = ({ session }) => {
             >
               <Link href={"/career"}>Career</Link>
             </li>
-            {session?.user ? (
-              <li
-                className={`
-        ${
-          isActive("/admin")
-            ? "text-main font-bold border-b-2 border-main"
-            : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
-        }`}
-              >
-                <Link href={"/admin"}>Admin</Link>
-              </li>
-            ) : (
-              <li
-                className={`
-        ${
-          isActive("/admin")
-            ? "text-main font-bold border-b-2 border-main"
-            : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
-        }`}
-              >
-                <Link href={"/api/auth/login"}>Admin</Link>
-              </li>
-            )}
           </ul>
 
           <div className="md:hidden">
@@ -178,29 +143,6 @@ const NavBar = ({ session }) => {
                           >
                             <Link href={"/career"}>Career</Link>
                           </li>
-                          {session?.user ? (
-                            <li
-                              className={`
-        ${
-          isActive("/admin")
-            ? "text-main font-bold border-b-2 border-main"
-            : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
-        }`}
-                            >
-                              <Link href={"/admin"}>Admin</Link>
-                            </li>
-                          ) : (
-                            <li
-                              className={`
-        ${
-          isActive("/admin")
-            ? "text-main font-bold border-b-2 border-main"
-            : "text-text border-b-2 border-text hover:border-main hover:border-b-2 hover:text-main"
-        }`}
-                            >
-                              <Link href={"/api/auth/login"}>Admin</Link>
-                            </li>
-                          )}
                         </ul>
                         <div className="space-y-5 flex my-5 flex-col">
                           <Link href={"/domain"}>

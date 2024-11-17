@@ -6,7 +6,7 @@ import { IoLocationOutline } from "react-icons/io5";
 import Link from "next/link";
 import { createFooterContact } from "../../controls/postFooterContact/createFooterContact.js";
 import toast, { Toaster } from "react-hot-toast";
-const Footer = () => {
+const Footer = ({session}) => {
   let formRef = useRef(null);
   const handlePost = async (formData) => {
     const res = await createFooterContact(formData);
@@ -162,7 +162,7 @@ const Footer = () => {
         </div>
         <div className="py-10 mx-10 flex justify-between">
           <p className=""> ©Hijibusy 2002-2024. All rights reserved</p>
-          <p>terms & privacy</p>
+          <p>terms & {session? <Link href={'/admin'}>privacy</Link>:<Link href={'/api/auth/login'}>privacy</Link>}</p>
         </div>
       </div>
     </div>
