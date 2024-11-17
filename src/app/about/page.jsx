@@ -17,6 +17,7 @@ const AboutUs = async () => {
   const data = await prisma.aboutUs.findFirst({
     orderBy: { createdAt: "desc" },
   });
+  const techItem = await prisma.technology.findMany();
 
   return (
     <div>
@@ -231,8 +232,7 @@ const AboutUs = async () => {
               </div>
             </div>
           </div>
-
-          <AboutTab />
+          <AboutTab techItem={techItem} />
         </div>
       </div>
     </div>
