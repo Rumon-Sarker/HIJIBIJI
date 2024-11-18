@@ -46,12 +46,12 @@ const Banner = ({ bg1, exp }) => {
         <div className="flex relative ms-10">
           <Image
             alt=""
-            className="md:h-[550px]"
+            className="md:h-[500px]"
             width={1920}
-            height={900}
+            height={700}
             src={exp?.image}
           />
-          <div className="absolute -left-20">
+          <div className="absolute -left-20 -top-4">
             <Image
               className="w-[70px] ms-2 md:w-[180px]"
               src={img1}
@@ -60,7 +60,7 @@ const Banner = ({ bg1, exp }) => {
               height={700}
             />
           </div>
-          <div className="absolute -left-8 -mt-1">
+          <div className="absolute -left-8 -top-5">
             <Image
               className="w-[75px] md:w-[185px]"
               src={img2}
@@ -69,7 +69,7 @@ const Banner = ({ bg1, exp }) => {
               height={700}
             />
           </div>
-          {/* <div className="absolute -right-16 ">
+          <div className="absolute -right-16 -top-16 ">
           <Image
           className="md:w-[185px]"
             src={img2}
@@ -78,7 +78,7 @@ const Banner = ({ bg1, exp }) => {
             height={700}
             
           />
-        </div> */}
+        </div>
         </div>
 
         <div className="space-y-6 mt-5 ms-5  w-2/3">
