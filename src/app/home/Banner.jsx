@@ -69,9 +69,9 @@ const Banner = ({ bg1, exp }) => {
               height={700}
             />
           </div>
-          <div className="absolute -right-16 -top-16 ">
+          <div className="absolute -right-5 md:-right-16 -top-16 ">
           <Image
-          className="md:w-[185px]"
+          className="w-[70px] md:w-[150px]"
             src={img2}
             alt=""
             width={200}
