@@ -128,12 +128,20 @@ export const createAboutUs = async (formData) => {
   const vision = formData.get("vision");
   const values = formData.get("values");
   const ourTechnology = formData.get("ourTechnology");
+  const completedProject = formData.get("completedProject");
+  const customerSatisfaction = formData.get("customerSatisfaction");
+  const raisedByClient = formData.get('raisedByClient')
+  const years = formData.get("years");
 
   try {
     await prisma.aboutUs.create({
       data: {
         whoWeAre,
         whyUs,
+        completedProject,
+        customerSatisfaction,
+        years,
+        raisedByClient,
         yearsInBusiness,
         mission,
         vision,

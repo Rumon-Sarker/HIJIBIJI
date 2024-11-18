@@ -66,7 +66,9 @@ const AboutUs = async () => {
                 />
               </div>
               <div className="stat-desc text-main">Completed Projects</div>
-              <div className="stat-value text-main">100 +</div>
+              <div className="stat-value text-main">
+                {data?.completedProject} +
+              </div>
             </div>
 
             <div className="stat">
@@ -80,7 +82,9 @@ const AboutUs = async () => {
                 />
               </div>
               <div className="stat-desc text-main">Customer Satisfaction</div>
-              <div className="stat-value text-main">20 %</div>
+              <div className="stat-value text-main">
+                {data?.customerSatisfaction} %
+              </div>
             </div>
 
             <div className="stat">
@@ -94,7 +98,9 @@ const AboutUs = async () => {
                 />
               </div>
               <div className="stat-desc text-main">Raised by Clients</div>
-              <div className="stat-value text-main">$ 10M</div>
+              <div className="stat-value text-main">
+                $ {data?.raisedByClient}M
+              </div>
             </div>
             <div className="stat">
               <div className="stat-title">
@@ -107,16 +113,18 @@ const AboutUs = async () => {
                 />
               </div>
               <div className="stat-desc text-main">Years in Business</div>
-              <div className="stat-value text-main">2 yrs</div>
+              <div className="stat-value text-main">{data?.years} yrs</div>
             </div>
           </div>
         </div>
 
         <div>
           <h1 className="uppercase text-center text-main text-[35px] my-10">
-            Years in Business
+            Mission Vision and Values
           </h1>
-          <p className="text-text px-5 md:px-20 mb-5">{data?.yearInBusiness}</p>
+          <p className="text-text px-5 md:px-20 mb-5">
+            {data?.yearsInBusiness}
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10 px-10">
             <div
               className="flex relative"

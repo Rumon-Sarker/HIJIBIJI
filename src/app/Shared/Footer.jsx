@@ -53,17 +53,25 @@ const Footer = ({ session }) => {
               </p>
               <div className="flex gap-5">
                 <h1>
-                  <Link href={"/"}>
+                  <Link
+                    href={
+                      "https://www.facebook.com/profile.php?id=61556793262091&mibextid=ZbWKwL"
+                    }
+                  >
                     <FaSquareFacebook size={35} />
                   </Link>
                 </h1>
                 <h1>
-                  <Link href={"/"}>
+                  <Link
+                    href={
+                      "https://www.instagram.com/hijibusytech/profilecard/?igsh=MTZhOWttbTB4dnE5dQ=="
+                    }
+                  >
                     <FaInstagram size={35} />
                   </Link>
                 </h1>
                 <h1>
-                  <Link href={"/"}>
+                  <Link href={"https://www.linkedin.com/company/hijibusy/"}>
                     <FaLinkedin size={35} />
                   </Link>
                 </h1>
