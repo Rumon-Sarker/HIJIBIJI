@@ -6,7 +6,11 @@ import { IoLocationOutline } from "react-icons/io5";
 import Link from "next/link";
 import { createFooterContact } from "../../controls/postFooterContact/createFooterContact.js";
 import toast, { Toaster } from "react-hot-toast";
-const Footer = ({session}) => {
+import { FaSquareFacebook } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
+const Footer = ({ session }) => {
   let formRef = useRef(null);
   const handlePost = async (formData) => {
     const res = await createFooterContact(formData);
@@ -47,6 +51,28 @@ const Footer = ({session}) => {
                 Dhaka Office: 12/1 Segunbagicha, Dhaka,
                 <br /> Bangladesh
               </p>
+              <div className="flex gap-5">
+                <h1>
+                  <Link href={"/"}>
+                    <FaSquareFacebook size={35} />
+                  </Link>
+                </h1>
+                <h1>
+                  <Link href={"/"}>
+                    <FaInstagram size={35} />
+                  </Link>
+                </h1>
+                <h1>
+                  <Link href={"/"}>
+                    <FaLinkedin size={35} />
+                  </Link>
+                </h1>
+                <h1>
+                  <Link href={"/"}>
+                    <BsTwitterX size={35} />
+                  </Link>
+                </h1>
+              </div>
             </div>
           </div>
           <div className="pr-16">
@@ -162,7 +188,14 @@ const Footer = ({session}) => {
         </div>
         <div className="py-10 mx-10 flex justify-between">
           <p className=""> ©Hijibusy 2002-2024. All rights reserved</p>
-          <p>terms & {session? <Link href={'/admin'}>privacy</Link>:<Link href={'/api/auth/login'}>privacy</Link>}</p>
+          <p>
+            terms &{" "}
+            {session ? (
+              <Link href={"/admin"}>privacy</Link>
+            ) : (
+              <Link href={"/api/auth/login"}>privacy</Link>
+            )}
+          </p>
         </div>
       </div>
     </div>
