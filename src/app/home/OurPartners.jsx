@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 const OurPartners = ({ partners }) => {
   return (
     <div>
@@ -13,13 +14,16 @@ const OurPartners = ({ partners }) => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 px-2 md:px-12 my-16 content-center">
         {partners?.map((partner) => (
           <div className="shadow-xl bg-base-100 rounded-xl" key={partner.id}>
-            <Image
-              className="rounded-xl"
-              alt=""
-              width={400}
-              height={300}
-              src={partner.image}
-            />
+            <Link href={"/"}>
+              {" "}
+              <Image
+                className="rounded-xl"
+                alt=""
+                width={400}
+                height={300}
+                src={partner.image}
+              />
+            </Link>
           </div>
         ))}
       </div>
