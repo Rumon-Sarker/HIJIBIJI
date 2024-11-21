@@ -1,11 +1,22 @@
 "use client";
 import toast, { Toaster } from "react-hot-toast";
 import { createPortfolio } from "../../../controls/postToPortfolio/createPortfolio.js";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import LoadingButton from "@/components/LoadingButton.jsx";
+import { getPortfolioCategories } from "@/controls/fetchData/fetchData.js";
 
 const PostPortfolio = () => {
   const formRef = useRef(null);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      const categories = await getPortfolioCategories();
+      setCategories(categories);
+    }
+    fetchCategories();
+  }, []);
+
   const handlePost = async (formData) => {
     const res = await createPortfolio(formData);
 
@@ -60,18 +71,18 @@ const PostPortfolio = () => {
               <span className="label-text">Select a Category</span>
             </div>
             <select
-              required
-              id="category"
-              name="category"
+              name="categoryId"
               className="select select-bordered"
+              required
             >
-              <option disabled defaultChecked>
-                Pick one
+              <option disabled selected>
+                Select a portfolio category
               </option>
-              <option>software</option>
-              <option>mobileApp</option>
-              <option>webDevelopment</option>
-              <option>infrastructure</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
             </select>
           </label>
         </div>

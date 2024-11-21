@@ -18,16 +18,36 @@ model User {
   @@map("users")
 }
 
+// model Portfolio {
+//   id          Int      @id @default(autoincrement())
+//   name        String
+//   category    String
+//   description String
+//   scope       String?
+//   image       String
+//   clientName  String?
+//   createdAt   DateTime @default(now())
+//   updatedAt   DateTime @updatedAt
+// }
+model PortfolioCategory {
+  id         Int         @id @default(autoincrement())
+  name       String      @unique
+  portfolios Portfolio[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
+
 model Portfolio {
-  id          Int      @id @default(autoincrement())
+  id          Int               @id @default(autoincrement())
   name        String
-  category    String
+  categoryId  Int
+  category    PortfolioCategory @relation(fields: [categoryId], references: [id])
   description String
   scope       String?
   image       String
   clientName  String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
 }
 
 model Blogs {

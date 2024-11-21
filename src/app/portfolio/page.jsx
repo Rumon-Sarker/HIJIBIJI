@@ -7,7 +7,7 @@ const Portfolio = async () => {
   // console.log(portfolioData.filter(data => data.category === 'mobileApp'));
   return (
     <div>
-      <PortfolioComponents portfolioData={portfolioData} />
+      <PortfolioComponents />
     </div>
   );
 };

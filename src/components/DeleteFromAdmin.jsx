@@ -24,7 +24,7 @@ const DeleteFromAdmin = ({ data, deleteFromServer }) => {
       <Toaster />
       <h1 className="text-error text-3xl my-5 text-center">Delete From Here</h1>
       <div className="grid lg:grid-cols-2 gap-10 mx-10 my-10">
-        {data.map((item) => (
+        {data?.map((item) => (
           <div
             key={item.id}
             className="flex gap-1 justify-between items-center shadow-xl p-5 rounded-lg bg-base-100"

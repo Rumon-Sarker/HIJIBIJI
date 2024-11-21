@@ -7,7 +7,11 @@ import CreatePortfolioCategory from "./CreatePortfolioCategory";
 
 const page = async () => {
   const prisma = new PrismaClient();
-  const data = await prisma.portfolio.findMany();
+  const data = await prisma.portfolio.findMany({
+    include: {
+      category: true,
+    },
+  });
   const deleteFromServer = deletePortfolio;
   return (
     <div>

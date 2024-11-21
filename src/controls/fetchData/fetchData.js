@@ -67,7 +67,7 @@ export async function getPortfolioCategories() {
 
 export async function getPortfoliosByCategory(categoryId) {
   return await prisma.portfolio.findMany({
-    where: { categoryId: parseInt(categoryId) },
+    where: categoryId ? { categoryId: parseInt(categoryId, 10) } : undefined,
     orderBy: { createdAt: "desc" },
   });
 }

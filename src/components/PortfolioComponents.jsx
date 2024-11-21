@@ -1,24 +1,43 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PortfolioDataFilter from "../components/PortfolioDataFilter";
+import {
+  getPortfolioCategories,
+  getPortfoliosByCategory,
+} from "@/controls/fetchData/fetchData";
 
-const PortfolioComponents = ({ portfolioData }) => {
-  const [activeTab, setActiveTab] = useState(1);
+const PortfolioComponents = () => {
+  const [categories, setCategories] = useState([]);
+  const [activeTab, setActiveTab] = useState(null);
+  const [portfolios, setPortfolios] = useState([]);
 
-  //   --------------data filtering-------------
-  const softwareData = portfolioData?.filter(
-    (item) => item.category === "software"
-  );
-  const mobileAppData = portfolioData?.filter(
-    (item) => item.category === "mobileApp"
-  );
+  useEffect(() => {
+    async function fetchCategories() {
+      const categories = await getPortfolioCategories();
+      // Add an "ALL" category at the start of the categories array
+      const allCategories = [{ id: "all", name: "All" }, ...categories];
+      setCategories(allCategories);
+      setActiveTab("all"); // Default to "ALL" tab
+    }
+    fetchCategories();
+  }, []);
 
-  const webAppData = portfolioData?.filter(
-    (item) => item.category === "webDevelopment"
-  );
-  const infrastructureData = portfolioData?.filter(
-    (item) => item.category === "infrastructure"
-  );
+  useEffect(() => {
+    async function fetchPortfolios() {
+      if (activeTab !== null) {
+        let fetchedPortfolios;
+        if (activeTab === "all") {
+          // Fetch all portfolios if "ALL" tab is active
+          fetchedPortfolios = await getPortfoliosByCategory(null); // Pass `null` or omit the filter
+        } else {
+          // Fetch portfolios by category
+          fetchedPortfolios = await getPortfoliosByCategory(activeTab);
+        }
+        setPortfolios(fetchedPortfolios);
+      }
+    }
+    fetchPortfolios();
+  }, [activeTab]);
 
   return (
     <div>
@@ -28,94 +47,26 @@ const PortfolioComponents = ({ portfolioData }) => {
         </h1>
       </div>
       <div className="w-full">
-        {/* Tab buttons */}
-        <div className="flex flex-wrap lg:flex-row justify-center space-x-5 mx-10 rounded-lg shadow-xl p-3 mb-6">
-          <button
-            className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-              activeTab === 1
-                ? "text-main border-b-4 border-main"
-                : "text-gray-500 hover:text-main"
-            }`}
-            onClick={() => setActiveTab(1)}
-          >
-            ALL
-          </button>
-          <button
-            className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-              activeTab === 2
-                ? "text-main border-b-4 border-main"
-                : "text-gray-500 hover:text-main"
-            }`}
-            onClick={() => setActiveTab(2)}
-          >
-            SOFTWARE
-          </button>
-         
-
-          <button
-            className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-              activeTab === 3
-                ? "text-main border-b-4 border-main"
-                : "text-gray-500 hover:text-main"
-            }`}
-            onClick={() => setActiveTab(3)}
-          >
-            MOBILE APP
-          </button>
-          <button
-            className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-              activeTab === 4
-                ? "text-main border-b-4 border-main"
-                : "text-gray-500 hover:text-main"
-            }`}
-            onClick={() => setActiveTab(4)}
-          >
-            WEB DEVELOPMENT
-          </button>
-          <button
-            className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-              activeTab === 5
-                ? "text-main border-b-4 border-main"
-                : "text-gray-500 hover:text-main"
-            }`}
-            onClick={() => setActiveTab(5)}
-          >
-            INFRASTRUCTURE
-          </button>
+        {/* Dynamic Tabs */}
+        <div className="flex flex-wrap justify-center space-x-5 mx-10 rounded-lg shadow-xl p-3 mb-6">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                activeTab === category.id
+                  ? "text-main border-b-4 border-main"
+                  : "text-gray-500 hover:text-main"
+              }`}
+              onClick={() => setActiveTab(category.id)}
+            >
+              {category.name.toUpperCase()}
+            </button>
+          ))}
         </div>
 
-        {/* Tab content */}
+        {/* Portfolio Content */}
         <div className="p-4">
-          {/* Tab 1 content */}
-          {activeTab === 1 && (
-            <div className="transition-opacity duration-500 opacity-100">
-              <PortfolioDataFilter cardData={portfolioData} />
-            </div>
-          )}
-
-          {/* Tab 2 content */}
-          {activeTab === 2 && (
-            <div className="transition-opacity duration-500 opacity-100">
-              <PortfolioDataFilter cardData={softwareData} />
-            </div>
-          )}
-          {/* Tab 3 content */}
-          {activeTab === 3 && (
-            <div className="transition-opacity duration-500 opacity-100">
-              <PortfolioDataFilter cardData={mobileAppData} />
-            </div>)}
-          {/* Tab 4 content */}
-          {activeTab === 4 && (
-            <div className="transition-opacity duration-500 opacity-100">
-              <PortfolioDataFilter cardData={webAppData} />
-            </div>
-          )}
-          {/* Tab 5 content */}
-          {activeTab === 5 && (
-            <div className="transition-opacity duration-500 opacity-100">
-              <PortfolioDataFilter cardData={infrastructureData} />
-            </div>
-          )}
+          <PortfolioDataFilter cardData={portfolios} />
         </div>
       </div>
     </div>

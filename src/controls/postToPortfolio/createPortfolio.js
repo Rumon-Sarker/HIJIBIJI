@@ -7,45 +7,45 @@ const prisma = new PrismaClient();
 export async function createPortfolio(formData) {
   const name = formData.get("name");
   const clientName = formData.get("clientName");
-  const category = formData.get("category");
+  const categoryId = parseInt(formData.get("categoryId"), 10);
   const description = formData.get("description");
   const scope = formData.get("scope");
   const imageFile = formData.get("image");
 
-  // const preset = "upload";
-  let imageUrl = await uploadImage(imageFile);
-  // console.log("url", imageUrl);
+  const imageUrl = await uploadImage(imageFile);
 
   try {
     await prisma.portfolio.create({
       data: {
         name,
         clientName,
-        category,
+        categoryId,
         description,
         scope,
         image: imageUrl,
       },
     });
-    return { status: "successfully created portfolio" };
+
+    return { status: "success", message: "Portfolio created successfully" };
   } catch (error) {
-    return { error: "failed to create portfolio" };
+    return { status: "error", message: error.message };
   } finally {
     revalidatePath("/portfolio");
   }
 }
-
 export async function createPortfolioCategory(name) {
   try {
     await prisma.portfolioCategory.create({
       data: { name },
     });
-    revalidatePath("/admin/postPortfolio");
+
     return {
       status: "success",
       message: "Portfolio category created successfully",
     };
   } catch (error) {
     return { status: "error", message: error.message };
+  } finally {
+    revalidatePath("/admin/postPortfolio");
   }
 }
