@@ -58,3 +58,16 @@ export const getServicesAllData = async () => {
     return { status: "cannot services", error: error.message };
   }
 };
+
+export async function getPortfolioCategories() {
+  return await prisma.portfolioCategory.findMany({
+    orderBy: { name: "asc" },
+  });
+}
+
+export async function getPortfoliosByCategory(categoryId) {
+  return await prisma.portfolio.findMany({
+    where: { categoryId: parseInt(categoryId) },
+    orderBy: { createdAt: "desc" },
+  });
+}

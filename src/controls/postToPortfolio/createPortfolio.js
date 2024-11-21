@@ -34,3 +34,18 @@ export async function createPortfolio(formData) {
     revalidatePath("/portfolio");
   }
 }
+
+export async function createPortfolioCategory(name) {
+  try {
+    await prisma.portfolioCategory.create({
+      data: { name },
+    });
+    revalidatePath("/admin/postPortfolio");
+    return {
+      status: "success",
+      message: "Portfolio category created successfully",
+    };
+  } catch (error) {
+    return { status: "error", message: error.message };
+  }
+}
