@@ -6,12 +6,13 @@ import { revalidatePath } from "next/cache";
 const prisma = new PrismaClient();
 export const createBlog = async (formData) => {
   const name = formData.get("name");
-  const category = formData.get("category");
+  const categoryId = parseInt(formData.get("categoryId"), 10);
   const description = formData.get("description");
   const word1 = formData.get("word1");
   const word2 = formData.get("word2");
   const imageFile = formData.get("image");
   const imageUrl = await uploadImage(imageFile);
+  console.log(formData);
 
   try {
     await prisma.blogs.create({
@@ -19,7 +20,7 @@ export const createBlog = async (formData) => {
         word1,
         word2,
         name,
-        category,
+        categoryId,
         description,
         image: imageUrl,
       },
@@ -31,3 +32,20 @@ export const createBlog = async (formData) => {
     revalidatePath("/blogs");
   }
 };
+
+export async function createBlogCategory(name) {
+  try {
+    await prisma.blogCategory.create({
+      data: { name },
+    });
+
+    return {
+      status: "success",
+      message: "Blog category created successfully",
+    };
+  } catch (error) {
+    return { status: "error", message: error.message };
+  } finally {
+    revalidatePath("/admin/postBlog");
+  }
+}

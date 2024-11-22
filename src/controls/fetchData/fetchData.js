@@ -71,3 +71,15 @@ export async function getPortfoliosByCategory(categoryId) {
     orderBy: { createdAt: "desc" },
   });
 }
+export async function getBlogCategories() {
+  return await prisma.blogCategory.findMany({
+    orderBy: { name: "asc" },
+  });
+}
+
+export async function getBlogsByCategory(categoryId) {
+  return await prisma.blogs.findMany({
+    where: categoryId ? { categoryId: parseInt(categoryId, 10) } : undefined,
+    orderBy: { createdAt: "desc" },
+  });
+}

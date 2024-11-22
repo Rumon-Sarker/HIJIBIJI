@@ -50,16 +50,25 @@ model Portfolio {
   updatedAt   DateTime          @updatedAt
 }
 
+model BlogCategory {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  blogs     Blogs[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model Blogs {
-  id          Int      @id @default(autoincrement())
+  id          Int          @id @default(autoincrement())
   word1       String
   word2       String
   name        String
-  category    String
+  categoryId  Int
+  category    BlogCategory @relation(fields: [categoryId], references: [id])
   description String
   image       String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 }
 
 model Services {

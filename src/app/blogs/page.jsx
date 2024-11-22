@@ -22,7 +22,7 @@ const Blogs = async () => {
   });
 
   dayjs.extend(advancedFormat);
-  const formattedDate = dayjs(latestData.createdAt).format(
+  const formattedDate = dayjs(latestData?.createdAt).format(
     "dddd - MMMM Do, YYYY"
   );
   return (
@@ -37,13 +37,13 @@ const Blogs = async () => {
           <div className="grid lg:grid-cols-2 gap-5 content-center">
             <div>
               <h1 className="text-main text-3xl uppercase">
-                {latestData.name}
+                {latestData?.name}
               </h1>
-              <p className="mt-10">{latestData.description}</p>
+              <p className="mt-10">{latestData?.description}</p>
               <h1 className="text-xl mb-5 mt-2">{formattedDate}</h1>
               <h1 className="text-text ">Share </h1>
-              <SocialSharing title={latestData.name} />
-              <Link href={`/blogDetails/${latestData.id}`}>
+              <SocialSharing title={latestData?.name} />
+              <Link href={`/blogDetails/${latestData?.id}`}>
                 <button className="btn btn-md bg-main hover:bg-transparent hover:border-2 hover:border-main text-white hover:text-black">
                   Read Article
                 </button>
@@ -52,7 +52,7 @@ const Blogs = async () => {
             <div>
               <Image
                 className="cursor-pointer"
-                src={latestData.image}
+                src={latestData?.image}
                 width={580}
                 height={480}
                 alt=""

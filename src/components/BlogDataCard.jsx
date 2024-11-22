@@ -28,10 +28,10 @@ const BlogDataCard = ({ cardData }) => {
         <div className="">
           <h1 className="text-xl font-semibold text-text my-5 mx-5">{name}</h1>
           <div className="text-sm mx-5">
-            {description.length < 70 ? (
+            {description?.length < 70 ? (
               <>{description}</>
             ) : (
-              <>{description.slice(0, 70)}</>
+              <>{description?.slice(0, 70)}</>
             )}
           </div>
           <div className="flex justify-end px-3 my-5 text-text">

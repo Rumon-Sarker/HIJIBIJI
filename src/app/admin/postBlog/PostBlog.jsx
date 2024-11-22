@@ -1,18 +1,30 @@
 "use client";
-import React, { useRef } from "react";
-import { createBlog } from "../../../controls/postToBlog/createBlog.js";
+import React, { useEffect, useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingButton from "@/components/LoadingButton.jsx";
+import { createBlog } from "@/controls/postToBlog/createBlog";
+import { getBlogCategories } from "@/controls/fetchData/fetchData";
 const PostBlog = () => {
-  let formRef = useRef(null);
+  const formRef = useRef(null);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      const categories = await getBlogCategories();
+      setCategories(categories);
+    }
+    fetchCategories();
+  }, []);
 
   const handlePost = async (formData) => {
     const res = await createBlog(formData);
+
     if (res.status) {
       toast.success("Blog has been posted successfully!");
       formRef.current.reset();
     }
     if (res.error) {
+      console.log(res.error)
       toast.error("Blog has not been posted!");
     }
   };
@@ -76,16 +88,18 @@ const PostBlog = () => {
                 <span className="label-text">Select a Category</span>
               </div>
               <select
-                required
-                name="category"
+                name="categoryId"
                 className="select select-bordered"
+                required
               >
-                <option defaultChecked>Pick one</option>
-                <option>category1</option>
-                <option>category2</option>
-                <option>category3</option>
-                <option>category4</option>
-                <option>category5</option>
+                <option disabled selected>
+                  Select a Blog category
+                </option>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
             </label>
           </div>

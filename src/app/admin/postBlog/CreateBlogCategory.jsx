@@ -1,20 +1,19 @@
 "use client";
 
-import { createPortfolioCategory } from "@/controls/postToPortfolio/createPortfolio";
-
+import { createBlogCategory } from "@/controls/postToBlog/createBlog";
 import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
-const CreatePortfolioCategory = () => {
+const CreateBlogCategory = () => {
   const [categoryName, setCategoryName] = useState("");
   const [loading, setLoading] = useState(false);
   const formRef = useRef(null);
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    const res = await createPortfolioCategory(categoryName);
+    const res = await createBlogCategory(categoryName);
     if (res.status === "success") {
-      toast.success("Portfolio category created successfully!");
+      toast.success("Blog category created successfully!");
       setCategoryName("");
       formRef.current.reset();
       setLoading(false);
@@ -32,13 +31,13 @@ const CreatePortfolioCategory = () => {
         className="space-y-5 bg-base-100 shadow-xl p-8 m-10"
       >
         <label className="label">
-          <span className="label-text">Portfolio Category Name</span>
+          <span className="label-text">Blog Category Name</span>
         </label>
         <input
           type="text"
           value={categoryName}
           onChange={(e) => setCategoryName(e.target.value)}
-          placeholder="Enter portfolio category name"
+          placeholder="Enter blog category name"
           className="input input-bordered w-full"
           required
         />
@@ -59,4 +58,4 @@ const CreatePortfolioCategory = () => {
   );
 };
 
-export default CreatePortfolioCategory;
+export default CreateBlogCategory;
