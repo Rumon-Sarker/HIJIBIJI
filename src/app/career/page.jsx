@@ -30,7 +30,7 @@ const Career = () => {
       <div className="bg-base-100 p-5 shadow-xl  mx-5 md:mx-10 lg:mx-20">
         <form
           action={handlePost}
-          className="grid  grid-cols-2 md:grid-cols-3 content-center"
+          className="grid grid-cols-2 md:grid-cols-3 gap-3 content-center"
         >
           <div className="flex items-center gap-5 border-r-2 border-gray-400  bg-base-200">
             <h1 className="ms-2">
