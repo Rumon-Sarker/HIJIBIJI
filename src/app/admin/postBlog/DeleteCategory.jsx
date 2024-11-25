@@ -21,7 +21,7 @@ const DeleteCategory = ({ categoryData, deleteCategoryFromServer }) => {
       <Toaster />
       <div>
         <h1 className="text-3xl  text-center">Delete Category</h1>
-        <div className="grid grid-cols-2 gap-10 place-content-center mx-5 lg:mx-10 my-10">
+        <div className="grid md:grid-cols-2 gap-10 place-content-center mx-5 lg:mx-10 my-10">
           {categoryData.map((data) => (
             <div
               className="flex justify-between items-center bg-base-100 shadow-xl p-5 rounded-md"
