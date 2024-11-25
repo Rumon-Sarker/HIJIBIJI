@@ -73,10 +73,10 @@ export const deletePortfolioCategory = async (id) => {
 };
 export const deleteBlogCategory = async (id) => {
   try {
-    await prisma.applyForm.deleteMany({
-      where: { jobId: id },
+    await prisma.blogs.deleteMany({
+      where: { categoryId: id },
     });
-    await prisma.job.delete({ where: { id: id } });
+    await prisma.blogCategory.delete({ where: { id: id } });
     return { status: "successfully deleted" };
   } catch (error) {
     return { error: "could not delete" };
