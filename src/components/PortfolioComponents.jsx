@@ -48,7 +48,7 @@ const PortfolioComponents = () => {
       </div>
       <div className="w-full">
         {/* Dynamic Tabs */}
-        <div className="flex flex-wrap justify-center space-x-5 mx-10 rounded-lg shadow-xl p-3 mb-6">
+        <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-5 mx-5 lg:mx-10 rounded-lg shadow-xl p-3 mb-6">
           {categories.map((category) => (
             <button
               key={category.id}
