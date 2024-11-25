@@ -24,7 +24,7 @@ const DeleteCategory = ({ categoryData, deleteCategoryFromServer }) => {
         <div className="grid md:grid-cols-2 gap-10 place-content-center mx-5 lg:mx-10 my-10">
           {categoryData.map((data) => (
             <div
-              className="flex justify-between items-center bg-base-100 shadow-xl p-5 rounded-md"
+              className="flex justify-between gap-10 items-center bg-base-100 shadow-xl p-5 rounded-md"
               key={data?.id}
             >
               <h1>{data?.name}</h1>
