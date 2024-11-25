@@ -58,6 +58,32 @@ export const deleteJob = async (id) => {
     revalidatePath("/admin/postJob");
   }
 };
+export const deletePortfolioCategory = async (id) => {
+  try {
+    await prisma.portfolio.deleteMany({
+      where: { categoryId: id },
+    });
+    await prisma.portfolioCategory.delete({ where: { id: id } });
+    return { status: "successfully deleted" };
+  } catch (error) {
+    return { error: "could not delete" };
+  } finally {
+    revalidatePath("/admin/postJob");
+  }
+};
+export const deleteBlogCategory = async (id) => {
+  try {
+    await prisma.applyForm.deleteMany({
+      where: { jobId: id },
+    });
+    await prisma.job.delete({ where: { id: id } });
+    return { status: "successfully deleted" };
+  } catch (error) {
+    return { error: "could not delete" };
+  } finally {
+    revalidatePath("/admin/postJob");
+  }
+};
 export const deleteCaseStudy = async (id) => {
   try {
     await prisma.caseStudy.delete({ where: { id: id } });

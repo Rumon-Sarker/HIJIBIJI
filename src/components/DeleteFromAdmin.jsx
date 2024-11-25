@@ -22,7 +22,9 @@ const DeleteFromAdmin = ({ data, deleteFromServer }) => {
   return (
     <div>
       <Toaster />
-      <h1 className="text-error text-3xl my-5 text-center">Delete From Here</h1>
+      <h1 className="text-error text-3xl my-5 text-center">
+        Delete portfolio From Here
+      </h1>
       <div className="grid lg:grid-cols-2 gap-10 mx-10 my-10">
         {data?.map((item) => (
           <div
