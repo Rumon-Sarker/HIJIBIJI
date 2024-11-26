@@ -77,14 +77,12 @@ const PostAboutUs = () => {
             </label>
             <label className="form-control w-full max-w-xs">
               <div className="label">
-                <span className="label-text">
-                  Raised by client (count){" "}
-                </span>
+                <span className="label-text">Raised by client (count) </span>
               </div>
               <input
                 required
                 name="raisedByClient"
-                type="number"
+                type="text"
                 placeholder="type here"
                 className="input input-bordered w-full max-w-xs"
               />
@@ -104,7 +102,9 @@ const PostAboutUs = () => {
           </div>
           <label className="form-control">
             <div className="label">
-              <span className="label-text">Mission Vision and Values(short description)</span>
+              <span className="label-text">
+                Mission Vision and Values(short description)
+              </span>
             </div>
             <textarea
               required
@@ -115,7 +115,7 @@ const PostAboutUs = () => {
           </label>
           <label className="form-control">
             <div className="label">
-              <span className="label-text">Mission</span>
+              <span className="label-text">Mission (Max 260 Characters)</span>
             </div>
             <textarea
               required
@@ -126,7 +126,7 @@ const PostAboutUs = () => {
           </label>
           <label className="form-control">
             <div className="label">
-              <span className="label-text">Vision</span>
+              <span className="label-text">Vision (Max 260 Characters)</span>
             </div>
             <textarea
               required
@@ -137,7 +137,7 @@ const PostAboutUs = () => {
           </label>
           <label className="form-control">
             <div className="label">
-              <span className="label-text">Values</span>
+              <span className="label-text">Values (Max 260 Characters)</span>
             </div>
             <textarea
               required

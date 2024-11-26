@@ -105,6 +105,7 @@ model Bg2 {
 
 model Partners {
   id        Int      @id @default(autoincrement())
+  link      String
   image     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -222,6 +223,15 @@ model Technology {
   name      String
   image     String
   category  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TechnologyName {
+  id        Int      @id @default(autoincrement())
+  name1     String
+  name2     String
+  name3     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

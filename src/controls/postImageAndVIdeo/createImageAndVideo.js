@@ -46,10 +46,12 @@ export const createBg2 = async (formData) => {
 
 export const createPartnerImage = async (formData) => {
   const imageFile = formData.get("image");
+  const link = formData.get("link");
   const imageUrl = await uploadImage(imageFile);
   try {
     await prisma.partners.create({
       data: {
+        link,
         image: imageUrl,
       },
     });
@@ -130,7 +132,7 @@ export const createAboutUs = async (formData) => {
   const ourTechnology = formData.get("ourTechnology");
   const completedProject = formData.get("completedProject");
   const customerSatisfaction = formData.get("customerSatisfaction");
-  const raisedByClient = formData.get('raisedByClient')
+  const raisedByClient = formData.get("raisedByClient");
   const years = formData.get("years");
 
   try {
@@ -152,6 +154,26 @@ export const createAboutUs = async (formData) => {
     return { status: "About us created successfully" };
   } catch (error) {
     return { error: "failed to create aboutUs" };
+  } finally {
+    revalidatePath("/about");
+  }
+};
+export const createTechnologyName = async (formData) => {
+  const name1 = formData.get("name1");
+  const name2 = formData.get("name2");
+  const name3 = formData.get("name3");
+
+  try {
+    await prisma.technologyName.create({
+      data: {
+        name1,
+        name2,
+        name3,
+      },
+    });
+    return { status: "technology created successfully" };
+  } catch (error) {
+    return { error: "failed to create technology" };
   } finally {
     revalidatePath("/about");
   }

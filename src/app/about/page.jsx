@@ -18,7 +18,7 @@ const AboutUs = async () => {
     orderBy: { createdAt: "desc" },
   });
   const techItem = await prisma.technology.findMany();
-
+  const techName = await prisma.technologyName.findFirst();
   return (
     <div>
       <div>
@@ -99,7 +99,7 @@ const AboutUs = async () => {
               </div>
               <div className="stat-desc text-main">Raised by Clients</div>
               <div className="stat-value text-main">
-                $ {data?.raisedByClient}M
+                $ {data?.raisedByClient}
               </div>
             </div>
             <div className="stat">
@@ -144,7 +144,7 @@ const AboutUs = async () => {
                   alt=""
                 />
                 <h1 className="text-[30px] my-4 font-bold">Mission</h1>
-                <p className="text-center">{data?.mission}</p>
+                <p className="text-center">{data?.mission.slice(0, 260)}</p>
               </div>
             </div>
             <div
@@ -165,7 +165,7 @@ const AboutUs = async () => {
                   alt=""
                 />
                 <h1 className="text-[30px] my-4 font-bold">Vision</h1>
-                <p className="text-center">{data?.vision}</p>
+                <p className="text-center">{data?.vision.slice(0, 260)}</p>
               </div>
             </div>
             <div
@@ -186,7 +186,7 @@ const AboutUs = async () => {
                   alt=""
                 />
                 <h1 className="text-[30px] my-4 font-bold">Values</h1>
-                <p className="text-center">{data?.values}</p>
+                <p className="text-center">{data?.values.slice(0, 260)}</p>
               </div>
             </div>
           </div>
@@ -209,7 +209,7 @@ const AboutUs = async () => {
                 }}
               >
                 <div className="flex justify-center items-center pt-72">
-                  <h1>AI</h1>
+                  <h1>{techName?.name1}</h1>
                 </div>
               </div>
               <div
@@ -222,7 +222,7 @@ const AboutUs = async () => {
                 }}
               >
                 <div className="flex justify-center items-center pt-72">
-                  <h1>ERP Solution</h1>
+                  <h1>{techName?.name2}</h1>
                 </div>
               </div>
               <div
@@ -235,7 +235,7 @@ const AboutUs = async () => {
                 }}
               >
                 <div className="flex justify-center items-center pt-72">
-                  <h1>IOT</h1>
+                  <h1>{techName?.name3}</h1>
                 </div>
               </div>
             </div>
