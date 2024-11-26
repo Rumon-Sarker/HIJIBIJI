@@ -34,7 +34,7 @@ const Technology = () => {
   return (
     <div className="my-10 mx-10">
       <Toaster />
-      <h1 className="my-5 text-center text-3xl">Post Technology(Tab)</h1>
+      <h1 className="my-5 text-center text-3xl">Post Technology(Bottom Tab)</h1>
       <form ref={formRef} action={handlePost}>
         <label className="form-control w-full max-w-xs">
           <div className="label">
