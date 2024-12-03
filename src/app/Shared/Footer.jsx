@@ -189,7 +189,14 @@ const Footer = ({ session }) => {
                   disabled={loading}
                   className="text-white bg-main hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  {loading ? "Submitting" : "Submit"}
+                  {loading ? (
+                    <span className="flex items-center">
+                      {"Submitting"}
+                      <span className="loading loading-spinner text-neutral ml-2"></span>
+                    </span>
+                  ) : (
+                    "Submit"
+                  )}
                 </button>
               </div>
             </form>
