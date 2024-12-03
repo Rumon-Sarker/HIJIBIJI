@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import logo from "./../../../public/final 2.png";
 import { IoLocationOutline } from "react-icons/io5";
 import Link from "next/link";
@@ -12,11 +12,14 @@ import { FaLinkedin } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 const Footer = ({ session }) => {
   let formRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   const handlePost = async (formData) => {
+    setLoading(true);
     const res = await createFooterContact(formData);
     if (res.status) {
       toast.success("Contact info has been submitted successfully!");
       formRef.current.reset();
+      setLoading(false);
     }
     if (res.error) {
       toast.error("Contact info has not been submitted!");
@@ -183,9 +186,10 @@ const Footer = ({ session }) => {
                 </div>
                 <button
                   type="submit"
+                  disabled={loading}
                   className="text-white bg-main hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  Submit
+                  {loading ? "Submitting" : "Submit"}
                 </button>
               </div>
             </form>

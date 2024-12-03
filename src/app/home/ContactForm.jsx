@@ -1,17 +1,20 @@
 "use client";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import formBg from "./../../../public/formbg.png";
 import Link from "next/link";
 import { createHomeContact } from "../../controls/postHomeContact/createHomeContact";
 import toast, { Toaster } from "react-hot-toast";
 const ContactForm = ({ bg2 }) => {
   let formRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   const handlePost = async (formData) => {
+    setLoading(true);
     const res = await createHomeContact(formData);
     if (res.status) {
       toast.success("Contact info has been submitted successfully!");
       formRef.current.reset();
+      setLoading(false);
     }
     if (res.error) {
       toast.error("Contact info has not been posted!");
@@ -130,9 +133,10 @@ const ContactForm = ({ bg2 }) => {
             </h1>
             <button
               type="submit"
+              disabled={loading}
               className="text-white bg-main hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Submit
+              {loading ? "Submitting" : "Submit"}
             </button>
           </form>
         </div>
