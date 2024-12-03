@@ -97,7 +97,7 @@ const Contact = () => {
                   <span className="label-text">Last Name*</span>
                 </div>
                 <input
-                 required
+                  required
                   name="lastName"
                   type="text"
                   placeholder="Last Name"
@@ -111,7 +111,7 @@ const Contact = () => {
                   <span className="label-text">Contact Number*</span>
                 </div>
                 <input
-                 required
+                  required
                   name="contactNumber"
                   type="number"
                   placeholder="Contact Number"
@@ -123,29 +123,31 @@ const Contact = () => {
                   <span className="label-text">Email Address*</span>
                 </div>
                 <input
-                 required
+                  required
                   name="email"
                   type="email"
                   placeholder="Email Address"
                   className="input input-bordered w-full max-w-xs"
                 />
               </label>
-              
             </div>
             <label className="form-control">
               <div className="label">
                 <span className="label-text">Message</span>
               </div>
               <textarea
-               required
+                required
                 name="message"
                 className="textarea textarea-md textarea-bordered h-24"
                 placeholder="Enter Your Message"
               ></textarea>
             </label>
-            <div className="flex justify-end">
-              <LoadingButton title={"Submit"} loadingTitle={"Submitting"} />
-            </div>
+
+            <LoadingButton
+             
+              title={"Submit"}
+              loadingTitle={"Submitting"}
+            />
           </form>
         </div>
       </div>
