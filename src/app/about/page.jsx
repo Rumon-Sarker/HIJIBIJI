@@ -18,7 +18,9 @@ const AboutUs = async () => {
     orderBy: { createdAt: "desc" },
   });
   const techItem = await prisma.technology.findMany();
-  const techName = await prisma.technologyName.findFirst();
+  const techName = await prisma.technologyName.findFirst({
+    orderBy: { createdAt: "desc" },
+  });
   return (
     <div>
       <div>
