@@ -85,6 +85,7 @@ const Contact = () => {
                   <span className="label-text">First Name*</span>
                 </div>
                 <input
+                  required
                   name="firstName"
                   type="text"
                   placeholder="First Name"
@@ -96,6 +97,7 @@ const Contact = () => {
                   <span className="label-text">Last Name*</span>
                 </div>
                 <input
+                 required
                   name="lastName"
                   type="text"
                   placeholder="Last Name"
@@ -109,6 +111,7 @@ const Contact = () => {
                   <span className="label-text">Contact Number*</span>
                 </div>
                 <input
+                 required
                   name="contactNumber"
                   type="number"
                   placeholder="Contact Number"
@@ -120,6 +123,7 @@ const Contact = () => {
                   <span className="label-text">Email Address*</span>
                 </div>
                 <input
+                 required
                   name="email"
                   type="email"
                   placeholder="Email Address"
@@ -133,6 +137,7 @@ const Contact = () => {
                 <span className="label-text">Message</span>
               </div>
               <textarea
+               required
                 name="message"
                 className="textarea textarea-md textarea-bordered h-24"
                 placeholder="Enter Your Message"
