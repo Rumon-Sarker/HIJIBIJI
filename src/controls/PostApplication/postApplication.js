@@ -2,7 +2,7 @@
 import { PrismaClient } from "@prisma/client";
 
 import { revalidatePath } from "next/cache";
-import { uploadPDF } from "../../controls/uploadPdf/uploadpdf";
+import { uploadFile, uploadPDF } from "../../controls/uploadPdf/uploadpdf";
 
 const prisma = new PrismaClient();
 export const createApplication = async (formData) => {
@@ -17,7 +17,7 @@ export const createApplication = async (formData) => {
   const coverletter = formData.get("coverletter");
   const jobId = formData.get("jobId");
   const image = formData.get("image");
-  let imageUrl = await uploadPDF(image);
+  let imageUrl = await uploadFile(image);
   console.log(formData, imageUrl);
 
   try {

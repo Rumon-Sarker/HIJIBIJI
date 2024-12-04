@@ -9,27 +9,36 @@ export const uploadFile = async (file) => {
   return url;
 };
 
+
 export async function uploadPDF(file) {
-  const uploadPreset = "upload";
+  if (file.type !== "application/pdf") {
+    throw new Error("Only PDF files are allowed.");
+  }
+
+  const uploadPreset = "pdf-uploader"; // Your preset name
   const arrayBuffer = await file.arrayBuffer();
   const buffer = new Uint8Array(arrayBuffer);
+
   const result = await new Promise((resolve, reject) => {
     cloudinary.uploader
       .upload_stream(
         {
-          upload_preset: uploadPreset,
-          resource_type: "raw",
+          upload_preset: uploadPreset, // Use the preset
+          resource_type: "auto", // Automatically detect the file type
+          use_filename: true, // Preserve the original file name
+          unique_filename: true, // Prevent overwriting files
         },
-        function (error, result) {
-          if (error || result === undefined) {
+        (error, result) => {
+          if (error || !result) {
             reject(error || new Error("Upload result is undefined."));
-            return;
+          } else {
+            resolve(result);
           }
-          resolve(result);
         }
       )
       .end(buffer);
   });
 
-  return result.secure_url;
+  // Force inline rendering by appending ?inline=true
+  return `${result.secure_url}?inline=true`;
 }
