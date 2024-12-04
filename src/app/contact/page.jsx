@@ -23,6 +23,7 @@ const Contact = () => {
     <Suspense fallback={<Loading />}>
       <div>
         <Toaster />
+        
         <div>
           <div className="h-[200px] bg-main mx-5 lg:mx-10s flex justify-center shadow-xl items-center rounded-lg my-10">
             <h1 className="text-white text-center text-[50px] lg:text-[80px]">
