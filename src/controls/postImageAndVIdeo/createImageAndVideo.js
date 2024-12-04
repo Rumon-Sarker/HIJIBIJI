@@ -1,15 +1,15 @@
 "use server";
 import { PrismaClient } from "@prisma/client";
-import { uploadImage } from "../uploadImage/uploadImage";
-import { upload } from "../uploadVideo/upload.js";
+
 import { revalidatePath } from "next/cache";
+import { uploadFile } from "../uploadFile/uploadFile";
 const prisma = new PrismaClient();
 
 export const createBg1 = async (formData) => {
   const title = formData.get("title");
   const details = formData.get("details");
   const imageFile = formData.get("image");
-  const imageUrl = await uploadImage(imageFile);
+  const imageUrl = await uploadFile(imageFile);
 
   try {
     await prisma.bg1.create({
@@ -29,7 +29,7 @@ export const createBg1 = async (formData) => {
 
 export const createBg2 = async (formData) => {
   const imageFile = formData.get("image");
-  const imageUrl = await uploadImage(imageFile);
+  const imageUrl = await uploadFile(imageFile);
   try {
     await prisma.bg2.create({
       data: {
@@ -47,7 +47,7 @@ export const createBg2 = async (formData) => {
 export const createPartnerImage = async (formData) => {
   const imageFile = formData.get("image");
   const link = formData.get("link");
-  const imageUrl = await uploadImage(imageFile);
+  const imageUrl = await uploadFile(imageFile);
   try {
     await prisma.partners.create({
       data: {
@@ -65,7 +65,7 @@ export const createPartnerImage = async (formData) => {
 
 export const createVideo = async (formData) => {
   const imageFile = formData.get("video");
-  const videoUrl = await upload(imageFile);
+  const videoUrl = await uploadFile(imageFile);
   console.log(videoUrl);
   try {
     await prisma.video.create({
@@ -84,7 +84,7 @@ export const createExperience = async (formData) => {
   const title = formData.get("title");
   const details = formData.get("details");
   const imageFile = formData.get("image");
-  const imageUrl = await uploadImage(imageFile);
+  const imageUrl = await uploadFile(imageFile);
 
   try {
     await prisma.experience.create({
@@ -105,7 +105,7 @@ export const createTechnology = async (formData) => {
   const name = formData.get("name");
   const category = formData.get("category");
   const imageFile = formData.get("image");
-  const imageUrl = await uploadImage(imageFile);
+  const imageUrl = await uploadFile(imageFile);
 
   try {
     await prisma.technology.create({

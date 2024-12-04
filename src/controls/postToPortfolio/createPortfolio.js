@@ -1,7 +1,7 @@
 "use server";
 import { PrismaClient } from "@prisma/client";
-import { uploadImage } from "../uploadImage/uploadImage";
 import { revalidatePath } from "next/cache";
+import {uploadFile} from "../uploadFile/uploadFile";
 
 const prisma = new PrismaClient();
 export async function createPortfolio(formData) {
@@ -12,7 +12,7 @@ export async function createPortfolio(formData) {
   const scope = formData.get("scope");
   const imageFile = formData.get("image");
 
-  const imageUrl = await uploadImage(imageFile);
+  const imageUrl = await uploadFile(imageFile);
 
   try {
     await prisma.portfolio.create({

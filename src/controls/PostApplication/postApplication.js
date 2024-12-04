@@ -2,7 +2,7 @@
 import { PrismaClient } from "@prisma/client";
 
 import { revalidatePath } from "next/cache";
-import { uploadFile, uploadPDF } from "../../controls/uploadPdf/uploadpdf";
+import { uploadFile } from "../uploadFile/uploadFile";
 
 const prisma = new PrismaClient();
 export const createApplication = async (formData) => {

@@ -1,9 +1,8 @@
 "use server";
 
 import { PrismaClient } from "@prisma/client";
-import { uploadImage } from "../uploadImage/uploadImage";
-import { uploadFile, uploadPDF } from "../uploadPdf/uploadpdf";
 import { revalidatePath } from "next/cache";
+import {uploadFile} from "../uploadFile/uploadFile";
 
 const prisma = new PrismaClient();
 export const service = async (formData) => {
@@ -15,7 +14,7 @@ export const service = async (formData) => {
   const scope = formData.get("scope");
   const imageFile = formData.get("image");
   const pdfFile = formData.get("pdf");
-  const image = await uploadImage(imageFile);
+  const image = await uploadFile(imageFile);
   const pdf = await uploadFile(pdfFile);
   console.log(image, pdf);
   try {

@@ -1,7 +1,7 @@
 "use server";
 import { PrismaClient } from "@prisma/client";
-import { uploadImage } from "../uploadImage/uploadImage";
 import { revalidatePath } from "next/cache";
+import {uploadFile} from "../uploadFile/uploadFile";
 
 const prisma = new PrismaClient();
 export const createBlog = async (formData) => {
@@ -11,7 +11,7 @@ export const createBlog = async (formData) => {
   const word1 = formData.get("word1");
   const word2 = formData.get("word2");
   const imageFile = formData.get("image");
-  const imageUrl = await uploadImage(imageFile);
+  const imageUrl = await uploadFile(imageFile);
   console.log(formData);
 
   try {

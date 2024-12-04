@@ -1,9 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { getJobData } from "../../controls/fetchData/fetchData";
 import { getJobAllData } from "../../controls/fetchData/fetchData";
 import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
+import Loading from "../loading";
 const Career = () => {
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
@@ -21,7 +22,8 @@ const Career = () => {
   };
 
   return (
-    <div>
+   <Suspense fallback={<Loading/>}>
+     <div>
       <div className="h-[200px] bg-main lg:mx-10 mx-5 flex justify-center items-center rounded-lg my-10">
         <h1 className="text-white text-center text-[50px] lg:text-[80px]">
           Career
@@ -197,6 +199,7 @@ const Career = () => {
         </div>
       ))}
     </div>
+   </Suspense>
   );
 };
 
