@@ -27,7 +27,7 @@ const ServiceDetails = async ({ params }) => {
             <h1 className="text-main text-3xl uppercase">{data?.name}</h1>
             <h1 className="text-text mt-5">{data?.description}</h1>
            <Link  href={data?.pdf}> <button className="btn bg-main w-80 text-white hover:bg-transparent hover:border-2 hover:border-main hover:text-black my-10">DOWNLOAD OUR BROCHURE <FiDownload className="ms-5" size={18} /></button></Link>
-            <h1><Link href={'/'} className="text-main flex items-center gap-2">GET A QUOTE <FaArrowRight /></Link></h1>
+            {/* <h1><Link href={'/'} className="text-main flex items-center gap-2">GET A QUOTE <FaArrowRight /></Link></h1> */}
           </div>
         </div>
         <div className="mx-5 md:mx-12 lg:mx-20">
