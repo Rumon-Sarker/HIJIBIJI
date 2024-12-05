@@ -54,11 +54,11 @@ const AdminLayout = ({ children }) => {
             </li>
             <li>
               {" "}
-              <Link href={"/admin/postHomeBg"}>Post Home Bg Image</Link>
+              <Link href={"/admin/postHomeBg"}>Post Homepage Bg Image</Link>
             </li>
             <li>
               {" "}
-              <Link href={"/admin/postHomeExp"}>Post Home Experience</Link>
+              <Link href={"/admin/postHomeExp"}>Post Homepage Experience</Link>
             </li>
             <li>
               {" "}
