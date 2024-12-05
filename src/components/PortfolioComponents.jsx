@@ -6,28 +6,26 @@ import {
   getPortfoliosByCategory,
 } from "@/controls/fetchData/fetchData";
 import Loading from "@/app/loading";
+import Loader from "@/app/loader";
 
 const PortfolioComponents = () => {
   const [categories, setCategories] = useState([]);
   const [activeTab, setActiveTab] = useState(null);
   const [portfolios, setPortfolios] = useState([]);
-  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     async function fetchCategories() {
-      setLoading(true);
       const categories = await getPortfolioCategories();
       // Add an "ALL" category at the start of the categories array
       const allCategories = [{ id: "all", name: "All" }, ...categories];
       setCategories(allCategories);
       setActiveTab("all"); // Default to "ALL" tab
-      setLoading(false);
     }
     fetchCategories();
   }, []);
 
   useEffect(() => {
     async function fetchPortfolios() {
-      setLoading(true);
       if (activeTab !== null) {
         let fetchedPortfolios;
         if (activeTab === "all") {
@@ -38,45 +36,46 @@ const PortfolioComponents = () => {
           fetchedPortfolios = await getPortfoliosByCategory(activeTab);
         }
         setPortfolios(fetchedPortfolios);
-        setLoading(false);
       }
     }
     fetchPortfolios();
   }, [activeTab]);
 
   return (
-    <Suspense fallback={<Loading />}>
-      <div>
-        <div className="h-[200px] bg-main mx-5 lg:mx-10 flex justify-center items-center rounded-lg my-10">
-          <h1 className="text-white text-center text-[50px] lg:text-[80px]">
-            Portfolio
-          </h1>
-        </div>
-        <div className="w-full">
-          {/* Dynamic Tabs */}
-          <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-5 mx-5 lg:mx-10 rounded-lg shadow-xl p-3 mb-6">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-                  activeTab === category.id
-                    ? "text-main border-b-4 border-main"
-                    : "text-gray-500 hover:text-main"
-                }`}
-                onClick={() => setActiveTab(category.id)}
-              >
-                {category.name.toUpperCase()}
-              </button>
-            ))}
+    <Loader>
+      <Suspense fallback={<Loading />}>
+        <div>
+          <div className="h-[200px] bg-main mx-5 lg:mx-10 flex justify-center items-center rounded-lg my-10">
+            <h1 className="text-white text-center text-[50px] lg:text-[80px]">
+              Portfolio
+            </h1>
           </div>
+          <div className="w-full">
+            {/* Dynamic Tabs */}
+            <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-5 mx-5 lg:mx-10 rounded-lg shadow-xl p-3 mb-6">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                    activeTab === category.id
+                      ? "text-main border-b-4 border-main"
+                      : "text-gray-500 hover:text-main"
+                  }`}
+                  onClick={() => setActiveTab(category.id)}
+                >
+                  {category.name.toUpperCase()}
+                </button>
+              ))}
+            </div>
 
-          {/* Portfolio Content */}
-          <div className="p-4">
-            <PortfolioDataFilter cardData={portfolios} />
+            {/* Portfolio Content */}
+            <div className="p-4">
+              <PortfolioDataFilter cardData={portfolios} />
+            </div>
           </div>
         </div>
-      </div>
-    </Suspense>
+      </Suspense>
+    </Loader>
   );
 };
 
