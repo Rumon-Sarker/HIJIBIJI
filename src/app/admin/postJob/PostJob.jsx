@@ -49,7 +49,7 @@ const PostJob = ({ data }) => {
       <Toaster />
       <div className="lg:mx-10 my-10">
         <h1 className="text-main text-3xl text-center my-2 uppercase">
-          post blog data
+          post Career data
         </h1>
         <form
           action={handlePost}
