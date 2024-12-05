@@ -50,7 +50,7 @@ const AdminLayout = ({ children }) => {
             </li>
             <li>
               {" "}
-              <Link href={"/admin/postJob"}>Post Job Data</Link>
+              <Link href={"/admin/postJob"}>Post Career Data</Link>
             </li>
             <li>
               {" "}
