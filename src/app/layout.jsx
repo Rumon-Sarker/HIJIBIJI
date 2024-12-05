@@ -3,6 +3,7 @@ import "./globals.css";
 import NavWrapper from "./Shared/NavWrapper";
 import { Kanit, Open_Sans, Poppins } from "next/font/google";
 import FooterWrapper from "./Shared/FooterWrapper";
+import Loader from "./loader";
 const fontName = Kanit({ subsets: ["latin"], weight: "400" });
 // const geistMono = localFont({
 //   src: "./fonts/GeistMonoVF.woff",
@@ -22,7 +23,7 @@ export default function RootLayout({ children }) {
         data-theme="light"
         className={`${fontName.className} antialiased my-2`}
       >
-        <NavWrapper /> {children} <FooterWrapper />
+        <NavWrapper /> <Loader> {children} </Loader> <FooterWrapper />
       </body>
     </html>
   );
