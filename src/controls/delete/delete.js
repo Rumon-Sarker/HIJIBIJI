@@ -91,6 +91,36 @@ export const deleteCaseStudy = async (id) => {
   } catch (error) {
     return { error: "could not delete" };
   } finally {
-    revalidatePath("/admin/postCaseStudy");
+    revalidatePath("/admin/contactMessage");
+  }
+};
+export const deleteHomeContactMessage = async (id) => {
+  try {
+    await prisma.homeContact.delete({ where: { id: id } });
+    return { status: "successfully deleted" };
+  } catch (error) {
+    return { error: "could not delete" };
+  } finally {
+    revalidatePath("/admin/contactMessage");
+  }
+};
+export const deleteContactMessage = async (id) => {
+  try {
+    await prisma.contact.delete({ where: { id: id } });
+    return { status: "successfully deleted" };
+  } catch (error) {
+    return { error: "could not delete" };
+  } finally {
+    revalidatePath("/admin/contactMessage");
+  }
+};
+export const deleteFooterContactMessage = async (id) => {
+  try {
+    await prisma.footerContact.delete({ where: { id: id } });
+    return { status: "successfully deleted" };
+  } catch (error) {
+    return { error: "could not delete" };
+  } finally {
+    revalidatePath("/admin/contactMessage");
   }
 };
