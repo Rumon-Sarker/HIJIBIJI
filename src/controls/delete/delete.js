@@ -124,3 +124,13 @@ export const deleteFooterContactMessage = async (id) => {
     revalidatePath("/admin/contactMessage");
   }
 };
+export const deleteTechnology = async (id) => {
+  try {
+    await prisma.technology.delete({ where: { id: id } });
+    return { status: "successfully deleted" };
+  } catch (error) {
+    return { error: "could not delete" };
+  } finally {
+    revalidatePath("/admin/contactMessage");
+  }
+};

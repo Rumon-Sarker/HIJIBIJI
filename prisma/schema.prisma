@@ -219,14 +219,21 @@ model AboutUs {
 }
 
 model Technology {
-  id        Int      @id @default(autoincrement())
-  name      String
-  image     String
-  category  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int               @id @default(autoincrement())
+  categoryId Int
+  category   TechnologyCategory @relation(fields: [categoryId], references: [id])
+  name       String
+  image      String
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
 }
-
+model TechnologyCategory {
+  id         Int         @id @default(autoincrement())
+  name       String      @unique
+  technologies Technology[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
 model TechnologyName {
   id        Int      @id @default(autoincrement())
   name1     String

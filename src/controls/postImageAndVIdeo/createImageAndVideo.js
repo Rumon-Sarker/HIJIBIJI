@@ -103,7 +103,7 @@ export const createExperience = async (formData) => {
 };
 export const createTechnology = async (formData) => {
   const name = formData.get("name");
-  const category = formData.get("category");
+  const categoryId = parseInt(formData.get("categoryId"), 10);
   const imageFile = formData.get("image");
   const imageUrl = await uploadFile(imageFile);
 
@@ -111,7 +111,7 @@ export const createTechnology = async (formData) => {
     await prisma.technology.create({
       data: {
         name,
-        category,
+        categoryId,
         image: imageUrl,
       },
     });

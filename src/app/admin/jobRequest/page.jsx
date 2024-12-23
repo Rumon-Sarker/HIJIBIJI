@@ -34,6 +34,9 @@ const jobRequest = async () => {
                 <li>Email: {applyInfo.email}</li>
                 <li>Present Address: {applyInfo.address}</li>
                 <li>Cover Letter: {applyInfo.coverletter}</li>
+                <button onClick={()=> handleDelete(item?.id)} className="btn bg-[#ff0000]  text-white hover:text-black hover:bg-[#be2d2d] btn-xs">
+                    Delete
+                  </button>
               </ul>
             </div>
           ))}

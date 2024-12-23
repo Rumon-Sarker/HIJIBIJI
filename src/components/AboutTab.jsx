@@ -1,209 +1,73 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import AboutTabContent from "./AboutTabContent";
+import { getTechnologyByCategory, getTechnologyCategories } from "@/controls/fetchData/fetchData";
+import Loader from "@/app/loader";
+import Loading from "@/app/loading";
 
-const AboutTab = ({ techItem }) => {
-  const [activeTab, setActiveTab] = useState(1);
-  const frontEnd = techItem?.filter((item) => item.category === "frontEnd");
-  const backend = techItem?.filter((item) => item.category === "backend");
-  const uiUx = techItem?.filter((item) => item.category === "uiUx");
-  const devOps = techItem?.filter((item) => item.category === "devOps");
-  const mobile = techItem?.filter((item) => item.category === "mobile");
-  const services = techItem?.filter((item) => item.category === "services");
-  const others = techItem?.filter((item) => item.category === "others");
+const AboutTab = () => {
+  const [categories, setCategories] = useState([]);
+  const [activeTab, setActiveTab] = useState(null);
+  const [technology, setTechnology] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      const categories = await getTechnologyCategories();
+      // Add an "ALL" category at the start of the categories array
+      const allCategories = [{ id: "languages", name: "LANGUAGES" }, ...categories];
+      setCategories(allCategories);
+      setActiveTab("languages"); // Default to "ALL" tab
+    }
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    async function fetchTechnologies() {
+      if (activeTab !== null) {
+        let fetchedTechnology;
+        if (activeTab === "languages") {
+          // Fetch all Technology if "ALL" tab is active
+          fetchedTechnology = await getTechnologyByCategory(null); // Pass `null` or omit the filter
+        } else {
+          // Fetch Technology by category
+          fetchedTechnology = await getTechnologyByCategory(activeTab);
+        }
+        setTechnology(fetchedTechnology);
+      }
+    }
+    fetchTechnologies();
+  }, [activeTab]);
   return (
     <div>
-      <div className="lg:mx-10 lg:my-20 px-2">
+      <Loader>
+      <Suspense fallback={<Loading />}>
         <div>
           <div className="w-full">
-            {/* Tab buttons */}
-            <div className="flex flex-wrap lg:flex-row justify-center shadow-xl p-3 mb-6">
-              <button
-                className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-                  activeTab === 1
-                    ? "text-main border-b-4 border-main"
-                    : "text-gray-500 hover:text-main"
-                }`}
-                onClick={() => setActiveTab(1)}
-              >
-                Languages
-              </button>
-              <button
-                className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-                  activeTab === 2
-                    ? "text-main border-b-4 border-main"
-                    : "text-gray-500 hover:text-main"
-                }`}
-                onClick={() => setActiveTab(2)}
-              >
-                Frontend
-              </button>
-              <button
-                className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-                  activeTab === 3
-                    ? "text-main border-b-4 border-main"
-                    : "text-gray-500 hover:text-main"
-                }`}
-                onClick={() => setActiveTab(3)}
-              >
-                Backend
-              </button>
-
-              {/* Add more tab buttons */}
-              <button
-                className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-                  activeTab === 4
-                    ? "text-main border-b-4 border-main"
-                    : "text-gray-500 hover:text-main"
-                }`}
-                onClick={() => setActiveTab(4)}
-              >
-                UI/UX
-              </button>
-              <button
-                className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-                  activeTab === 5
-                    ? "text-main border-b-4 border-main"
-                    : "text-gray-500 hover:text-main"
-                }`}
-                onClick={() => setActiveTab(5)}
-              >
-                DevOps/Server
-              </button>
-              <button
-                className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-                  activeTab === 6
-                    ? "text-main border-b-4 border-main"
-                    : "text-gray-500 hover:text-main"
-                }`}
-                onClick={() => setActiveTab(6)}
-              >
-                Mobile
-              </button>
-              <button
-                className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-                  activeTab === 7
-                    ? "text-main border-b-4 border-main"
-                    : "text-gray-500 hover:text-main"
-                }`}
-                onClick={() => setActiveTab(7)}
-              >
-                Services
-              </button>
-              <button
-                className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
-                  activeTab === 8
-                    ? "text-main border-b-4 border-main"
-                    : "text-gray-500 hover:text-main"
-                }`}
-                onClick={() => setActiveTab(8)}
-              >
-                Other Technologies
-              </button>
+            {/* Dynamic Tabs */}
+            <div className="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-8 gap-5 mx-5 lg:mx-10 rounded-lg shadow-xl p-3 mb-6">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  className={`px-4 py-2 focus:outline-none transition-colors duration-300 ${
+                    activeTab === category.id
+                      ? "text-main border-b-4 border-main"
+                      : "text-gray-500 hover:text-main"
+                  }`}
+                  onClick={() => setActiveTab(category.id)}
+                >
+                  {category.name.toUpperCase()}
+                </button>
+              ))}
             </div>
 
-            {/* Tab content */}
+            {/* Portfolio Content */}
             <div className="p-4">
-              <div
-                className={`transition-opacity duration-500 ${
-                  activeTab === 1 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {activeTab === 1 && (
-                  <div>
-                    <AboutTabContent tabData={techItem} />
-                  </div>
-                )}
-              </div>
-              <div
-                className={`transition-opacity duration-500 ${
-                  activeTab === 2 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {activeTab === 2 && (
-                  <div>
-                    {" "}
-                    <AboutTabContent tabData={frontEnd} />
-                  </div>
-                )}
-              </div>
-              <div
-                className={`transition-opacity duration-500 ${
-                  activeTab === 3 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {activeTab === 3 && (
-                  <div>
-                    {" "}
-                    <AboutTabContent tabData={backend} />
-                  </div>
-                )}
-              </div>
-              <div
-                className={`transition-opacity duration-500 ${
-                  activeTab === 4 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {activeTab === 4 && (
-                  <div>
-                    {" "}
-                    <AboutTabContent tabData={uiUx} />
-                  </div>
-                )}
-              </div>
-              <div
-                className={`transition-opacity duration-500 ${
-                  activeTab === 5 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {activeTab === 5 && (
-                  <div>
-                    {" "}
-                    <AboutTabContent tabData={devOps} />
-                  </div>
-                )}
-              </div>
-              <div
-                className={`transition-opacity duration-500 ${
-                  activeTab === 6 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {activeTab === 6 && (
-                  <div>
-                    {" "}
-                    <AboutTabContent tabData={mobile} />
-                  </div>
-                )}
-              </div>
-              <div
-                className={`transition-opacity duration-500 ${
-                  activeTab === 7 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {activeTab === 7 && (
-                  <div>
-                    {" "}
-                    <AboutTabContent tabData={services} />
-                  </div>
-                )}
-              </div>
-              <div
-                className={`transition-opacity duration-500 ${
-                  activeTab === 8 ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                {activeTab === 8 && (
-                  <div>
-                    {" "}
-                    <AboutTabContent tabData={others} />
-                  </div>
-                )}
-              </div>
-              {/* Add more tab content */}
+              <AboutTabContent tabData={technology} />
             </div>
           </div>
         </div>
-      </div>
+      </Suspense>
+    </Loader>
     </div>
   );
 };
