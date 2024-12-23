@@ -134,3 +134,15 @@ export const deleteTechnology = async (id) => {
     revalidatePath("/admin/contactMessage");
   }
 };
+export const deleteTechnologyCategory = async (id) => {
+  try {
+    await prisma.technology.deleteMany({
+      where: { categoryId: id },
+    });
+    await prisma.technologyCategory.delete({ where: { id: id } });
+    return { status: "successfully deleted" };
+  } catch (error) {
+    return { error: "could not delete" };
+  } finally {
+    revalidatePath("/admin/postAboutUs");
+  }}
