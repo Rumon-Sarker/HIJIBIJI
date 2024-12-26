@@ -1,6 +1,7 @@
 "use server";
 
 import { PrismaClient } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 
 // Avoid creating too many Prisma instances in development mode
 const prisma = global.prisma || new PrismaClient();
@@ -94,4 +95,123 @@ export async function getTechnologyByCategory(categoryId) {
     where: categoryId ? { categoryId: parseInt(categoryId, 10) } : undefined,
     orderBy: { createdAt: "desc" },
   });
+}
+export async function getHomepageBackground1() {
+  try {
+    const data = await prisma.bg1.findMany({});
+    return { status: "successfully loaded bg1", data };
+  } catch (error) {
+    return { status: "cannot load bg1", error: error.message };
+  }
+  finally {
+    revalidatePath('/admin/postHomeBg')
+  }
+}
+export async function getHomepageBackground2() {
+  try {
+    const data = await prisma.bg2.findMany({});
+    return { status: "successfully loaded bg1", data };
+  } catch (error) {
+    return { status: "cannot load bg1", error: error.message };
+  }
+  finally {
+    revalidatePath('/admin/postHomeBg')
+  }
+};
+
+export const getContactData = async (filter) => {
+
+  const now = new Date();
+  let startDate;
+
+  // Determine startDate based on filter
+  if (filter === "lastWeek") {
+    startDate = new Date(now.setDate(now.getDate() - 7));
+  } else if (filter === "lastMonth") {
+    startDate = new Date(now.setMonth(now.getMonth() - 1));
+  } else if (filter === "lastYear") {
+    startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+  } else {
+    return new Response(JSON.stringify({ error: "Invalid filter" }), {
+      status: 400,
+    });
+  }
+  try {
+    const data = await prisma.contact.findMany({
+      where: {
+        createdAt: { gte: startDate },
+      },
+      orderBy: { createdAt: "desc" },
+    });
+    return { status: "successfully loaded contact", data };
+  } catch (error) {
+    return { status: "cannot load contact", error: error.message };
+  }
+  finally {
+    revalidatePath("/admin/contactMessage");
+  }
+}
+export const getHomeContactData = async (filter) => {
+
+  const now = new Date();
+  let startDate;
+
+  // Determine startDate based on filter
+  if (filter === "lastWeek") {
+    startDate = new Date(now.setDate(now.getDate() - 7));
+  } else if (filter === "lastMonth") {
+    startDate = new Date(now.setMonth(now.getMonth() - 1));
+  } else if (filter === "lastYear") {
+    startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+  } else {
+    return new Response(JSON.stringify({ error: "Invalid filter" }), {
+      status: 400,
+    });
+  }
+  try {
+    const data = await prisma.homeContact.findMany({
+      where: {
+        createdAt: { gte: startDate },
+      },
+      orderBy: { createdAt: "desc" },
+    });
+    return { status: "successfully loaded contact", data };
+  } catch (error) {
+    return { status: "cannot load contact", error: error.message };
+  }
+  finally {
+    revalidatePath("/admin/contactMessage");
+  }
+}
+export const getFooterContactData = async (filter) => {
+
+  const now = new Date();
+  let startDate;
+
+  // Determine startDate based on filter
+  if (filter === "lastWeek") {
+    startDate = new Date(now.setDate(now.getDate() - 7));
+  } else if (filter === "lastMonth") {
+    startDate = new Date(now.setMonth(now.getMonth() - 1));
+  } else if (filter === "lastYear") {
+    startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+  } else {
+    return new Response(JSON.stringify({ error: "Invalid filter" }), {
+      status: 400,
+    });
+  }
+  try {
+    const data = await prisma.footerContact.findMany({
+      where: {
+        createdAt: { gte: startDate },
+      },
+      orderBy: { createdAt: "desc" },
+    });
+    return { status: "successfully loaded contact", data };
+  } catch (error) {
+    return { status: "cannot load contact", error: error.message };
+  }
+  finally {
+    revalidatePath("/admin/contactMessage");
+  }
 }

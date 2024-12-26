@@ -4,6 +4,7 @@ import { createJob } from "../../../controls/postJob/postJob";
 import toast, { Toaster } from "react-hot-toast";
 import LoadingButton from "@/components/LoadingButton";
 import { deleteJob } from "@/controls/delete/delete";
+
 const PostJob = ({ data }) => {
   let formRef = useRef(null);
   const [inputFields, setInputFields] = useState([{ value: "" }]);
@@ -12,6 +13,13 @@ const PostJob = ({ data }) => {
   // Handle adding a new input field
   const addLine = () => {
     setInputFields([...inputFields, { value: "" }]);
+  };
+
+  // Handle deleting an input field
+  const deleteLine = (index) => {
+    const values = [...inputFields];
+    values.splice(index, 1);
+    setInputFields(values);
   };
 
   // Handle input field change
@@ -33,6 +41,7 @@ const PostJob = ({ data }) => {
       toast.error("Job has not been created!");
     }
   };
+
   const handleDelete = async (id) => {
     setLoadingId(id);
     const res = await deleteJob(id);
@@ -156,15 +165,22 @@ const PostJob = ({ data }) => {
             </span>
             <div>
               {inputFields.map((input, index) => (
-                <div key={index}>
+                <div key={index} className="flex items-center gap-3 mt-5">
                   <input
                     required
-                    className="input input-bordered mt-5"
+                    className="input input-bordered"
                     type="text"
                     value={input.value}
                     onChange={(event) => handleInputChange(index, event)}
                     placeholder={`Line ${index + 1}`}
                   />
+                  <button
+                    type="button"
+                    className="btn btn-error btn-sm"
+                    onClick={() => deleteLine(index)}
+                  >
+                    Delete
+                  </button>
                 </div>
               ))}
               <button
@@ -182,7 +198,7 @@ const PostJob = ({ data }) => {
         </form>
       </div>
       <h1 className="text-error text-3xl text-center my-5">Delete From Here</h1>
-      <h1 className="text-warning bg-base-100 p-5 rounded-lg my-3 text-center shadow-xl mx-10">Warning:  Deleting any job post from here will also delete related all application forms </h1>
+      <h1 className="text-warning bg-base-100 p-5 rounded-lg my-3 text-center shadow-xl mx-10">Warning: Deleting any job post from here will also delete related all application forms</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 md:mx-10 mx-2">
         {data.map((item) => (
           <div

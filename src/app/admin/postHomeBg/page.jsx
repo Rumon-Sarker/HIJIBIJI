@@ -1,11 +1,14 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import {
   createBg1,
   createBg2,
 } from "../../../controls/postImageAndVIdeo/createImageAndVideo.js";
 import LoadingButton from "@/components/LoadingButton.jsx";
+import { getHomepageBackground1, getHomepageBackground2 } from "@/controls/fetchData/fetchData.js";
+import Image from "next/image.js";
+import { deleteHomePageImage1, deleteHomePageImage2 } from "@/controls/delete/delete.js";
 
 const PostHomeBg = () => {
   const handlePost1 = async (formData) => {
@@ -26,7 +29,42 @@ const PostHomeBg = () => {
       toast.error("Background image 2 has not been posted!");
     }
   };
+const [image1,setImage1] = useState([])
+const [image2,setImage2] = useState([])
+console.log(image1,image2);
+    useEffect(() => {
+            async function fetchBackgroundImage() {
+              const image1 = await getHomepageBackground1();
+              setImage1(image1.data);
+            }
+            fetchBackgroundImage();
+            async function fetchBackgroundImage2() {
+              const image2 = await getHomepageBackground2();
+              setImage2(image2.data);
+            }
+            fetchBackgroundImage2();
+          }, []);
 
+          const handleDelete1 = async(id) => {
+            const res = await deleteHomePageImage1(id)
+            if (res.status) {
+              toast.success("Background image has been Deleted successfully!");
+            }
+            if (res.error) {
+              toast.error("Background image has not been Deleted!");
+            }
+          }
+
+          const handleDelete2 = async(id) => {
+            const res = await deleteHomePageImage2(id)
+            if (res.status) {
+              toast.success("Background image has been Deleted successfully!");
+            }
+            if (res.error) {
+              toast.error("Background image has not been Deleted!");
+            }
+          }
+          
   return (
     <div>
       <Toaster />
@@ -101,6 +139,24 @@ const PostHomeBg = () => {
               <LoadingButton title={"Post"} loadingTitle={"Posting"} />
             </div>
           </form>
+        </div>
+        <h1 className="text-3xl text-center my-10">Home page top background image</h1>
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 content-center my-20">
+          {
+            image1?.map(img => <div key={img?.id} className="">
+                <Image className="h-[300px] object-cover" width={300} height={300} src={img?.image} alt=""/>
+                <button onClick={()=> handleDelete2(img?.id)} className="btn btn-error mt-5">Delete</button>
+            </div>)
+          }
+        </div>
+        <h1 className="text-3xl text-center my-10">Home page bottom contact form background image</h1>
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-5 content-center my-20">
+          {
+            image2?.map(img => <div key={img?.id}>
+                <Image className="h-[300px] object-cover" width={300} height={300} src={img?.image} alt=""/>
+                <button onClick={()=> handleDelete2(img?.id)} className="btn btn-error mt-5">Delete</button>
+            </div>)
+          }
         </div>
       </div>
     </div>

@@ -1,11 +1,30 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { downloadExcel } from "../utils/download";
 import { deleteHomeContactMessage } from "@/controls/delete/delete";
 import toast, { Toaster } from "react-hot-toast";
+import { getHomeContactData } from "@/controls/fetchData/fetchData";
 
-const HomeTable = ({ homeData }) => {
+const HomeTable = () => {
+   const [filter, setFilter] = useState('lastWeek');
+    const [data, setData] = useState([])
+    const handleFilter = (filter) => {
+      setFilter(filter);
+    };
+  
+    useEffect(() => {
+      const getData = async () => {
+        try {
+          const data = await getHomeContactData(filter)
+          setData(data.data)
+        }
+        catch (error) {
+          console.log(error)
+        }
+      }
+      getData();
+    }, [filter])
   const handleDownload = (id) => {
     const type = 'homeContact'
     downloadExcel(id,type);
@@ -27,6 +46,18 @@ const HomeTable = ({ homeData }) => {
         <h1 className="text-center text-main text-2xl my-5">
           From Home contact
         </h1>
+      
+        <h1 className="mx-20">Filtered by</h1>
+        <div className="flex gap-2 items-center mx-20">
+          <button onClick={() => handleFilter('lastWeek')} className="btn btn-accent btn-xs">Last Week</button>
+          <button onClick={() => handleFilter('lastMonth')} className="btn btn-accent btn-xs">Last Month</button>
+          <button onClick={() => handleFilter('lastYear')} className="btn btn-accent btn-xs">Last Year</button>
+        </div>
+        {
+            data?.length === 0? (
+              <h1 className="text-center text-xl text-text my-20">No Contact Messages</h1>
+            ) : null
+          }
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}
@@ -42,7 +73,7 @@ const HomeTable = ({ homeData }) => {
             </thead>
             <tbody>
               {/* row 1 */}
-              {homeData?.map((item) => (
+              {data?.map((item) => (
                 <tr key={item.id}>
                   <td>
                     <div className="flex items-center gap-3">

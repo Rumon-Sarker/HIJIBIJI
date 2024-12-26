@@ -146,3 +146,23 @@ export const deleteTechnologyCategory = async (id) => {
   } finally {
     revalidatePath("/admin/postAboutUs");
   }}
+  export const deleteHomePageImage1 = async (id) => {
+    try {
+      await prisma.bg1.delete({ where: { id: id } });
+      return { status: "successfully deleted" };
+    } catch (error) {
+      return { error: "could not delete" };
+    } finally {
+      revalidatePath("/admin/postHomeBg");
+    }
+  }
+  export const deleteHomePageImage2 = async (id) => {
+    try {
+      await prisma.bg2.delete({ where: { id: id } });
+      return { status: "successfully deleted" };
+    } catch (error) {
+      return { error: "could not delete" };
+    } finally {
+      revalidatePath("/admin/postHomeBg");
+    }
+  }

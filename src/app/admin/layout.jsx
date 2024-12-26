@@ -40,10 +40,7 @@ const AdminLayout = ({ children }) => {
               {" "}
               <Link href={"/admin/postPortfolio"}>Post Portfolio Data</Link>
             </li>
-            <li>
-              {" "}
-              <Link href={"/admin/postBlog"}>Post Blog Data</Link>
-            </li>
+
             <li>
               {" "}
               <Link href={"/admin/postService"}>Post Service Data</Link>
@@ -75,6 +72,10 @@ const AdminLayout = ({ children }) => {
             <li>
               {" "}
               <Link href={"/admin/postCaseStudy"}>Post CaseStudy</Link>
+            </li>
+            <li>
+              {" "}
+              <Link href={"/admin/postBlog"}>Post Blog Data</Link>
             </li>
             <li>
               {" "}

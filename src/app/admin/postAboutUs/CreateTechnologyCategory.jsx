@@ -27,6 +27,7 @@ const CreateTechnologyCategory = () => {
   return (
     <div>
       <Toaster />
+      <h1 className="text-error text-3xl my-5 text-center">Create category</h1>
       <form
         ref={formRef}
         onSubmit={handleSubmit}

@@ -9,19 +9,20 @@ import {
 import { useEffect, useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import CreateTechnologyCategory from "./CreateTechnologyCategory";
+import DeleteTechnologyCategory from "./DeleteTechnologyCategory";
 
 const Technology = () => {
   const formRef = useRef(null);
 
-   const [categories, setCategories] = useState([]);
-  
-    useEffect(() => {
-      async function fetchCategories() {
-        const categories = await getTechnologyCategories();
-        setCategories(categories);
-      }
-      fetchCategories();
-    }, []);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function fetchCategories() {
+      const categories = await getTechnologyCategories();
+      setCategories(categories);
+    }
+    fetchCategories();
+  }, []);
   const handlePost = async (formData) => {
     const res = await createTechnology(formData);
     if (res.status) {
@@ -46,63 +47,65 @@ const Technology = () => {
   return (
     <div className="my-10 mx-10">
       <Toaster />
-    
 
-      <form
-        action={handleTechnologyPost}
-        ref={formRef}
-        className="my-10 mx-5 lg:mx-10"
-      >
-        <h1 className="text-3xl my-5  text-center">
-          Post our technology name(Inside Shape)
-        </h1>
-        <div>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Technology Name 1(2 word Max)</span>
-            </div>
-            <input
-              required
-              name="name1"
-              type="text"
-              placeholder="type here"
-              className="input input-bordered w-full max-w-xs"
-            />
-          </label>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Technology Name 2 (2 word Max)</span>
-            </div>
-            <input
-              required
-              name="name2"
-              type="text"
-              placeholder="type here"
-              className="input input-bordered w-full max-w-xs"
-            />
-          </label>
-          <label className="form-control w-full max-w-xs">
-            <div className="label">
-              <span className="label-text">Technology Name 3 (2 word Max)</span>
-            </div>
-            <input
-              required
-              name="name3"
-              type="text"
-              placeholder="type here"
-              className="input input-bordered w-full max-w-xs"
-            />
-          </label>
-        </div>
-        <div className="flex justify-end">
-          <LoadingButton title={"Post"} loadingTitle={"Posting"} />
-        </div>
-      </form>
+      <div className="flex flex-col items-center">
+        <form
+          action={handleTechnologyPost}
+          ref={formRef}
+          className="my-10 mx-5 lg:mx-10"
+        >
+          <h1 className="text-3xl my-5  text-center">
+            Post our technology name(Inside Shape)
+          </h1>
+          <div>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                <span className="label-text">Technology Name 1(2 word Max)</span>
+              </div>
+              <input
+                required
+                name="name1"
+                type="text"
+                placeholder="type here"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                <span className="label-text">Technology Name 2 (2 word Max)</span>
+              </div>
+              <input
+                required
+                name="name2"
+                type="text"
+                placeholder="type here"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                <span className="label-text">Technology Name 3 (2 word Max)</span>
+              </div>
+              <input
+                required
+                name="name3"
+                type="text"
+                placeholder="type here"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
+          </div>
+          <div className=" my-5">
+            <LoadingButton position={'justify-center'} title={"Post"} loadingTitle={"Posting"} />
+          </div>
+        </form>
+      </div>
 
-      <CreateTechnologyCategory/>
-      
+
+      <CreateTechnologyCategory />
+      <DeleteTechnologyCategory />
       <h1 className="my-5 text-center text-3xl">Post Technology(Bottom Tab)</h1>
-      <form ref={formRef} action={handlePost}>
+      <div className=" flex flex-col justify-center items-center"><form ref={formRef} action={handlePost}>
         <label className="form-control w-full max-w-xs">
           <div className="label">
             <span className="label-text">Name</span>
@@ -120,19 +123,19 @@ const Technology = () => {
             <span className="label-text">Select a Category</span>
           </div>
           <select
-              name="categoryId"
-              className="select select-bordered"
-              required
-            >
-              <option disabled selected>
-                Select a Technology category
+            name="categoryId"
+            className="select select-bordered"
+            required
+          >
+            <option disabled selected>
+              Select a Technology category
+            </option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
               </option>
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              ))}
-            </select>
+            ))}
+          </select>
         </label>
         <label className="form-control w-full max-w-xs">
           <div className="label">
@@ -147,10 +150,11 @@ const Technology = () => {
             className="file-input file-input-bordered w-full max-w-xs"
           />
         </label>
-        <div className="flex justify-end">
+        <div className="flex justify-end my-5">
           <LoadingButton title={"Post"} loadingTitle={"Posting"} />
         </div>
-      </form>
+      </form></div>
+
     </div>
   );
 };
