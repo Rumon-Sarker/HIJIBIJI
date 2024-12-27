@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-import { FaTwitter } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import { FaSquareFacebook } from "react-icons/fa6";
 import { TiSocialLinkedin } from "react-icons/ti";
 import { MdEmail } from "react-icons/md";
@@ -54,7 +54,7 @@ const SocialSharing = ({ title }) => {
       <div className="text-text flex gap-5 my-5">
         <button onClick={() => handleShare(socialLinks.twitter)}>
           {" "}
-          <FaTwitter />
+          <FaXTwitter />
         </button>
 
         <button onClick={() => handleShare(socialLinks.facebook)}>

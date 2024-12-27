@@ -215,3 +215,36 @@ export const getFooterContactData = async (filter) => {
     revalidatePath("/admin/contactMessage");
   }
 }
+export const getJobRequest = async (filter) => {
+
+  const now = new Date();
+  let startDate;
+
+  // Determine startDate based on filter
+  if (filter === "lastWeek") {
+    startDate = new Date(now.setDate(now.getDate() - 7));
+  } else if (filter === "lastMonth") {
+    startDate = new Date(now.setMonth(now.getMonth() - 1));
+  } else if (filter === "lastYear") {
+    startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+  } else {
+    return new Response(JSON.stringify({ error: "Invalid filter" }), {
+      status: 400,
+    });
+  }
+  try {
+    const data = await prisma.job.findMany({
+      where: {
+        createdAt: { gte: startDate },
+      },
+      orderBy: { createdAt: "desc" },
+      include: { applyForms: true }
+    });
+    return { status: "successfully loaded job request", data };
+  } catch (error) {
+    return { status: "cannot load job request", error: error.message };
+  }
+  finally {
+    revalidatePath("/admin/jobRequest");
+  }
+}

@@ -92,6 +92,10 @@ const PostJob = ({ data }) => {
                 </option>
                 <option>half time</option>
                 <option>full time</option>
+                <option>Part time</option>
+                <option>Remote</option>
+                <option>Work from home</option>
+              
               </select>
             </label>
           </div>
