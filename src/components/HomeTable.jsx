@@ -49,10 +49,25 @@ const HomeTable = () => {
       
         <h1 className="mx-20">Filtered by</h1>
         <div className="flex gap-2 items-center mx-20">
-          <button onClick={() => handleFilter('lastWeek')} className="btn btn-accent btn-xs">Last Week</button>
-          <button onClick={() => handleFilter('lastMonth')} className="btn btn-accent btn-xs">Last Month</button>
-          <button onClick={() => handleFilter('lastYear')} className="btn btn-accent btn-xs">Last Year</button>
-        </div>
+        <button
+          onClick={() => handleFilter('lastWeek')}
+          className={`btn btn-xs ${filter === 'lastWeek' ? 'btn-active' : 'btn-accent'}`}
+        >
+          Last Week
+        </button>
+        <button
+          onClick={() => handleFilter('lastMonth')}
+          className={`btn btn-xs ${filter === 'lastMonth' ? 'btn-active' : 'btn-accent'}`}
+        >
+          Last Month
+        </button>
+        <button
+          onClick={() => handleFilter('lastYear')}
+          className={`btn btn-xs ${filter === 'lastYear' ? 'btn-active' : 'btn-accent'}`}
+        >
+          Last Year
+        </button>
+      </div>
         {
             data?.length === 0? (
               <h1 className="text-center text-xl text-text my-20">No Contact Messages</h1>
