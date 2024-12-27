@@ -25,7 +25,7 @@ const DeleteTechnologyCategory = () => {
     }
     return (
         <div className='my-20'>
-            <h1 className='text-error text-3xl text-center my-5'>Delete Category</h1>
+            <h1 className='text-error text-3xl text-center my-5'>Delete technology Category</h1>
             <div className='grid grid-cols-2 lg:grid-cols-4 md:grid-cols-3 gap-10'>
                 {
                     categories.map((category) => (
