@@ -31,7 +31,6 @@ const PostJob = ({ data }) => {
 
   const handlePost = async (formData) => {
     formData.append("jobResponsibility", JSON.stringify(inputFields));
-    console.log(formData);
     const res = await createJob(formData);
     if (res.status) {
       toast.success("Job has been created successfully!");

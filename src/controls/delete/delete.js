@@ -166,3 +166,13 @@ export const deleteTechnologyCategory = async (id) => {
       revalidatePath("/admin/postHomeBg");
     }
   }
+  export const deleteFooterDescription = async (id) => {
+    try {
+      await prisma.footerDescription.delete({ where: { id: id } });
+      return { status: "successfully deleted" };
+    } catch (error) {
+      return { error: "could not delete" };
+    } finally {
+      revalidatePath("/admin/postHomeBg");
+    }
+  }

@@ -89,6 +89,10 @@ const AdminLayout = ({ children }) => {
               {" "}
               <Link href={"/admin/contactMessage"}>Contact Message</Link>
             </li>
+            <li>
+              {" "}
+              <Link href={"/admin/postFooterDetails"}>Post Footer Details</Link>
+            </li>
           </ul>
         </div>
       </div>
