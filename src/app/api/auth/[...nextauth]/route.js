@@ -52,15 +52,27 @@ export const authOptions = {
     async session({ session, token }) {
       if (token) {
         session.user.id = token.id;
+        session.user.role = token.role; // Add role to session
       }
       return session;
     },
     async jwt({ token, user }) {
       if (user) {
+        // Fetch role from the user object if available
         token.id = user.id;
-      }
+        token.role = user.role; // This will work if the `user` object already has the role
+      } else if (!token.role) {
+        // If the token does not already have a role, fetch it from the database
+        const dbUser = await prisma.user.findUnique({
+          where: { id: token.id },
+        });
+        if (dbUser) {
+          token.role = dbUser.role;
+        }
+      
       return token;
-    },
+    }
+  }
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

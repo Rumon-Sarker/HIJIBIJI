@@ -11,11 +11,16 @@ model User {
   id             Int      @id @default(autoincrement())
   name           String
   email          String   @unique
+  role           Role     @default(SEMI_ADMIN)
   hashedPassword String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+}
 
-  @@map("users")
+enum Role {
+  SEMI_ADMIN
+  ADMIN
+  SUPER_ADMIN
 }
 
 // model Portfolio {

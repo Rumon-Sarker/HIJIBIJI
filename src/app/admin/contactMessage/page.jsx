@@ -5,6 +5,7 @@ import ContactTable from "../../../components/ContactTable";
 import HomeTable from "../../../components/HomeTable";
 import FooterTable from "../../../components/FooterTable";
 import { PrismaClient } from "@prisma/client";
+import Admin from "../Admin";
 
 const ContactMessage = async () => {
   const prisma = new PrismaClient();
@@ -13,11 +14,13 @@ const ContactMessage = async () => {
   const data3 = await prisma.footerContact.findMany({});
   
   return (
-    <div>
+   <Admin>
+     <div>
       <ContactTable data={data} />
       <HomeTable homeData={data2}/>
       <FooterTable footerData={data3}/>
     </div>
+   </Admin>
   );
 };
 

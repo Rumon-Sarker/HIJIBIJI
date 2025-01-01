@@ -11,7 +11,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import LoadingButton from "@/components/LoadingButton";
-const Footer = ({ session }) => {
+const Footer = ({ session, data }) => {
   let formRef = useRef(null);
   const handlePost = async (formData) => {
     const res = await createFooterContact(formData);
@@ -37,26 +37,24 @@ const Footer = ({ session }) => {
 
             <div className="space-y-5">
               <h1 className="text-lg my-10">
-                From global enterprises to digital disruptors, we’ve partnered
-                with <br /> companies for over 20 years to reimagine, reshape
-                and redefine the way <br /> people experience your business.
+                {data?.shortDescription}
               </h1>
               <p className="flex gap-1">
                 {" "}
                 <IoLocationOutline size={18} />
-                Head Office: 285 Patharghata Chittagong <br /> Bangladesh
+                {data?.addressTitle1}: {data?.addressDetails1}
               </p>
               <p className="flex gap-1">
                 {" "}
                 <IoLocationOutline size={18} />
-                Dhaka Office: 12/1 Segunbagicha, Dhaka,
-                <br /> Bangladesh
+                {data?.addressTitle2}: {data?.addressDetails2}
               </p>
               <div className="flex gap-5">
                 <h1>
                   <Link
+                    target="_blank" rel="noopener noreferrer"
                     href={
-                      "https://www.facebook.com/profile.php?id=61556793262091&mibextid=ZbWKwL"
+                      data?.facebookLink
                     }
                   >
                     <FaSquareFacebook size={35} />
@@ -64,20 +62,21 @@ const Footer = ({ session }) => {
                 </h1>
                 <h1>
                   <Link
+                    target="_blank" rel="noopener noreferrer"
                     href={
-                      "https://www.instagram.com/hijibusytech/profilecard/?igsh=MTZhOWttbTB4dnE5dQ=="
+                      data?.instagramLink
                     }
                   >
                     <FaInstagram size={35} />
                   </Link>
                 </h1>
                 <h1>
-                  <Link href={"https://www.linkedin.com/company/hijibusy/"}>
+                  <Link target="_blank" rel="noopener noreferrer" href={data?.linkedinLink}>
                     <FaLinkedin size={35} />
                   </Link>
                 </h1>
                 <h1>
-                  <Link href={"/"}>
+                  <Link target="_blank" rel="noopener noreferrer" href={data?.twitterLink}>
                     <BsTwitterX size={35} />
                   </Link>
                 </h1>

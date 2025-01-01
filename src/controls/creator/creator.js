@@ -34,7 +34,7 @@ export async function createFooterDescription(formData) {
   console.log(formData);
   try {
     await prisma.footerDescription.create({
-      data: { 
+      data: {
         shortDescription,
         addressTitle1,
         addressTitle2,
@@ -44,7 +44,7 @@ export async function createFooterDescription(formData) {
         twitterLink,
         linkedinLink,
         instagramLink,
-         },
+      },
     });
 
     return {
@@ -55,5 +55,39 @@ export async function createFooterDescription(formData) {
     return { status: "error", message: error.message };
   } finally {
     revalidatePath("/admin/postFooterDetails");
+  }
+}
+export async function updateAdminRole(id, role) {
+
+  try {
+    await prisma.user.update({
+      where: { id: id },
+      data: { role: role },
+    });
+
+    return {
+      status: "success",
+      message: "User role updated successfully",
+    };
+  } catch (error) {
+    return { status: "error", message: error.message };
+  } finally {
+    revalidatePath("/admin/adminControl");
+  }
+}
+export const deleteUser = async (id) => {
+  try {
+    await prisma.user.delete({
+      where: { id: id },
+    });
+
+    return {
+      status: "success",
+      message: "User deleted successfully",
+    };
+  } catch (error) {
+    return { status: "error", message: error.message };
+  } finally {
+    revalidatePath("/admin/adminControl");
   }
 }
