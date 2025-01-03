@@ -10,7 +10,7 @@ const SuperAdmin = async ({ children }) => {
 
     if (session?.user?.role !== 'SUPER_ADMIN') {
         return <div className='flex justify-center items-center h-screen text-error text-2xl'>
-        <h1>Your are not Authorized to view this</h1>
+        <h1>Your are not Authorized to view this page</h1>
     </div>;
     }
     return (

@@ -3,7 +3,7 @@ import { updateAdminRole,deleteUser } from '@/controls/creator/creator';
 import React, { useTransition } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
-const AdminPage = ({data}) => {
+const AdminPage = ({data,session}) => {
     const [isPending, startTransition] = useTransition();
 
     const updateAdmin = (id,role) => {
@@ -40,9 +40,11 @@ const AdminPage = ({data}) => {
                                 <h2 className='text-2xl text-main'>{item.name}</h2>
                                 <p>Email: {item.email}</p>
                                 <p className='text-lg'>Role: <span className='text-accent'> {item.role}</span></p>
-                                <button className='btn btn-success' disabled={isPending} onClick={() => updateAdmin(item.id,'ADMIN')}>Make Admin</button>
-                                <button className='btn btn-accent' disabled={isPending} onClick={() => updateAdmin(item.id,'SEMI_ADMIN')}>Remove from Admin</button>
-                                <button className='btn btn-error' disabled={isPending} onClick={() =>handleDeleteUser(item.id)}>Delete User</button>
+                            
+                              <button className='btn btn-success' disabled={isPending || session?.user?.email === item?.email} onClick={() => updateAdmin(item.id,'ADMIN')}>Make Admin</button>
+                                <button className='btn btn-accent' disabled={isPending || session?.user?.email === item?.email} onClick={() => updateAdmin(item.id,'SEMI_ADMIN')}>Remove from Admin</button>
+                                <button className='btn btn-error' disabled={isPending || session?.user?.email === item?.email} onClick={() =>handleDeleteUser(item.id)}>Delete User</button>
+                           
                             </div>
                         );
                     })
