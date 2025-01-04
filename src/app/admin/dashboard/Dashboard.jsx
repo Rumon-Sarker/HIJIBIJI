@@ -6,13 +6,19 @@ import SignOutButton from "./../../../components/SignOutButton";
 
 const Dashboard = async () => {
   const session = await getServerSession(authOptions);
+
   return (
     <div>
       {session?.user && (
         <div className="flex justify-between my-5 lg:mx-10 mx-5">
+          <div className="flex flex-col items-start justify-start">
           <h1 className="text-teal-500 text-center text-2xl">
-            Hi , {session?.user?.name} Welcome
+            Hi , {session?.user?.name}<div className="badge badge-accent badge-outline badge-xs -translate-y-2">{session?.user?.role}</div> Welcome
           </h1>
+          <h1 className="text-teal-500 text-center">
+            Email: {session?.user?.email}
+          </h1>
+          </div>
           <SignOutButton />
         </div>
       )}

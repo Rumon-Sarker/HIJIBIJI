@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import {
   createBg1,
@@ -11,10 +11,12 @@ import Image from "next/image.js";
 import { deleteHomePageImage1, deleteHomePageImage2 } from "@/controls/delete/delete.js";
 
 const PostHomeBg = () => {
+  const formRef = useRef(null)
   const handlePost1 = async (formData) => {
     const res = await createBg1(formData);
     if (res.status) {
       toast.success("Background image 1 & title has been posted successfully!");
+      formRef.current.reset();
     }
     if (res.error) {
       toast.error("Background image 1 has not been posted!");
@@ -31,7 +33,7 @@ const PostHomeBg = () => {
   };
 const [image1,setImage1] = useState([])
 const [image2,setImage2] = useState([])
-console.log(image1,image2);
+
     useEffect(() => {
             async function fetchBackgroundImage() {
               const image1 = await getHomepageBackground1();
@@ -73,6 +75,7 @@ console.log(image1,image2);
           post Home background image{" "}
         </h1>
         <form
+          ref={formRef}
           action={handlePost1}
           className="space-y-5 w-full bg-base-100 shadow-xl p-8 my-10"
         >

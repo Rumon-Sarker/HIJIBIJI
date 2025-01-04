@@ -16,7 +16,7 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
-        if (!credentials.email || !credentials.password) {
+        if (!credentials?.email || !credentials?.password) {
           throw new Error("Email and password are required");
         }
 
@@ -37,42 +37,60 @@ export const authOptions = {
           throw new Error("Invalid credentials");
         }
 
-        return user;
+
+        return {
+          id: user.id,
+          name: user.name, 
+          email: user.email,
+          role: user.role,
+
+        };
       },
     }),
   ],
   pages: {
     signIn: "/api/auth/login",
-    error: "/auth/error", 
+    error: "/auth/error",
   },
   session: {
     strategy: "jwt",
   },
   callbacks: {
     async session({ session, token }) {
+  
+
       if (token) {
         session.user.id = token.id;
-        session.user.role = token.role; // Add role to session
+        session.user.role = token.role;
       }
+
+    
       return session;
     },
     async jwt({ token, user }) {
+
       if (user) {
-        // Fetch role from the user object if available
         token.id = user.id;
-        token.role = user.role; // This will work if the `user` object already has the role
-      } else if (!token.role) {
-        // If the token does not already have a role, fetch it from the database
+        token.role = user.role;
+        token.name = user.name; 
+      } else if (token.id) {
         const dbUser = await prisma.user.findUnique({
           where: { id: token.id },
         });
+
         if (dbUser) {
           token.role = dbUser.role;
+          token.name = dbUser.name; 
+        } else {
+          console.error("JWT Callback - User not found in database.");
         }
-      
+      } else {
+        console.error("JWT Callback - Missing token.id or user.");
+      }
+
+      console.log("JWT Callback - Token After:", token);
       return token;
-    }
-  }
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
 };
