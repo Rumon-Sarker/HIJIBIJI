@@ -26,16 +26,16 @@ const Banner = ({ bg1, exp }) => {
         >
           {/* <Image width={1000} height={700} src={banner} alt=''/> */}
 
-          <div className="lg:pl-[120px] pr-10 pl-5 md:pl-[100px] md:pr-[300px] pt-[240px] space-y-3 mx-2 lg:pr-[400px] lg:pb-[150px] lg:pt-[150.39px] ">
+          <div className="lg:pl-[120px] pr-10 pl-5 md:pl-[100px] md:pr-[300px] pt-[240px] space-y-3 mx-2 lg:pr-[400px] lg:pb-[150px] lg:pt-[120px]">
             <h1 className="lg:text-[56px] md:[40px] text-[30px] tracking-tighter text-main -space-y-32">
               {bg1?.title}
             </h1>
-            <p className="lg:text-[24px] md:text-[20] text-[15px] text-main">
-              {bg1?.details}
+            <p className="lg:text-[20px] md:text-[17] text-[15px] text-main">
+              {bg1?.details?.slice(0, 350)}
             </p>
             <Link href={"/about"}>
               {" "}
-              <button className="btn btn-outline btn-info rounded-full bg-transparent border">
+              <button className="btn btn-outline btn-info rounded-full bg-transparent border mt-1">
                 Get in Touch <FaArrowRight />
               </button>
             </Link>

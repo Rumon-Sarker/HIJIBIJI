@@ -57,40 +57,43 @@ export const authOptions = {
   },
   callbacks: {
     async session({ session, token }) {
-  
-
-      if (token) {
-        session.user.id = token.id;
-        session.user.role = token.role;
+      if (!token || !token.id) {
+        // Invalidate session if the token is empty
+        return null;
       }
-
+    
+      session.user.id = token.id;
+      session.user.role = token.role;
+      session.user.name = token.name;
     
       return session;
     },
+    
     async jwt({ token, user }) {
-
       if (user) {
+        // Populate token during login
         token.id = user.id;
         token.role = user.role;
-        token.name = user.name; 
+        token.name = user.name;
       } else if (token.id) {
+        // Check if the user still exists in the database
         const dbUser = await prisma.user.findUnique({
           where: { id: token.id },
         });
-
-        if (dbUser) {
-          token.role = dbUser.role;
-          token.name = dbUser.name; 
-        } else {
-          console.error("JWT Callback - User not found in database.");
+    
+        if (!dbUser) {
+          // If the user doesn't exist, invalidate the token
+          console.warn(`JWT Callback - User with ID ${token.id} has been deleted.`);
+          return {}; // Return an empty token to invalidate the session
         }
-      } else {
-        console.error("JWT Callback - Missing token.id or user.");
       }
-
-      console.log("JWT Callback - Token After:", token);
+    
       return token;
-    },
+    }
+    
+    
+
+
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

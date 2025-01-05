@@ -15,6 +15,15 @@ model User {
   hashedPassword String
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+  sessions       Session[]
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       Int
+  user         User     @relation(fields: [userId], references: [id])
+  expires      DateTime
 }
 
 enum Role {
@@ -22,6 +31,7 @@ enum Role {
   ADMIN
   SUPER_ADMIN
 }
+
 
 // model Portfolio {
 //   id          Int      @id @default(autoincrement())

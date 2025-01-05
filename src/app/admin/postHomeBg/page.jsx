@@ -106,7 +106,7 @@ const [image2,setImage2] = useState([])
           </label>
           <label className="form-control w-full max-w-xs">
             <div className="label">
-              <span className="label-text">Short description</span>
+              <span className="label-text">Short description(Max 350 character)</span>
             </div>
             <input
               required

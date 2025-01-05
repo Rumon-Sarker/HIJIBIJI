@@ -77,6 +77,7 @@ export async function updateAdminRole(id, role) {
 }
 export const deleteUser = async (id) => {
   try {
+    // Delete the user
     await prisma.user.delete({
       where: { id: id },
     });
@@ -90,4 +91,4 @@ export const deleteUser = async (id) => {
   } finally {
     revalidatePath("/admin/adminControl");
   }
-}
+};
