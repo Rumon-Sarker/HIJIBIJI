@@ -15,7 +15,7 @@ const NavBar = ({ session }) => {
   return (
     <div className="">
       <div>
-        <nav className="flex justify-between items-center h-16 mb-5 bg-slate-50 shadow-xl">
+        <nav className="flex justify-between items-center h-16 bg-slate-50 shadow-xl">
           <div className="lg:md:ml-5 md:ml-3 ml-2">
             <Link href={"/"}>
               {" "}

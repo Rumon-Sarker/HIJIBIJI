@@ -120,26 +120,37 @@ export async function getHomepageBackground2() {
 };
 
 export const getContactData = async (filter) => {
-
   const now = new Date();
   let startDate;
+  let endDate;
 
-  // Determine startDate based on filter
+  // Handle predefined filters
   if (filter === "lastWeek") {
     startDate = new Date(now.setDate(now.getDate() - 7));
+    endDate = new Date();
   } else if (filter === "lastMonth") {
     startDate = new Date(now.setMonth(now.getMonth() - 1));
+    endDate = new Date();
   } else if (filter === "lastYear") {
     startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+    endDate = new Date();
+  } else if (filter?.fromDate && filter?.toDate) {
+    // Handle custom date filter
+    startDate = new Date(filter.fromDate);
+    endDate = new Date(filter.toDate);
   } else {
     return new Response(JSON.stringify({ error: "Invalid filter" }), {
       status: 400,
     });
   }
+
   try {
     const data = await prisma.contact.findMany({
       where: {
-        createdAt: { gte: startDate },
+        createdAt: {
+          gte: startDate,
+          lte: endDate,
+        },
       },
       orderBy: { createdAt: "desc" },
     });
@@ -147,63 +158,82 @@ export const getContactData = async (filter) => {
   } catch (error) {
     return { status: "cannot load contact", error: error.message };
   }
-  finally {
-    revalidatePath("/admin/contactMessage");
-  }
-}
+};
+
 export const getHomeContactData = async (filter) => {
 
   const now = new Date();
   let startDate;
+  let endDate;
 
-  // Determine startDate based on filter
+  // Handle predefined filters
   if (filter === "lastWeek") {
     startDate = new Date(now.setDate(now.getDate() - 7));
+    endDate = new Date();
   } else if (filter === "lastMonth") {
     startDate = new Date(now.setMonth(now.getMonth() - 1));
+    endDate = new Date();
   } else if (filter === "lastYear") {
     startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+    endDate = new Date();
+  } else if (filter?.fromDate && filter?.toDate) {
+    // Handle custom date filter
+    startDate = new Date(filter.fromDate);
+    endDate = new Date(filter.toDate);
   } else {
     return new Response(JSON.stringify({ error: "Invalid filter" }), {
       status: 400,
     });
   }
+
   try {
     const data = await prisma.homeContact.findMany({
       where: {
-        createdAt: { gte: startDate },
+        createdAt: {
+          gte: startDate,
+          lte: endDate,
+        },
       },
       orderBy: { createdAt: "desc" },
     });
     return { status: "successfully loaded contact", data };
   } catch (error) {
     return { status: "cannot load contact", error: error.message };
-  }
-  finally {
-    revalidatePath("/admin/contactMessage");
   }
 }
 export const getFooterContactData = async (filter) => {
 
   const now = new Date();
   let startDate;
+  let endDate;
 
-  // Determine startDate based on filter
+  // Handle predefined filters
   if (filter === "lastWeek") {
     startDate = new Date(now.setDate(now.getDate() - 7));
+    endDate = new Date();
   } else if (filter === "lastMonth") {
     startDate = new Date(now.setMonth(now.getMonth() - 1));
+    endDate = new Date();
   } else if (filter === "lastYear") {
     startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+    endDate = new Date();
+  } else if (filter?.fromDate && filter?.toDate) {
+    // Handle custom date filter
+    startDate = new Date(filter.fromDate);
+    endDate = new Date(filter.toDate);
   } else {
     return new Response(JSON.stringify({ error: "Invalid filter" }), {
       status: 400,
     });
   }
+
   try {
     const data = await prisma.footerContact.findMany({
       where: {
-        createdAt: { gte: startDate },
+        createdAt: {
+          gte: startDate,
+          lte: endDate,
+        },
       },
       orderBy: { createdAt: "desc" },
     });
@@ -211,40 +241,48 @@ export const getFooterContactData = async (filter) => {
   } catch (error) {
     return { status: "cannot load contact", error: error.message };
   }
-  finally {
-    revalidatePath("/admin/contactMessage");
-  }
 }
 export const getJobRequest = async (filter) => {
 
   const now = new Date();
   let startDate;
+  let endDate;
 
-  // Determine startDate based on filter
+  // Handle predefined filters
   if (filter === "lastWeek") {
     startDate = new Date(now.setDate(now.getDate() - 7));
+    endDate = new Date();
   } else if (filter === "lastMonth") {
     startDate = new Date(now.setMonth(now.getMonth() - 1));
+    endDate = new Date();
   } else if (filter === "lastYear") {
     startDate = new Date(now.setFullYear(now.getFullYear() - 1));
+    endDate = new Date();
+  } else if (filter?.fromDate && filter?.toDate) {
+    // Handle custom date filter
+    startDate = new Date(filter.fromDate);
+    endDate = new Date(filter.toDate);
   } else {
     return new Response(JSON.stringify({ error: "Invalid filter" }), {
       status: 400,
     });
   }
+
   try {
     const data = await prisma.job.findMany({
       where: {
-        createdAt: { gte: startDate },
+        createdAt: {
+          gte: startDate,
+          lte: endDate,
+        },
       },
       orderBy: { createdAt: "desc" },
-      include: { applyForms: true }
+      include: {
+        applyForms: true,
+      },
     });
-    return { status: "successfully loaded job request", data };
+    return { status: "successfully loaded job", data };
   } catch (error) {
-    return { status: "cannot load job request", error: error.message };
-  }
-  finally {
-    revalidatePath("/admin/jobRequest");
+    return { status: "cannot load job", error: error.message };
   }
 }

@@ -19,6 +19,7 @@ const PostHomeExp = () => {
   return (
     <div>
       <Toaster />
+      <h1 className="text-main my-10 text-3xl text-center">Post Home page Experience</h1>
       <form
         action={handlePost}
         ref={formRef}

@@ -14,9 +14,9 @@ const AboutTab = () => {
     async function fetchCategories() {
       const categories = await getTechnologyCategories();
       // Add an "ALL" category at the start of the categories array
-      const allCategories = [{ id: "languages", name: "LANGUAGES" }, ...categories];
+      const allCategories = [{ id: "All", name: "All" }, ...categories];
       setCategories(allCategories);
-      setActiveTab("languages"); // Default to "ALL" tab
+      setActiveTab("All"); // Default to "ALL" tab
     }
     fetchCategories();
   }, []);
@@ -25,7 +25,7 @@ const AboutTab = () => {
     async function fetchTechnologies() {
       if (activeTab !== null) {
         let fetchedTechnology;
-        if (activeTab === "languages") {
+        if (activeTab === "All") {
           // Fetch all Technology if "ALL" tab is active
           fetchedTechnology = await getTechnologyByCategory(null); // Pass `null` or omit the filter
         } else {
