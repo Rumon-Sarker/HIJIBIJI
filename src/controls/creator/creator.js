@@ -31,6 +31,7 @@ export async function createFooterDescription(formData) {
   const twitterLink = formData.get('twitter_link');
   const linkedinLink = formData.get('linkedin_link');
   const instagramLink = formData.get('instagram_link');
+  const youtubeLink = formData.get('youtube_link');
   console.log(formData);
   try {
     await prisma.footerDescription.create({
@@ -44,6 +45,7 @@ export async function createFooterDescription(formData) {
         twitterLink,
         linkedinLink,
         instagramLink,
+        youtubeLink
       },
     });
 

@@ -86,6 +86,19 @@ const PostPortfolio = () => {
             </select>
           </label>
         </div>
+        <label className="form-control w-full">
+            <div className="label">
+              <span className="label-text">Add a link</span>
+            </div>
+            <input
+              required
+              id="link"
+              type="text"
+              name="link"
+              placeholder="type/past a link"
+              className="input input-bordered w-full"
+            />
+          </label>
         <label className="form-control">
           <div className="label">
             <span className="label-text">Description</span>

@@ -145,6 +145,11 @@ const NavBar = ({ session }) => {
                           </li>
                         </ul>
                         <div className="space-y-5 flex my-5 flex-col">
+                          <Link href={"/eLearning"}>
+                            <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
+                              E-learning
+                            </button>
+                          </Link>
                           <Link href={"/domain"}>
                             <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
                               Domain
@@ -171,6 +176,11 @@ const NavBar = ({ session }) => {
           </div>
 
           <div className="lg:space-x-2 lg:mr-5 md:space-x-1 hidden lg:flex">
+            <Link href={"/eLearning"}>
+              <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
+                E-learning
+              </button>
+            </Link>
             <Link href={"/domain"}>
               <button className="btn bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-2">
                 Domain

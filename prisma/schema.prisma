@@ -8,13 +8,13 @@ datasource db {
 }
 
 model User {
-  id             Int      @id @default(autoincrement())
+  id             Int       @id @default(autoincrement())
   name           String
-  email          String   @unique
-  role           Role     @default(SEMI_ADMIN)
+  email          String    @unique
+  role           Role      @default(SEMI_ADMIN)
   hashedPassword String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
   sessions       Session[]
 }
 
@@ -31,7 +31,6 @@ enum Role {
   ADMIN
   SUPER_ADMIN
 }
-
 
 // model Portfolio {
 //   id          Int      @id @default(autoincrement())
@@ -57,6 +56,7 @@ model Portfolio {
   name        String
   categoryId  Int
   category    PortfolioCategory @relation(fields: [categoryId], references: [id])
+  link        String
   description String
   scope       String?
   image       String
@@ -271,6 +271,7 @@ model FooterDescription {
   twitterLink      String
   linkedinLink     String
   instagramLink    String
+  youtubeLink      String
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 }

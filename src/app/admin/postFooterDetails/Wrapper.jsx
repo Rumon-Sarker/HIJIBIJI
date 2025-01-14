@@ -151,11 +151,23 @@ const FooterDetails = ({ data }) => {
                         </div>
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
-                                <span className="label-text">twitter link</span>
+                                <span className="label-text">X link</span>
                             </div>
                             <input
                                 required
                                 name="twitter_link"
+                                type="text"
+                                placeholder="type location"
+                                className="input input-bordered w-full max-w-xs"
+                            />
+                        </label>
+                        <label className="form-control w-full max-w-xs">
+                            <div className="label">
+                                <span className="label-text">YouTube Link</span>
+                            </div>
+                            <input
+                                required
+                                name="youtube_link"
                                 type="text"
                                 placeholder="type location"
                                 className="input input-bordered w-full max-w-xs"
@@ -181,7 +193,8 @@ const FooterDetails = ({ data }) => {
                             <h1><span className='font-semibold'>facebook link:</span> {item.facebookLink}</h1>
                             <h1><span className='font-semibold'>instagram link:</span> {item.instagramLink} </h1>
                             <h1><span className='font-semibold'>linkedin link:</span> {item.linkedinLink} </h1>
-                            <h1><span className='font-semibold'>twitter link:</span> {item.twitterLink} </h1>
+                            <h1><span className='font-semibold'>X link:</span> {item.twitterLink} </h1>
+                            <h1><span className='font-semibold'>YouTube link:</span> {item.youtubeLink} </h1>
                             <div>
                                 <button
                                     onClick={() => handleDelete(item.id)}

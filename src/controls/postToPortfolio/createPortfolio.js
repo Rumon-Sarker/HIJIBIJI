@@ -11,7 +11,8 @@ export async function createPortfolio(formData) {
   const description = formData.get("description");
   const scope = formData.get("scope");
   const imageFile = formData.get("image");
-
+  const link = formData.get("link");
+console.log('link', link);
   const imageUrl = await uploadFile(imageFile);
 
   try {
@@ -20,6 +21,7 @@ export async function createPortfolio(formData) {
         name,
         clientName,
         categoryId,
+        link,
         description,
         scope,
         image: imageUrl,

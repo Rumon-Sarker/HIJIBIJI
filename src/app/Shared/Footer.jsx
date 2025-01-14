@@ -10,6 +10,7 @@ import { FaSquareFacebook } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
+import { FaYoutube } from "react-icons/fa";
 import LoadingButton from "@/components/LoadingButton";
 const Footer = ({ session, data }) => {
   let formRef = useRef(null);
@@ -54,7 +55,7 @@ const Footer = ({ session, data }) => {
                   <Link
                     target="_blank" rel="noopener noreferrer"
                     href={
-                      data?.facebookLink
+                      data?.facebookLink || ''
                     }
                   >
                     <FaSquareFacebook size={35} />
@@ -64,20 +65,25 @@ const Footer = ({ session, data }) => {
                   <Link
                     target="_blank" rel="noopener noreferrer"
                     href={
-                      data?.instagramLink
+                      data?.instagramLink || ''
                     }
                   >
                     <FaInstagram size={35} />
                   </Link>
                 </h1>
                 <h1>
-                  <Link target="_blank" rel="noopener noreferrer" href={data?.linkedinLink}>
+                  <Link target="_blank" rel="noopener noreferrer" href={data?.linkedinLink || ''}>
                     <FaLinkedin size={35} />
                   </Link>
                 </h1>
                 <h1>
-                  <Link target="_blank" rel="noopener noreferrer" href={data?.twitterLink}>
+                  <Link target="_blank" rel="noopener noreferrer" href={data?.twitterLink || ''}>
                     <BsTwitterX size={35} />
+                  </Link>
+                </h1>
+                <h1>
+                  <Link target="_blank" rel="noopener noreferrer" href={data?.youtubeLink || ''}>
+                  <FaYoutube size={43} />
                   </Link>
                 </h1>
               </div>

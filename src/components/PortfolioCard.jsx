@@ -4,7 +4,7 @@ import React from 'react';
 import { FaArrowRight } from "react-icons/fa";
 
 const PortfolioCard = ({cardData}) => {
-    const {name,clientName, image,id} = cardData;
+    const {name,clientName, image,id,link} = cardData;
     // console.log(cardData)
     return (
         <div>
@@ -13,12 +13,16 @@ const PortfolioCard = ({cardData}) => {
                     <Image className='rounded-3xl object-fill h-[200px] cursor-pointer' src={image} width={500} height={500} alt=''/>
                 </div>
                 <div className='flex justify-between px-3 mt-5 text-text'>
-                    <h1 className='text-xl font-semibold'>{name}</h1>
+              <Link target="_blank" href={link || ''}>
+                  <h1 className='text-xl font-semibold'>{name}</h1>
+                  </Link>
                     <Link className='text-main flex gap-1 items-center' href={`/portfolioDetails/${id}`}>View Details<FaArrowRight /></Link>
                 </div>
+              <Link target="_blank" href={link || ''}>
                 <h1 className='px-3 text-sm my-5'>
                     {clientName}
                 </h1>
+                </Link>
             </div>
         </div>
     );
