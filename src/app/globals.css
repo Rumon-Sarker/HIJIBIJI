@@ -25,3 +25,38 @@ body {
     text-wrap: balance;
   }
 }
+
+/* google transal */
+
+
+/* ✅ Hides the Google Translate banner */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+/* ✅ Removes additional Google Translate iframe */
+iframe.skiptranslate {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* ✅ Ensures the website does not move down */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* ✅ Hides Google Translate dropdown */
+.goog-te-combo {
+  display: none !important;
+}
+
+
+

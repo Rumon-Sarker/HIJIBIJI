@@ -12,6 +12,32 @@ const NavBar = ({ session }) => {
   const isActive = (path) => pathName === path;
   const [isOpen, setIsOpen] = useState(false);
   const handleClose = () => setIsOpen(false);
+
+  const changeLanguage = (langCode) => {
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+      select.value = langCode;
+      select.dispatchEvent(new Event("change"));
+    } else {
+      console.error("Google Translate widget not loaded yet.");
+    }
+  };
+
+  // const languages = {
+  //   bn: "Bangla",
+  //   en: "English",
+  //   es: "Spanish",
+  //   de: "German",
+  //   it: "Italian",
+  //   fr: "French",
+  //   pt: "Portuguese",
+  // };
+
+  // const handleLanguageChange = async (e) => {
+  //   const selectedLang = e.target.value;
+  //   await translatePageContent(selectedLang);
+  // };
+
   return (
     <div className="">
       <div>
@@ -174,6 +200,20 @@ const NavBar = ({ session }) => {
               </Drawer.Items>
             </Drawer>
           </div>
+
+          {/* Language Selector Dropdown */}
+          <select
+            onChange={(e) => changeLanguage(e.target.value)}
+            className="p-2 border rounded text-center"
+          >
+            <option value="">🌍 Select Language</option>
+            <option value="en">English </option>
+            <option value="es">Spanish</option>
+            <option value="de">German</option>
+            <option value="it">Italian</option>
+            <option value="fr">French</option>
+            <option value="pt">Portuguese</option>
+          </select>
 
           <div className="lg:space-x-2 lg:mr-5 md:space-x-1 hidden lg:flex">
             <Link href={"/eLearning"}>
