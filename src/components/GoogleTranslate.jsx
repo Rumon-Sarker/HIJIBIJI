@@ -14,31 +14,46 @@ export default function GoogleTranslate() {
         document.body.appendChild(script);
       }
 
-      // ✅ Ensure Google Translate initializes correctly
       window.googleTranslateElementInit = function () {
-        if (
-          !document.querySelector(".goog-te-combo") &&
-          document.getElementById("google_translate_element")
-        ) {
+        try {
+          if (!document.getElementById("google_translate_element")) return;
           new window.google.translate.TranslateElement(
             {
               pageLanguage: "en",
-              includedLanguages: "en,es,de,it,fr,pt",
+              includedLanguages: "en,es,de,it,fr,pt,bn",
               autoDisplay: false,
             },
             "google_translate_element"
           );
+        } catch (error) {
+          console.error("Google Translate Initialization Error:", error);
         }
       };
 
-      // ✅ Check if Google Translate is loaded and initialize it
+      // ✅ Catch and ignore "removeChild" errors
+      const originalRemoveChild = Node.prototype.removeChild;
+      Node.prototype.removeChild = function (child) {
+        try {
+          return originalRemoveChild.call(this, child);
+        } catch (error) {
+          if (error.name !== "NotFoundError") {
+            console.warn("Ignored removeChild error:", error);
+          }
+        }
+      };
+
       setTimeout(() => {
         if (window.google && window.google.translate) {
           window.googleTranslateElementInit();
         }
-      }, 1500); // ✅ Increased delay to ensure script is fully loaded
+      }, 2000);
     }
   }, []);
 
-  return <div id="google_translate_element" style={{ display: "none" }}></div>;
+  return (
+    <div
+      id="google_translate_element"
+      style={{ display: "block", marginTop: "10px" }}
+    ></div>
+  );
 }

@@ -8,14 +8,16 @@ import { PrismaClient } from "@prisma/client";
 import Loading from "./loading";
 const Home = async () => {
   const prisma = new PrismaClient();
-  const bg1 = await prisma.bg1.findFirst({ orderBy: { createdAt: "desc" } });
-  const bg2 = await prisma.bg2.findFirst({ orderBy: { createdAt: "desc" } });
-  const exp = await prisma.experience.findFirst({
+  const bg1 = await prisma?.bg1?.findFirst({ orderBy: { createdAt: "desc" } });
+
+  const bg2 = await prisma?.bg2?.findFirst({ orderBy: { createdAt: "desc" } });
+  const exp = await prisma?.experience?.findFirst({
     orderBy: { createdAt: "desc" },
   });
-  const partners = await prisma.partners.findMany({});
-  const blog = await prisma.blogs.findMany({});
-  const caseStudies = await prisma.caseStudy.findMany({});
+  const partners = await prisma?.partners?.findMany({});
+  const blog = await prisma?.blogs?.findMany({});
+  const caseStudies = await prisma?.caseStudy?.findMany({});
+
   return (
     <Suspense fallback={<Loading />}>
       <div>

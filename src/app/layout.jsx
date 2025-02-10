@@ -38,7 +38,12 @@ import NavWrapper from "./Shared/NavWrapper";
 import { Kanit } from "next/font/google";
 import FooterWrapper from "./Shared/FooterWrapper";
 import Loader from "./loader";
-import GoogleTranslate from "@/components/GoogleTranslate";
+import dynamic from "next/dynamic";
+
+// ✅ Load GoogleTranslate dynamically to avoid hydration issues
+const GoogleTranslate = dynamic(() => import("@/components/GoogleTranslate"), {
+  ssr: false,
+});
 
 const fontName = Kanit({ subsets: ["latin"], weight: "400" });
 
@@ -56,7 +61,7 @@ export default function RootLayout({ children }) {
       >
         <NavWrapper />
 
-        {/* ✅ Google Translate Component (Client-Side) */}
+        {/* ✅ Ensures Google Translate is loaded only once */}
         <GoogleTranslate />
 
         <Loader>{children}</Loader>
