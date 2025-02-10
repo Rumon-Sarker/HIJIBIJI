@@ -23,21 +23,6 @@ const NavBar = ({ session }) => {
     }
   };
 
-  // const languages = {
-  //   bn: "Bangla",
-  //   en: "English",
-  //   es: "Spanish",
-  //   de: "German",
-  //   it: "Italian",
-  //   fr: "French",
-  //   pt: "Portuguese",
-  // };
-
-  // const handleLanguageChange = async (e) => {
-  //   const selectedLang = e.target.value;
-  //   await translatePageContent(selectedLang);
-  // };
-
   return (
     <div className="">
       <div>
@@ -207,9 +192,10 @@ const NavBar = ({ session }) => {
             className="p-2 border rounded text-center"
           >
             <option value="">🌍 Select Language</option>
-            <option value="en">English </option>
-            <option value="es">Spanish</option>
+            <option value="en">English</option>
+
             <option value="de">German</option>
+            <option value="es">Spanish</option>
             <option value="it">Italian</option>
             <option value="fr">French</option>
             <option value="pt">Portuguese</option>
