@@ -37,7 +37,7 @@ const Footer = ({ session, data }) => {
             </div>
 
             <div className="space-y-5">
-              <h1 className="text-lg my-10">
+              <h1 className="text-lg lg:w-[800px] md:w-auto my-10">
                 {data?.shortDescription}
               </h1>
               <p className="flex gap-1">
@@ -53,37 +53,47 @@ const Footer = ({ session, data }) => {
               <div className="flex gap-5">
                 <h1>
                   <Link
-                    target="_blank" rel="noopener noreferrer"
-                    href={
-                      data?.facebookLink || ''
-                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={data?.facebookLink || ""}
                   >
                     <FaSquareFacebook size={35} />
                   </Link>
                 </h1>
                 <h1>
                   <Link
-                    target="_blank" rel="noopener noreferrer"
-                    href={
-                      data?.instagramLink || ''
-                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={data?.instagramLink || ""}
                   >
                     <FaInstagram size={35} />
                   </Link>
                 </h1>
                 <h1>
-                  <Link target="_blank" rel="noopener noreferrer" href={data?.linkedinLink || ''}>
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={data?.linkedinLink || ""}
+                  >
                     <FaLinkedin size={35} />
                   </Link>
                 </h1>
                 <h1>
-                  <Link target="_blank" rel="noopener noreferrer" href={data?.twitterLink || ''}>
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={data?.twitterLink || ""}
+                  >
                     <BsTwitterX size={35} />
                   </Link>
                 </h1>
                 <h1>
-                  <Link target="_blank" rel="noopener noreferrer" href={data?.youtubeLink || ''}>
-                  <FaYoutube size={43} />
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={data?.youtubeLink || ""}
+                  >
+                    <FaYoutube size={43} />
                   </Link>
                 </h1>
               </div>
@@ -112,7 +122,7 @@ const Footer = ({ session, data }) => {
               </Link>
             </nav>
           </div>
-          <div>
+          {/* <div>
             <form
               action={handlePost}
               ref={formRef}
@@ -195,7 +205,7 @@ const Footer = ({ session, data }) => {
                 />
               </div>
             </form>
-          </div>
+          </div> */}
         </footer>
         <div className="mt-3 mb-5 mx-10">
           <div className="border-b-2 border-main"></div>

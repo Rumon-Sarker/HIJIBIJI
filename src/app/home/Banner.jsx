@@ -70,15 +70,14 @@ const Banner = ({ bg1, exp }) => {
             />
           </div>
           <div className="absolute -right-5 md:-right-16 -top-16 ">
-          <Image
-          className="w-[70px] md:w-[150px]"
-            src={img2}
-            alt=""
-            width={200}
-            height={700}
-            
-          />
-        </div>
+            <Image
+              className="w-[70px] md:w-[150px]"
+              src={img2}
+              alt=""
+              width={200}
+              height={700}
+            />
+          </div>
         </div>
 
         <div className="space-y-6 mt-5 ms-5  w-2/3">
