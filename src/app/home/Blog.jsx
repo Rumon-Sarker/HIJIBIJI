@@ -19,7 +19,8 @@ const Blog = ({ blog }) => {
   return (
     <div className="my-10 mx-5 md:mx-10 lg:mx-20">
       <h1 className="text-main text-3xl text-center my-10">
-        Our finger's on the pulse of what's happening, right now, in your world
+        Our finger&apos;s on the pulse of what&apos;s happening, right now,in
+        your world
       </h1>
       <Swiper
         navigation={true}
