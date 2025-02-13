@@ -18,7 +18,7 @@ const Blog = ({ blog }) => {
 
   return (
     <div className="my-10 mx-5 md:mx-10 lg:mx-20">
-      <h1 className="text-main text-3xl text-center my-10">
+      <h1 className="text-main lg:text-3xl text-2xl lg:text-center px-5 lg:px-0 my-10">
         Our finger&apos;s on the pulse of what&apos;s happening, right now,in
         your world
       </h1>
@@ -86,7 +86,7 @@ const Blog = ({ blog }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="flex justify-center items-center my-5">
+      <div className="flex justify-center items-center lg:my-5">
         <Link href={"/blogs"}>
           <button className="text-white bg-main btn hover:bg-transparent hover:border-2 hover:border-main hover:text-black my-10">
             See all Blogs

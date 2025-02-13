@@ -49,7 +49,7 @@ const NavBar = ({ session }) => {
     <div>
       <nav className="flex justify-between items-center h-16 bg-slate-50 shadow-xl px-4">
         {/* Mobile: Left - Sidebar */}
-        <div className="md:hidden">
+        <div className="md:hidden -ml-7">
           <Button onClick={() => setIsOpen(true)}>
             <TiThMenuOutline className="text-main" size={30} />
           </Button>
@@ -81,12 +81,12 @@ const NavBar = ({ session }) => {
         </div>
 
         {/* Mobile: Center - Language Selector */}
-        <div className="md:hidden">
+        <div className="md:hidden -ml-28">
           {/* Language Selector */}
           <div className="relative inline-block text-left">
             <button
               onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-              className="flex items-center space-x-2 p-2 border rounded-lg shadow-sm hover:bg-gray-100 transition duration-300"
+              className="flex items-center space-x-2 p-1 border rounded-lg shadow-sm hover:bg-gray-100 transition duration-300"
             >
               <Image
                 src={selectedLang.flag}

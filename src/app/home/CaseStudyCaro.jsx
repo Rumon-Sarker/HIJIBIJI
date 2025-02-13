@@ -17,7 +17,7 @@ import { FaArrowRight } from "react-icons/fa";
 const CaseStudyCaro = ({ caseStudies }) => {
   return (
     <div className="lg:mt-32 md:20 mt-10 mx-5 md:mx-10 lg:mx-20">
-      <h1 className="text-main text-3xl text-center my-10">
+      <h1 className="text-main lg:text-3xl text-2xl lg:px-0 px-5  lg:text-center my-10">
         Exceptional client experiences driving impressive business results
       </h1>
       <Swiper

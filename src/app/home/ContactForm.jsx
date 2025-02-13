@@ -26,8 +26,9 @@ const ContactForm = ({ bg2 }) => {
   return (
     <div className="lg:mt-56 md:mt-32 mt-12 lg:-mb-3">
       <Toaster />
-      <h1 className="text-main text-4xl my-10 ps-10">
-        Let&apos;s talk about transforming your <br />
+      <h1 className="text-main lg:text-4xl text-2xl my-10 px-7 lg:px-0 lg:ps-10">
+        Let&apos;s talk about transforming your{" "}
+        <br className="hidden lg:inline" />
         business, with no strings attached
       </h1>
       <div>
