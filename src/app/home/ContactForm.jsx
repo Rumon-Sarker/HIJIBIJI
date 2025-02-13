@@ -24,7 +24,7 @@ const ContactForm = ({ bg2 }) => {
     }
   };
   return (
-    <div className="mt-56 lg:-mb-3">
+    <div className="lg:mt-56 md:mt-32 mt-12 lg:-mb-3">
       <Toaster />
       <h1 className="text-main text-4xl my-10 ps-10">
         Let&apos;s talk about transforming your <br />
@@ -38,7 +38,7 @@ const ContactForm = ({ bg2 }) => {
           <form
             action={handlePost}
             ref={formRef}
-            className="max-w-lg mx-auto space-y-12 bg-base-100 shadow-xl p-10 rounded-lg lg:absolute lg:-top-32 lg:-right-80 lg:left-96 "
+            className="max-w-lg mx-auto space-y-12 bg-base-100 shadow-xl p-10 rounded-lg lg:absolute lg:-top-32 lg:-right-80 lg:left-24 "
           >
             <div className="grid md:grid-cols-2 md:gap-10">
               <div className="relative z-0 w-full mb-5 group">

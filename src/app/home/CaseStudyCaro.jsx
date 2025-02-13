@@ -52,12 +52,10 @@ const CaseStudyCaro = ({ caseStudies }) => {
             <div className="flex justify-center items-center">
               <div className="bg-base-100 rounded-3xl w-[350px] p-3 m-3 h-[400px] shadow-xl ">
                 <div className="text-main my-1 mx-5">
-                  <h1 className="px-5 text-4xl font-bold">
+                  <h1 className="px-5 lg:text-3xl text-xl font-bold">
                     {" "}
                     {caseStudy.name.slice(0, 25)}{" "}
-                    <span className=" font-thin">
-                      {caseStudy.name.slice(25,56)}
-                    </span>
+                    <span className="">{caseStudy.name.slice(25, 56)}</span>
                   </h1>
                   <div className="flex gap-5 flex-wrap my-3 text-xs px-5">
                     <h1 className="bg-main px-2 py-1 text-white rounded-md">

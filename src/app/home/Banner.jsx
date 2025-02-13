@@ -26,8 +26,8 @@ const Banner = ({ bg1, exp }) => {
         >
           {/* <Image width={1000} height={700} src={banner} alt=''/> */}
 
-          <div className="lg:pl-[120px] pr-10 pl-5 md:pl-[100px] md:pr-[300px] pt-[240px] space-y-3 mx-2 lg:pr-[400px] lg:pb-[150px] lg:pt-[120px]">
-            <h1 className="lg:text-[56px] md:[40px] text-[30px] tracking-tighter text-main -space-y-32">
+          <div className="lg:pl-[120px] pr-10 pl-5 md:pl-[100px] md:pr-[300px] pt-[20px] space-y-3 mx-2 lg:pr-[400px] lg:pb-[150px] lg:pt-[120px]">
+            <h1 className="lg:text-[56px] md:[40px] text-[30px] tracking-tighter text-main ">
               {bg1?.title}
             </h1>
             <p className="lg:text-[20px] md:text-[17] text-[15px] text-main">
@@ -80,10 +80,10 @@ const Banner = ({ bg1, exp }) => {
           </div>
         </div>
 
-        <div className="space-y-6 mt-5 ms-5  w-2/3">
-          <h1 className="text-main text-4xl">{exp?.title}</h1>
+        <div className="lg:space-y-5 space-y-3 mt-5  w-full ">
+          <h1 className="text-main lg:text-4xl text-3xl">{exp?.title}</h1>
           {separateArrays.map((newDetails, index) => (
-            <p key={index} className="mt-3 text-text">
+            <p key={index} className="mt-3 space-y-3 text-text">
               {newDetails}
             </p>
           ))}
