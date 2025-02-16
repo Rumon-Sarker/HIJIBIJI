@@ -58,22 +58,30 @@ const NavBar = ({ session }) => {
             <Drawer.Items>
               <Sidebar className="bg-transparent p-0">
                 <ul className="space-y-5 p-4">
-                  {["/", "/about", "/portfolio", "/services", "/career"].map(
-                    (path, index) => (
-                      <li
-                        key={index}
-                        className={`${
-                          isActive(path)
-                            ? "text-main font-bold border-b-2 border-main"
-                            : "text-text border-b-2 border-text hover:border-main hover:text-main"
-                        }`}
-                      >
-                        <Link href={path}>
-                          {path.replace("/", "").toUpperCase() || "HOME"}
-                        </Link>
-                      </li>
-                    )
-                  )}
+                  {[
+                    "/",
+                    "/about",
+                    "/portfolio",
+                    "/services",
+                    "/career",
+                    "/eLearning",
+                    "/domain",
+                    "/contact",
+                    "/blogs",
+                  ].map((path, index) => (
+                    <li
+                      key={index}
+                      className={`${
+                        isActive(path)
+                          ? "text-main font-bold border-b-2 border-main"
+                          : "text-text border-b-2 border-text hover:border-main hover:text-main"
+                      }`}
+                    >
+                      <Link href={path}>
+                        {path.replace("/", "").toUpperCase() || "HOME"}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </Sidebar>
             </Drawer.Items>
