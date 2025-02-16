@@ -20,7 +20,7 @@ export default function GoogleTranslate() {
           new window.google.translate.TranslateElement(
             {
               pageLanguage: "en",
-              includedLanguages: "en,es,de,it,fr,pt,bn",
+              includedLanguages: "en,es,de,it,fr,pt",
               autoDisplay: false,
             },
             "google_translate_element"

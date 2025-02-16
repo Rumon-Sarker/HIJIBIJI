@@ -49,7 +49,7 @@ const NavBar = ({ session }) => {
     <div>
       <nav className="flex justify-between items-center h-16 bg-slate-50 shadow-xl px-4">
         {/* Mobile: Left - Sidebar */}
-        <div className="md:hidden -ml-7">
+        <div className="lg:hidden -ml-7">
           <Button onClick={() => setIsOpen(true)}>
             <TiThMenuOutline className="text-main" size={30} />
           </Button>
@@ -75,6 +75,15 @@ const NavBar = ({ session }) => {
                         isActive(path)
                           ? "text-main font-bold border-b-2 border-main"
                           : "text-text border-b-2 border-text hover:border-main hover:text-main"
+                      } ${
+                        [
+                          "/eLearning",
+                          "/domain",
+                          "/contact",
+                          "/blogs",
+                        ].includes(path)
+                          ? "w-36  text-center p-1 bg-main rounded-full text-white hover:bg-transparent hover:text-black hover:border-main border-main border"
+                          : ""
                       }`}
                     >
                       <Link href={path}>
