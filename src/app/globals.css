@@ -58,6 +58,9 @@ iframe.skiptranslate {
   display: none !important;
 }
 
+
+
+
 /* popup off  */
 
 #goog-gt-tt{
@@ -66,3 +69,35 @@ iframe.skiptranslate {
 
 
 
+/* ✅ Hide Google Translate Toolbar */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+/* ✅ Hide Hover Tooltips */
+.goog-tooltip,
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+/* ✅ Remove Background Color & Highlights on Hover */
+.goog-text-highlight,
+.goog-text-highlight:hover,
+span.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  color: inherit !important;
+}
+
+
+
+/* ✅ Hide Google Translate Dropdown */
+.goog-te-gadget {
+  display: none !important;
+}
+
+/* ✅ Ensure Google Translate Doesn’t Affect Layout */
+html {
+  top: 0px !important;
+}
