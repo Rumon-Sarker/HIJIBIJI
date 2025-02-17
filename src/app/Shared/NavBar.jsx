@@ -57,7 +57,7 @@ const NavBar = ({ session }) => {
             <Drawer.Header title="MENU" />
             <Drawer.Items>
               <Sidebar className="bg-transparent p-0">
-                <ul className="space-y-5 p-4">
+                {/* <ul className="space-y-5 p-4">
                   {[
                     "/",
                     "/about",
@@ -91,6 +91,46 @@ const NavBar = ({ session }) => {
                       </Link>
                     </li>
                   ))}
+                </ul> */}
+
+                <ul className="space-y-5 p-4">
+                  {["/", "/about", "/portfolio", "/services", "/career"].map(
+                    (path, index) => (
+                      <li
+                        key={index}
+                        className={`${
+                          isActive(path)
+                            ? "text-main font-bold border-b-2 border-main"
+                            : "text-text border-b-2 border-text hover:border-main hover:text-main"
+                        }`}
+                      >
+                        <Link href={path}>
+                          {path.replace("/", "").toUpperCase() || "HOME"}
+                        </Link>
+                      </li>
+                    )
+                  )}
+
+                  {/* Apply margin only to the block of special items */}
+                  <div className="pt-16 space-y-5">
+                    {["/eLearning", "/domain", "/contact", "/blogs"].map(
+                      (path, index) => (
+                        <li
+                          key={index}
+                          className={`w-36 text-center p-1 rounded-full border border-main 
+                            ${
+                              isActive(path)
+                                ? "bg-main text-text font-bold"
+                                : "bg-main text-white hover:bg-transparent hover:text-text hover:border-main"
+                            }`}
+                        >
+                          <Link href={path}>
+                            {path.replace("/", "").toUpperCase()}
+                          </Link>
+                        </li>
+                      )
+                    )}
+                  </div>
                 </ul>
               </Sidebar>
             </Drawer.Items>
