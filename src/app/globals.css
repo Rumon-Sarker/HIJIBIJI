@@ -58,5 +58,11 @@ iframe.skiptranslate {
   display: none !important;
 }
 
+/* popup off  */
+
+#goog-gt-tt{
+  display: none !important;
+}
+
 
 

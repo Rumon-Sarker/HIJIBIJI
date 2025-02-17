@@ -125,7 +125,9 @@ const NavBar = ({ session }) => {
                             }`}
                         >
                           <Link href={path}>
-                            {path.replace("/", "").toUpperCase()}
+                            {path
+                              .replace("/", "")
+                              .replace("eLearning", "E-learning")}
                           </Link>
                         </li>
                       )
